@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
 import { getSiteByHost } from '../config/sites';
 
 const site = getSiteByHost(Astro.url.hostname);
@@ -273,6 +274,8 @@ const calculatorHerringboneUrl = '/paving-cost-calculator?style=herringbone';
 				</dl>
 			</div>
 		</section>
+
+		<RelatedPavingGuides excludeHref="/herringbone-paving-melbourne" />
 
 		<CTASection
 			sectionId="estimate"

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
 import { getSiteByHost } from '../config/sites';
 
 const site = getSiteByHost(Astro.url.hostname);
@@ -257,6 +258,8 @@ const calculatorFrenchUrl = '/paving-cost-calculator?style=french-pattern';
 				</dl>
 			</div>
 		</section>
+
+		<RelatedPavingGuides excludeHref="/french-pattern-paving-melbourne" />
 
 		<CTASection
 			sectionId="estimate"
