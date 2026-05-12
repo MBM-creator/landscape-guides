@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pavingguide.com.au/sitemap.xml
