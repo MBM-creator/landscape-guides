@@ -1,0 +1,693 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = 'https://pavingguide.com.au/wet-bed-vs-concrete-base-paving';
+
+const title = 'Wet Bed vs Concrete Base Paving | Which Base Is Right?';
+const description =
+	'Compare wet bed paving and concrete base paving, including cost, drainage, durability, site suitability and when each base makes sense.';
+
+const calculatorUrl = '/paving-cost-calculator';
+
+const faqItems: { q: string; a: string }[] = [
+	{
+		q: 'Is a concrete base better for paving?',
+		a: 'Not by default. A concrete base offers high stability and precise levels when designed for the load and finish system, but wet bed paving over a well-prepared crushed rock base remains appropriate for many pedestrian areas in Melbourne. The "better" option is the one that matches your use, drainage, materials and engineering or certifier requirements—not a blanket rule.',
+	},
+	{
+		q: 'Is wet bed paving cheaper?',
+		a: 'Often yes on upfront cost compared with a full concrete slab system, because you avoid bulk concrete, reinforcing and some of the associated curing and handling. Wet bed still demands correct excavation, compacted road base, bedding mortar and workmanship; saving money by thinning the base or skipping drainage rarely holds up over time.',
+	},
+	{
+		q: 'Do outdoor pavers always need concrete underneath?',
+		a: 'No. Many paths, courtyards and garden paving areas are laid on a compacted crushed rock formation with a mortar bed. Vehicle zones, some pool details and certain adhesive-fixed stone or tile systems are different: they may require concrete or another specified support. Always confirm against your product data, load case and any certification.',
+	},
+	{
+		q: 'What base is best around pools?',
+		a: 'Pool surrounds usually need stable levels, reliable falls, compatible finishes for wet barefoot use and detail that satisfies your pool certifier. Concrete base paving is commonly chosen where the brief demands a rigid plane and fixed levels, but wet systems can be acceptable when falls, drainage, coping junctions and stone choice are all resolved in the documentation—not chosen from price alone.',
+	},
+	{
+		q: 'Can poor base preparation cause paving to fail?',
+		a: 'Yes. Most visible paving failures—stepping, ponding, cracked units, open joints—trace back to inadequate compaction, wrong layer thicknesses, missing or weak edge restraint, ignored drainage or bedding that cannot tolerate movement. The surface stone is rarely the first thing that fails.',
+	},
+];
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqItems.map((item) => ({
+		'@type': 'Question',
+		name: item.q,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.a,
+		},
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<main class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Paving base guide</p>
+				<h1 class="hero__title">Wet Bed vs Concrete Base Paving</h1>
+				<p class="hero__sub">
+					The paving you see is only part of the job. The base underneath affects cost, drainage, movement, durability and long-term
+					performance. This guide compares wet bed paving and concrete base paving so you can understand why preparation matters.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorUrl}>Estimate paving cost</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="section" aria-labelledby="why-base-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="why-base-heading" class="section__title">Why the paving base matters</h2>
+				<p class="prose">
+					Paving failures often start below the surface. What reads as a loose paver or an uneven run is frequently the result of how water
+					leaves the area, how well the layers were compacted and whether edge restraint can resist spread.
+				</p>
+				<p class="prose">
+					Solid <strong>paving base preparation</strong> governs drainage, levels, movement tolerance and lifespan. In Melbourne’s variable
+					clays and seasonal moisture movement, the interface between soil, aggregate layers and the paving bed is where small shortcuts
+					compound.
+				</p>
+				<p class="prose">
+					The cheapest base is not always the best base. A lower line item on a quote may reflect thinner formation, fewer passes with a
+					compactor or drainage left implied rather than drawn—none of which show up in a sample tile on a showroom stand. When you compare
+					<strong>wet bed paving Melbourne</strong> proposals with <strong>concrete base paving Melbourne</strong> alternatives, the useful
+					difference is usually scope and specification, not the paver colour on the surface.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="wet-bed-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="wet-bed-heading" class="section__title">What is wet bed paving?</h2>
+				<p class="prose">
+					Wet bed paving is paving laid into a mortar bed—sometimes called a wet bed—over a prepared crushed rock or road-base formation.
+					Units are typically buttered or pressed into fresh bedding mortar; joints may be filled with grout or sand depending on the system.
+				</p>
+				<p class="prose">
+					It suits many pedestrian areas: paths, courtyards and garden connections where loads are predictable and the finish is conventional
+					natural stone or concrete pavers at the correct thickness. Performance still depends heavily on compaction, designed falls and
+					<strong>crushed rock base paving</strong> detail (layer depths, geotextile where specified, and ag lines if the site needs them).
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="concrete-base-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="concrete-base-heading" class="section__title">What is concrete base paving?</h2>
+				<p class="prose">
+					Concrete base paving installs a concrete slab or structural base first; pavers or stone are then fixed over the top with adhesive
+					or a secondary mortar bed, following the manufacturer’s method statement.
+				</p>
+				<p class="prose">
+					It is often used where more stability is required: tighter level control, heavier point loads or finishes that expect a rigid
+					substrate. In residential work it is commonly discussed around pools, driveways (when engineered for vehicle loads) and sites with
+					complex level changes or poor ground.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="table-heading">
+			<div class="section__inner section__inner--wide">
+				<h2 id="table-heading" class="section__title">Quick comparison</h2>
+				<p class="section__lead section__lead--tight">
+					A shorthand view of <strong>Wet Bed vs Concrete Base Paving</strong> for the same brief. Your designer or contractor should confirm
+					formation depths, falls and product constraints on site—particularly for <strong>outdoor paving base Melbourne</strong> conditions
+					(access, services, existing structures and soil type).
+				</p>
+				<div class="compare-wrap">
+					<table class="compare-table">
+						<caption class="visually-hidden">
+							Comparison of wet bed over crushed rock versus concrete base paving for homeowners
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col" class="compare-table__factor">Factor</th>
+								<th scope="col">Wet bed / crushed rock base</th>
+								<th scope="col">Concrete base</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" class="compare-table__factor">Typical use</th>
+								<td>Garden paths, courtyards, many pedestrian terraces and light-use outdoor rooms.</td>
+								<td>Pool surrounds, driveways or parking when engineered, steps and areas needing a rigid plane.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Cost tendency</th>
+								<td>Usually lower upfront than a full slab system; labour and formation quality still drive the total.</td>
+								<td>Higher upfront: concrete, steel, placement, curing time and often adhesive systems add cost.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Drainage behaviour</th>
+								<td>Water can move through aggregate zones if detailed correctly; falls must be deliberate at surface and formation.</td>
+								<td>Surface sheds water; slab falls and drainage points must be coordinated—less forgiving if levels are wrong.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Movement tolerance</th>
+								<td>Some differential movement can be absorbed if the system is layered and jointed appropriately—within limits.</td>
+								<td>Very stable when thick enough and reinforced for the case; failures tend to be rigid cracks or debonding if stressed.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Installation complexity</th>
+								<td>Heavy on set-out, compaction and bedding consistency; edge restraint is critical.</td>
+								<td>Coordinating pour tolerances, curing, waterproofing or penetrations adds programme and trade coordination.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Best suited to</th>
+								<td>Projects where pedestrian loads, suitable drainage and cost clarity are the priority.</td>
+								<td>Where stability, fixed levels or manufacturer specifications point to a slab-supported finish.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Risk if poorly installed</th>
+								<td>Rutting, open joints, ponding and edge spread when compaction, restraint or falls are inadequate.</td>
+								<td>Cracking, hollow sound or bond loss when slab design, curing or adhesive choice does not match use.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="when-wet-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="when-wet-heading" class="section__title">When wet bed paving makes sense</h2>
+				<p class="section__lead section__lead--tight">
+					Wet bed over crushed rock is a workhorse detail when the use stays pedestrian, drainage is achievable and the stone or paver suits
+					a mortar bed.
+				</p>
+				<ul class="bullets">
+					<li>Garden paths and secondary circulation routes</li>
+					<li>Courtyards and small entertaining areas with clear falls to drainage</li>
+					<li>Pedestrian areas where flexibility in formation is easier than pouring large slabs</li>
+					<li>Sites with suitable drainage paths—not lowest-lying, poorly vented pockets against the house unless detailed</li>
+					<li>Projects where cost control and phased construction matter, without downgrading formation specification</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="when-concrete-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="when-concrete-heading" class="section__title">When a concrete base makes sense</h2>
+				<p class="section__lead section__lead--tight">
+					Specify a concrete base when the finish or load case expects a rigid substrate, or when documentation calls for it outright.
+				</p>
+				<ul class="bullets">
+					<li>Pool surrounds where levels, coping interfaces and certifier detail favour a slab-supported system</li>
+					<li>Driveways or vehicle areas only when thickness, reinforcement and bedding are engineered for wheel loads</li>
+					<li>Areas requiring tighter long-term level control across a wide plane</li>
+					<li>Locations where greater stability reduces risk across reactive soils or complex transitions</li>
+					<li>Certain stone, porcelain or tile systems where the supplier mandates adhesive on concrete</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="cost-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-heading" class="section__title">Cost impact</h2>
+				<p class="prose">
+					Concrete base paving generally costs more upfront: excavation to reduced levels, formwork, steel, concrete supply and placement,
+					curing time, adhesive or mortar systems and the labour to coordinate trades all appear in the programme as well as the quote.
+				</p>
+				<p class="prose">
+					Wet bed paving still requires proper preparation and materials—geotextile, drainage aggregate, road base in lifts with compaction,
+					mortar and pointing—not a thin scatter of gravel under a buttered paver.
+				</p>
+				<p class="prose">
+					Base choice feeds straight into estimating tools: depth, slab area and finish system change line items. If you are modelling options,
+					run the calculator twice with honest assumptions, then read our
+					<a class="hero__secondary" href="/paving-cost-melbourne">Melbourne paving cost guide</a> for how quotes are usually built.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<ul class="bullets bullets--tight">
+					<li>
+						<strong>Assuming pavers can go over poor ground</strong> — organic soil or fill left under a thin layer of crushed rock will
+						continue to move.
+					</li>
+					<li>
+						<strong>Ignoring drainage</strong> — surface falls, grated channels and sub-surface drains are part of the pavement, not an
+						afterthought.
+					</li>
+					<li>
+						<strong>Choosing base type only by price</strong> — the line item that looks smallest may omit steel, depth or edge detail.
+					</li>
+					<li>
+						<strong>Using the wrong system around pools</strong> — slip resistance, bond, movement joints and certifier requirements are
+						non-negotiable.
+					</li>
+					<li>
+						<strong>Poor compaction</strong> — under-compacted lifts consolidate after handover and show up as dips and lippage.
+					</li>
+					<li>
+						<strong>Weak edge restraint</strong> — without kerb, footing or structural edge, the field spreads and joints open.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mobbs-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mobbs-heading" class="section__title">Which base would Made By Mobbs recommend?</h2>
+				<p class="prose">
+					It depends on the site, intended use, chosen material and drainage strategy. There is no one-size-fits-all decision: a path through
+					planting is not the same brief as a driveway turning circle or a pool coping plane.
+				</p>
+				<p class="prose">
+					We treat the paved area as part of the wider landscape—levels against the house, lawn interfaces, planting irrigation, services and
+					long-term maintenance—rather than isolating the visible stone from what sits beneath it.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="related-heading">
+			<div class="section__inner section__inner--guides">
+				<h2 id="related-heading" class="section__title section__title--center">Related guides</h2>
+				<ul class="guide-cards">
+					<li class="guide-cards__item">
+						<article class="guide-card">
+							<h3 class="guide-card__title">Paving Cost Melbourne</h3>
+							<p class="guide-card__text">How Melbourne paving quotes are built and what changes the numbers before you book a site visit.</p>
+							<a class="guide-card__cta" href="/paving-cost-melbourne">Read guide</a>
+						</article>
+					</li>
+					<li class="guide-cards__item">
+						<article class="guide-card">
+							<h3 class="guide-card__title">Crazy Paving Melbourne</h3>
+							<p class="guide-card__text">Irregular natural stone layouts, base expectations and where crazy paving suits Melbourne gardens.</p>
+							<a class="guide-card__cta" href="/crazy-paving-melbourne">Read guide</a>
+						</article>
+					</li>
+					<li class="guide-cards__item">
+						<article class="guide-card">
+							<h3 class="guide-card__title">French Pattern Paving Melbourne</h3>
+							<p class="guide-card__text">Modular French pattern stone: set-out, pool surrounds and cost context for local projects.</p>
+							<a class="guide-card__cta" href="/french-pattern-paving-melbourne">Read guide</a>
+						</article>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						faqItems.map((item) => (
+							<div class="faq__item">
+								<dt class="faq__q">{item.q}</dt>
+								<dd class="faq__a">{item.a}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="final-cta"
+			headingId="final-cta-heading"
+			title="Model your paving project with confidence"
+			description="Use the calculator with realistic base assumptions, then speak with a contractor about formation, drainage and the right finish system for your site."
+			ctaHref={calculatorUrl}
+			ctaLabel="Estimate paving cost"
+		/>
+	</main>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__inner--wide {
+		max-width: 56rem;
+	}
+
+	.section__inner--guides {
+		max-width: 72rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__title--center {
+		text-align: center;
+		margin-bottom: clamp(1.25rem, 4vw, 1.75rem);
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 42rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.bullets--tight {
+		gap: 0.55rem;
+	}
+
+	.guide-cards {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1rem, 3vw, 1.35rem);
+	}
+
+	.guide-cards__item {
+		margin: 0;
+	}
+
+	@media (min-width: 40rem) {
+		.guide-cards {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.guide-cards {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.guide-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		padding: 1.25rem 1.35rem 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.guide-card__title {
+		margin: 0;
+		font-size: 1.125rem;
+		font-weight: 650;
+		line-height: 1.3;
+		letter-spacing: -0.015em;
+		color: var(--color-text);
+	}
+
+	.guide-card__text {
+		margin: 0;
+		flex: 1 1 auto;
+		font-size: 0.96875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.guide-card__cta {
+		align-self: flex-start;
+		margin-top: 0.15rem;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.guide-card__cta:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.guide-card__cta:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.compare-wrap {
+		margin-top: 0.35rem;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		background-color: var(--color-white);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.compare-table {
+		width: 100%;
+		min-width: 36rem;
+		border-collapse: collapse;
+		font-size: 0.9375rem;
+		line-height: 1.5;
+	}
+
+	.compare-table caption {
+		padding: 0;
+	}
+
+	.compare-table thead th {
+		background-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-white));
+		font-weight: 650;
+		color: var(--color-text);
+		text-align: left;
+		vertical-align: bottom;
+	}
+
+	.compare-table th,
+	.compare-table td {
+		padding: 0.85rem 1rem;
+		border-bottom: 1px solid var(--color-border);
+		vertical-align: top;
+		color: color-mix(in srgb, var(--color-text) 84%, var(--color-background));
+	}
+
+	.compare-table tbody tr:last-child th,
+	.compare-table tbody tr:last-child td {
+		border-bottom: none;
+	}
+
+	.compare-table__factor {
+		width: 9.5rem;
+		font-weight: 650;
+		color: var(--color-text);
+		background-color: color-mix(in srgb, var(--color-accent) 22%, var(--color-white));
+	}
+
+	.compare-table thead .compare-table__factor {
+		background-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-white));
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>

@@ -61,10 +61,10 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 		</section>
 
 		<section class="section section--compare" id="compare-styles" aria-labelledby="compare-heading">
-			<div class="section__inner section__inner--narrow">
+			<div class="section__inner">
 				<h2 id="compare-heading" class="section__title">Compare paving styles</h2>
 				<p class="section__lead section__lead--tight">
-					Not sure which paving pattern suits your project? Start with a side-by-side comparison before estimating cost.
+					Not sure which paving pattern or base suits your project? Start with a side-by-side comparison before estimating cost.
 				</p>
 				<div class="compare-cards">
 					<article class="compare-card">
@@ -73,6 +73,13 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 							Compare two premium natural stone paving styles, including look, cost, labour and where each works best.
 						</p>
 						<a class="compare-card__cta" href="/crazy-paving-vs-french-pattern">Compare styles</a>
+					</article>
+					<article class="compare-card">
+						<h3 class="compare-card__title">Wet bed vs concrete base</h3>
+						<p class="compare-card__text">
+							How crushed rock and mortar bedding compares with a slab-supported finish for drainage, cost and long-term stability.
+						</p>
+						<a class="compare-card__cta" href="/wet-bed-vs-concrete-base-paving">Read the base guide</a>
 					</article>
 					<article class="compare-card">
 						<h3 class="compare-card__title">Paving Cost Melbourne</h3>
@@ -262,23 +269,25 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	}
 
 	.compare-cards {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: 1fr;
 		gap: clamp(1.25rem, 3vw, 1.5rem);
 		max-width: 36rem;
+		margin: 0 auto;
 	}
 
-	@media (min-width: 48rem) {
+	@media (min-width: 40rem) {
 		.compare-cards {
-			flex-direction: row;
-			align-items: stretch;
-			max-width: 72rem;
-		}
-
-		.compare-cards .compare-card {
-			flex: 1;
-			min-width: 0;
+			grid-template-columns: repeat(2, 1fr);
 			max-width: none;
+			margin: 0;
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.compare-cards {
+			grid-template-columns: repeat(3, 1fr);
+			align-items: stretch;
 		}
 	}
 
@@ -289,7 +298,8 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
-		max-width: 36rem;
+		min-width: 0;
+		max-width: none;
 	}
 
 	.compare-card__title {
