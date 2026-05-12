@@ -63,6 +63,10 @@ const allowedStyleParams = pavingStyles.map((s) => s.calculatorStyleParam);
 					<input type="radio" name="base" value="concrete" />
 					<span>Concrete base and glue</span>
 				</label>
+				<p class="fieldset__help">
+					Not sure which base you need?{' '}
+					<a class="fieldset__help-link" href="/wet-bed-vs-concrete-base-paving">Compare wet bed vs concrete base paving</a>.
+				</p>
 			</fieldset>
 
 			<fieldset class="fieldset">
@@ -239,6 +243,36 @@ const allowedStyleParams = pavingStyles.map((s) => s.calculatorStyleParam);
 		font-size: 0.8125rem;
 		line-height: 1.45;
 		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.fieldset__help {
+		clear: both;
+		margin: 0.5rem 0 0;
+		padding: 0;
+		font-size: 0.8125rem;
+		line-height: 1.45;
+		color: color-mix(in srgb, var(--color-text) 62%, var(--color-background));
+	}
+
+	.fieldset__help-link {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.fieldset__help-link:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.fieldset__help-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
 	}
 
 	.radio-line {

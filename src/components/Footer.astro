@@ -25,10 +25,14 @@ const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.main
 				</span>
 			)
 		}
+		<span class="site-footer__link-cluster">
+			{mainUrl || !hidePavingCostMelbourneLink ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+			<a class="site-footer__link" href="/wet-bed-vs-concrete-base-paving">Wet Bed vs Concrete Base</a>
+		</span>
 		{
-			extraLinks.map((link, i) => (
+			extraLinks.map((link) => (
 				<span class="site-footer__link-cluster">
-					{mainUrl || !hidePavingCostMelbourneLink || i > 0 ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+					<span class="site-footer__sep" aria-hidden="true"> · </span>
 					<a class="site-footer__link" href={link.href}>
 						{link.label}
 					</a>
