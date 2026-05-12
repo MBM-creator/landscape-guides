@@ -15,9 +15,57 @@ const description =
 
 const bookUrl = '#';
 const calculatorCrazyUrl = '/paving-cost-calculator?style=crazy';
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is crazy paving expensive?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It is usually more per square metre than straightforward rectangular paving because of cutting, fitting and jointing time. Stone choice and site access move the figure a lot; the calculator gives a sensible guide range before a site-specific quote.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is crazy paving suitable around pools?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It can be, when stone type, thickness, slip resistance and falls are selected for wet use and your pool certifier\u2019s requirements. Detail at the coping and drainage matters as much as the stone itself.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Does crazy paving need a concrete base?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Not every path needs a slab, but many Melbourne installations use a concrete base or wet bed where stability, vehicle load or ground movement is a concern. The right specification follows from use, soil and drainage\u2014not a one-size rule.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is crazy paving slippery?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Slip resistance depends on the stone, finish and whether the surface is wet. We can shortlist materials and treatments for steps, paths and areas that stay damp or see bare feet.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'How long does crazy paving take to install?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'A small garden path might take a few days on site; larger entertaining areas or complex edges take longer. Weather, access and how much existing paving or lawn needs removing also affect the programme\u2014something we clarify after a walk-through.',
+			},
+		},
+	],
+};
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 	<Header site={site} />
 	<div class="page">
 		<header class="hero" id="top">

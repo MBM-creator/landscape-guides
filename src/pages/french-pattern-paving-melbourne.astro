@@ -15,9 +15,57 @@ const description =
 
 const bookUrl = '#';
 const calculatorFrenchUrl = '/paving-cost-calculator?style=french-pattern';
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is French pattern paving expensive?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It usually costs more per square metre than straightforward single-size paving because of layout, cutting and the care needed to keep repeats true. Stone grade, thickness and site access move the figure substantially\u2014the calculator on this site is the sensible first step before a fixed quote.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is French pattern paving good around pools?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It can work very well around pools when module size, slip resistance, falls and coping junctions are chosen for wet use and your certifier\u2019s requirements. The pattern itself does not replace those technical decisions.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'What stone is best for French pattern paving?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Travertine and limestone modular packs are the most common in Melbourne because they suit the scale of residential repeats and soften visually. The \u201Cbest\u201D answer still follows from exposure, cleaning expectations, pool rules if relevant, and the architecture you are pairing with.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Does French pattern paving date?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Modular natural stone has been used for centuries; what dates a project is usually poor detailing or a fad colour rather than the pattern. Neutral stone, disciplined joints and correct falls tend to age calmly.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is French pattern paving hard to lay?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'For an experienced paving team it is routine; for a first-time DIYer it is demanding because small set-out errors compound across the field. Most homeowners engage specialists once they understand the cutting and alignment time involved.',
+			},
+		},
+	],
+};
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 	<Header site={site} />
 	<div class="page">
 		<header class="hero" id="top">

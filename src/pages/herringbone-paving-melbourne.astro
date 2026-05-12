@@ -15,9 +15,57 @@ const description =
 
 const bookUrl = '#';
 const calculatorHerringboneUrl = '/paving-cost-calculator?style=herringbone';
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is herringbone paving expensive?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It is rarely the cheapest layout per square metre because cutting, alignment and border work take longer than a basic stretcher bond field. Product choice, edge detail and whether the area carries vehicles move herringbone paving cost in Melbourne more than the pattern name alone\u2014start with the calculator, then confirm on site.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is herringbone paving good for driveways?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Yes, when pavers meet the required thickness and strength for wheel loads, the bedding layer is built to specification and edges are properly restrained. The interlock helps; the specification still has to match how you use the space.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'What materials work best for herringbone paving?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Clay brick and concrete rectangular units are the everyday workhorses; natural stone works when sizes are consistent enough to keep joints readable. The best material is the one that suits exposure, cleaning expectations, vehicle use if relevant, and the tones of your façade and garden.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is herringbone paving old-fashioned?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'It is traditional, but not dated by default. Narrow modules and soft mortar-style joints read classic; larger concrete units with tight joints and minimal border can feel quite current. Execution and context matter more than the label.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Is herringbone harder to lay than stretcher bond?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'For experienced installers it is routine; for DIY it is slower because bond lines must stay true and border cuts need planning. Most homeowners bring in a team once they see how visible small errors become in a zig-zag field.',
+			},
+		},
+	],
+};
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 	<Header site={site} />
 	<div class="page">
 		<header class="hero" id="top">
