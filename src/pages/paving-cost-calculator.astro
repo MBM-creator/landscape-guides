@@ -508,7 +508,8 @@ const allowedStyleParams = pavingStyles.map((s) => s.calculatorStyleParam);
 
 		function applyStyleFromQuery() {
 			const params = new URLSearchParams(window.location.search);
-			const q = params.get('style');
+			let q = params.get('style');
+			if (q === 'french-pattern') q = 'french';
 			if (!q || !allowedStyles.includes(q)) return;
 
 			if (q === 'crazy' || q === 'filetti' || q === 'french') {
