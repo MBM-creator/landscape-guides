@@ -5,9 +5,11 @@ interface Props {
 	site: SiteConfig;
 	/** Extra inline links after the main website link (e.g. “Paving guide home”). */
 	extraLinks?: { href: string; label: string }[];
+	/** Hide the sitewide “Paving Cost Melbourne” link (e.g. on that page). */
+	hidePavingCostMelbourneLink?: boolean;
 }
 
-const { site, extraLinks = [] } = Astro.props;
+const { site, extraLinks = [], hidePavingCostMelbourneLink = false } = Astro.props;
 const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.mainWebsiteUrl : null;
 ---
 
@@ -16,9 +18,17 @@ const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.main
 	<p class="site-footer__links">
 		{mainUrl ? <a class="site-footer__link" href={mainUrl}>Visit main website</a> : null}
 		{
+			hidePavingCostMelbourneLink ? null : (
+				<span class="site-footer__link-cluster">
+					{mainUrl ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+					<a class="site-footer__link" href="/paving-cost-melbourne">Paving Cost Melbourne</a>
+				</span>
+			)
+		}
+		{
 			extraLinks.map((link, i) => (
 				<span class="site-footer__link-cluster">
-					{mainUrl || i > 0 ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+					{mainUrl || !hidePavingCostMelbourneLink || i > 0 ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
 					<a class="site-footer__link" href={link.href}>
 						{link.label}
 					</a>

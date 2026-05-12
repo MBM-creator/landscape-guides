@@ -2,13 +2,21 @@
 interface Props {
 	/** Pathname of the current paving guide page (e.g. `/crazy-paving-melbourne`) — that guide is omitted from the list. */
 	excludeHref: string;
+	/** Optional section heading (defaults to “Related paving guides”). */
+	heading?: string;
 }
 
-const { excludeHref } = Astro.props;
+const { excludeHref, heading = 'Related paving guides' } = Astro.props;
 
 const normalize = (path: string) => path.replace(/\/$/, '') || '/';
 
 const allGuides = [
+	{
+		href: '/paving-cost-melbourne',
+		title: 'Paving Cost Melbourne',
+		description:
+			'What drives outdoor paving prices in Melbourne, how pattern and base preparation affect quotes, and how to use the calculator before organising a site visit.',
+	},
 	{
 		href: '/crazy-paving-melbourne',
 		title: 'Crazy Paving Melbourne',
@@ -34,7 +42,7 @@ const guides = allGuides.filter((g) => normalize(g.href) !== normalize(excludeHr
 
 <section class="related" aria-labelledby="related-guides-heading">
 	<div class="related__inner">
-		<h2 id="related-guides-heading" class="related__title">Related paving guides</h2>
+		<h2 id="related-guides-heading" class="related__title">{heading}</h2>
 		<ul class="related__grid" role="list">
 			{
 				guides.map((guide) => (

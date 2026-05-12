@@ -13,13 +13,20 @@ const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'prima
 <header class:list={['site-header', variant === 'compact' && 'site-header--compact']} role="banner">
 	<div class="site-header__inner">
 		<a class="site-header__brand" href="/">{site.name}</a>
-		{
-			hasPrimaryCta && variant === 'default' ? (
-				<a class="site-header__cta" href={site.primaryCtaHref}>
-					{site.primaryCta}
-				</a>
-			) : null
-		}
+		<div class="site-header__end">
+			{variant === 'default' ? (
+				<nav class="site-header__nav" aria-label="Site">
+					<a class="site-header__nav-link" href="/paving-cost-melbourne">Cost Guide</a>
+				</nav>
+			) : null}
+			{
+				hasPrimaryCta && variant === 'default' ? (
+					<a class="site-header__cta" href={site.primaryCtaHref}>
+						{site.primaryCta}
+					</a>
+				) : null
+			}
+		</div>
 	</div>
 </header>
 
@@ -43,6 +50,41 @@ const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'prima
 		justify-content: space-between;
 		gap: 1rem;
 		flex-wrap: wrap;
+	}
+
+	.site-header__end {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.site-header__nav {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.site-header__nav-link {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.site-header__nav-link:hover {
+		color: var(--color-primary-dark);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.site-header__nav-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
 	}
 
 	.site-header__brand {

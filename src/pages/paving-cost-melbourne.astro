@@ -1,0 +1,735 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = 'https://pavingguide.com.au/paving-cost-melbourne';
+
+const title = 'Paving Cost Melbourne | Realistic Outdoor Paving Price Guide';
+const description =
+	'Understand what affects paving costs in Melbourne, compare paving styles and estimate your project using our paving cost calculator.';
+
+const calculatorUrl = '/paving-cost-calculator';
+
+const faqCopy = [
+	{
+		q: 'How much does paving cost per m² in Melbourne?',
+		a: 'There is no single rate. <strong>Paving cost per m² in Melbourne</strong> depends on paver or stone type, pattern complexity, base specification, drainage, access and whether the area carries vehicles. Expect wide variation even between similar-sized jobs—use our <a class="inline-link" href="/paving-cost-calculator">paving cost calculator</a> for a guide band, then confirm on site.',
+	},
+	{
+		q: 'Is crazy paving more expensive?',
+		a: 'Usually, yes, compared with straightforward rectangular layouts on a similar stone tier. <strong>Crazy paving</strong> is slower to fit and joint, so labour makes up a larger share of the quote. Supply price and site access still move the total a lot—see our <a class="inline-link" href="/crazy-paving-melbourne">crazy paving Melbourne</a> guide for context.',
+	},
+	{
+		q: 'What is the cheapest paving style?',
+		a: 'Simple <strong>stretcher bond</strong> (or similar grid layouts) with standard concrete pavers on a well-specified crushed base is often the most economical patterned option for pedestrian areas. The cheapest upfront quote is not always the best value if base preparation, falls or edging are under-scoped—compare scope, not headline price.',
+	},
+	{
+		q: 'Does paving need concrete underneath?',
+		a: 'Not always for light-use paths on stable ground, but many Melbourne specifications use a <strong>concrete slab and adhesive</strong> where vehicle loads, pool surrounds, poor soils or long-term stability are in play. The right build-up follows from use, drainage and engineering judgement rather than a universal rule.',
+	},
+	{
+		q: 'How accurate are online paving calculators?',
+		a: 'They are useful for <strong>order-of-magnitude planning</strong>, not tender accuracy. Calculators cannot see your access, existing levels, services, demolition, drainage conflicts or stone shortlist. Treat outputs as a bracket you refine after a walk-through and written scope.',
+	},
+] as const;
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqCopy.map((item) => ({
+		'@type': 'Question',
+		name: item.q,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.a.replace(/<[^>]+>/g, ''),
+		},
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Paving cost guide</p>
+				<h1 class="hero__title">Paving Cost Melbourne</h1>
+				<p class="hero__sub">
+					Outdoor paving costs can vary significantly depending on material choice, paving pattern, site access, drainage requirements and base
+					preparation. This guide explains the main pricing factors so you can estimate your project more realistically before organising a site visit.
+				</p>
+				<p class="hero__note">
+					If you are comparing searches such as <strong>how much does paving cost Melbourne</strong>, <strong>outdoor paving cost Melbourne</strong> or
+					<strong>driveway paving cost Melbourne</strong>, the same site-specific drivers apply—pattern names alone do not set the quote.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorUrl}>Estimate paving cost</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label="Stretcher bond paving example, Melbourne context">
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src="/images/stretcher-bond.jpg"
+					alt="Stretcher bond paving in a residential outdoor area"
+					width="1320"
+					height="1320"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="factors-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="factors-heading" class="section__title">What affects paving cost?</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Paving cost Melbourne</strong> homeowners see quoted is almost always a bundle of groundworks, materials and finishing detail—not a
+					flat rate pulled from a table. Use the list below as a checklist when you compare written scopes.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Area size</strong>
+						<span>Larger fields increase material volumes and laying days; awkward shapes add perimeter cuts and waste.</span>
+					</li>
+					<li>
+						<strong>Paving style</strong>
+						<span>
+							<a class="inline-link" href="/herringbone-paving-melbourne">Herringbone</a>, <a class="inline-link" href="/french-pattern-paving-melbourne">French pattern</a> and <a class="inline-link" href="/crazy-paving-melbourne">crazy paving</a> demand different set-out and cutting time compared with a simple stretcher bond grid.
+						</span>
+					</li>
+					<li>
+						<strong>Base preparation</strong>
+						<span>Excavation depth, sub-grade improvement, compaction and whether you use crushed rock or a concrete slab underpin both price and longevity.</span>
+					</li>
+					<li>
+						<strong>Drainage</strong>
+						<span>Surface falls, grate positions, soakage and ties to existing stormwater can add civil detail that generic “per m²” figures ignore.</span>
+					</li>
+					<li>
+						<strong>Access</strong>
+						<span>Narrow side passages, steps, soft lawn routes for barrows and distance to a skip all add labour hours.</span>
+					</li>
+					<li>
+						<strong>Existing demolition</strong>
+						<span>Removing old concrete, tree roots, failed paving or buried rubble changes machine time and disposal costs.</span>
+					</li>
+					<li>
+						<strong>Stone or paver type</strong>
+						<span>Supply price, thickness, breakage rates and handling differ sharply between imported stone, local bluestone and concrete modules.</span>
+					</li>
+					<li>
+						<strong>Edging and retaining</strong>
+						<span>Concrete haunching, aluminium or concealed edge profiles, and low retaining walls are often essential line items, not optional extras.</span>
+					</li>
+					<li>
+						<strong>Pool or driveway requirements</strong>
+						<span>
+							<strong>Driveway paving cost Melbourne</strong> projects usually need thicker units, stronger bedding and robust restraint; pool surrounds add slip resistance, bond-break detail and certification considerations.
+						</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="ranges-heading">
+			<div class="section__inner">
+				<h2 id="ranges-heading" class="section__title section__title--centered">Typical paving cost ranges</h2>
+				<p class="section__lead section__lead--centered">
+					The bands below are deliberately broad <strong>installed</strong> figures for residential outdoor work in Melbourne—think of them as conversation brackets,
+					not quotes. Your <strong>paving cost per m² Melbourne</strong> figure will move with stone tier, base type, access and how much preparation is
+					hidden below the finished surface.
+				</p>
+				<ul class="range-grid">
+					<li class="range-grid__cell">
+						<article class="range-card">
+							<h3 class="range-card__title">Stretcher bond</h3>
+							<p class="range-card__band">About <strong>$95–$230+</strong> per m²</p>
+							<p class="range-card__text">
+								Often sits towards the economical end when modules are standard and the area is open. Premium stone, adhesive bedding on concrete, or a
+								vehicle specification pushes the upper bound and beyond.
+							</p>
+						</article>
+					</li>
+					<li class="range-grid__cell">
+						<article class="range-card">
+							<h3 class="range-card__title">Herringbone</h3>
+							<p class="range-card__band">About <strong>$110–$260+</strong> per m²</p>
+							<p class="range-card__text">
+								Extra alignment, cuts at borders and axis changes add labour versus stretcher bond on the same paver. For driveways, structural layers
+								and edge restraint frequently matter more than the zig-zag pattern itself.
+							</p>
+						</article>
+					</li>
+					<li class="range-grid__cell">
+						<article class="range-card">
+							<h3 class="range-card__title">French pattern</h3>
+							<p class="range-card__band">About <strong>$125–$300+</strong> per m²</p>
+							<p class="range-card__text">
+								<strong>French pattern paving cost Melbourne</strong> estimates need to allow for mixed modules, dry-lay thinking time and stone
+								availability. Large entertaining slabs and pool decks often sit in the upper half of the band when drainage and coping interfaces are
+								tight.
+							</p>
+						</article>
+					</li>
+					<li class="range-grid__cell">
+						<article class="range-card">
+							<h3 class="range-card__title">Crazy paving</h3>
+							<p class="range-card__band">About <strong>$140–$350+</strong> per m²</p>
+							<p class="range-card__text">
+								<strong>Crazy paving cost Melbourne</strong> projects reflect piece-by-piece fitting and jointing. Irregular flagstone on difficult
+								access sites can exceed the top of the range; small, simple paths may land lower when scope stays modest.
+							</p>
+						</article>
+					</li>
+					<li class="range-grid__cell">
+						<article class="range-card">
+							<h3 class="range-card__title">Steppers</h3>
+							<p class="range-card__band">About <strong>$85–$210+</strong> per m² of paced coverage</p>
+							<p class="range-card__text">
+								Spacing, turf or mulch integration and individual placement mean m² is only a rough normalisation. Compare like-for-like scopes when
+								you weigh steppers against continuous paving.
+							</p>
+						</article>
+					</li>
+				</ul>
+				<p class="range-footnote">
+					Figures exclude GST unless your contractor states otherwise. Always insist on a written scope covering excavation depth, base type, disposal,
+					drainage falls and edge restraint—then align numbers to that document.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="misleading-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="misleading-heading" class="section__title">Why online paving prices are often misleading</h2>
+				<p class="section__lead section__lead--tight">
+					Listicles and ads that promise a single “Melbourne paving rate” usually flatten complexity you will still pay for on site. Watch for these
+					common gaps when you read <strong>outdoor paving cost Melbourne</strong> figures online.
+				</p>
+				<ul class="bullets">
+					<li><strong>Site conditions</strong> — reactive soils, fill, slopes and retained levels change excavation and stabilisation.</li>
+					<li><strong>Drainage</strong> — tying new falls to existing grate positions, thresholds and garden beds is rarely a line-item in generic tables.</li>
+					<li><strong>Excavation and disposal</strong> — truck access, skip placement and tipping fees swing wildly between properties.</li>
+					<li><strong>Sub-base quality</strong> — depth and compaction are invisible in a headline price but decisive for performance.</li>
+					<li><strong>Access</strong> — manual handling, protection of existing surfaces and long carries add hours every day of the job.</li>
+					<li><strong>Hidden preparation</strong> — services, root barriers, geotextile, bond-breaks at structures and make-good to adjoining finishes.</li>
+				</ul>
+				<p class="prose">
+					For a structured estimate before you speak to contractors, use the <a class="inline-link" href={calculatorUrl}>paving cost calculator</a> and
+					treat the output as a planning bracket, not a substitute for measured quotes.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="cheapest-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cheapest-heading" class="section__title">Which paving style is cheapest?</h2>
+				<p class="prose">
+					In broad terms, <strong>simple layouts are usually cheaper</strong> than labour-intensive patterns on the same material tier—think stretcher
+					bond versus intricate modular fields or irregular crazy paving.
+				</p>
+				<p class="prose">
+					<strong>Labour-intensive styles cost more</strong> because installer time is a large share of Melbourne quotes. That is why French pattern and
+					crazy paving commonly sit above straightforward grids when stone quality is held constant.
+				</p>
+				<p class="prose">
+					<strong>Material choice still moves the total</strong>—upgrading from concrete modules to a premium imported limestone can dwarf the difference
+					between two patterns on paper.
+				</p>
+				<p class="prose">
+					Finally, <strong>quality preparation usually matters more than chasing the lowest upfront price</strong>. A modest pattern on a well-drained,
+					properly restrained base typically outperforms a “bargain” field that omits depth, compaction or falls.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="longevity-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="longevity-heading" class="section__title">Cost versus longevity</h2>
+				<p class="prose">
+					<strong>Poor preparation causes failures</strong> you pay for twice—resetting levels, re-compacting and re-laying is far more expensive than
+					building the base correctly the first time.
+				</p>
+				<p class="prose">
+					<strong>Drainage matters</strong> as much as the visible stone. Water trapped against a house, pool coping or timber threshold tends to show up
+					as staining, heave or joint breakdown long after the paving crew has left.
+				</p>
+				<p class="prose">
+					<strong>Premium stone can outlast budget products</strong> when matched to use and maintenance—but only if bedding, restraint and cleaning
+					expectations suit the material.
+				</p>
+				<p class="prose">
+					A little <strong>lifecycle thinking</strong> (replacement risk, cleaning, sealing cycles and vehicle use) usually clarifies whether a mid-range
+					specification delivers better value than an ultra-low headline figure.
+				</p>
+			</div>
+		</section>
+
+		<RelatedPavingGuides excludeHref="/paving-cost-melbourne" heading="Compare paving styles" />
+
+		<section class="calc-teaser" aria-labelledby="calc-teaser-heading">
+			<div class="calc-teaser__inner">
+				<h2 id="calc-teaser-heading" class="calc-teaser__title">Estimate your paving project</h2>
+				<p class="calc-teaser__text">
+					Use the paving calculator for a realistic guide range based on paving style, area and base requirements.
+				</p>
+				<a class="btn btn--primary btn--wide" href={calculatorUrl}>Use paving calculator</a>
+			</div>
+		</section>
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						faqCopy.map((item) => (
+							<div class="faq__item">
+								<dt class="faq__q">{item.q}</dt>
+								<dd class="faq__a" set:html={item.a} />
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="estimate"
+			headingId="final-cta-heading"
+			title="Turn a rough bracket into a scoped project"
+			description="Start with the calculator, then align quotes to the same preparation, drainage and finishing detail so comparisons stay fair."
+			ctaHref={calculatorUrl}
+			ctaLabel="Estimate paving cost"
+		/>
+	</div>
+	<Footer site={site} hidePavingCostMelbourneLink extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 1.25rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__note {
+		margin: 0 0 2rem;
+		font-size: 0.96875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 68%, var(--color-background));
+		text-align: left;
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.inline-link {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.inline-link:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.inline-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__title--centered {
+		text-align: center;
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.section__lead--centered {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		max-width: 44rem;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0 0 1.25rem;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.range-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1rem, 3vw, 1.25rem);
+		margin: 0 0 1.5rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.range-grid__cell {
+		margin: 0;
+	}
+
+	@media (min-width: 36rem) {
+		.range-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 60rem) {
+		.range-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.range-card {
+		margin: 0;
+		padding: 1.2rem 1.3rem 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.range-card__title {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.range-card__band {
+		margin: 0 0 0.65rem;
+		font-size: 0.9375rem;
+		line-height: 1.45;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.range-card__text {
+		margin: 0;
+		font-size: 0.9375rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 74%, var(--color-background));
+	}
+
+	.range-footnote {
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 62%, var(--color-background));
+		text-align: center;
+		max-width: 44rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.calc-teaser {
+		padding: clamp(2.75rem, 7vw, 4rem) clamp(1.25rem, 5vw, 3rem);
+		background: color-mix(in srgb, var(--color-accent) 55%, var(--color-background));
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+		text-align: center;
+	}
+
+	.calc-teaser__inner {
+		max-width: 36rem;
+		margin: 0 auto;
+	}
+
+	.calc-teaser__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.375rem, 3.5vw, 1.75rem);
+		font-weight: 650;
+		line-height: 1.3;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.calc-teaser__text {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.faq__a :global(strong) {
+		color: var(--color-text);
+	}
+
+	.faq__a :global(a.inline-link) {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.faq__a :global(a.inline-link):hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.faq__a :global(a.inline-link):focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+</style>
