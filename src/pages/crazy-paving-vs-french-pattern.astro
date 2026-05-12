@@ -1,0 +1,630 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = 'https://pavingguide.com.au/crazy-paving-vs-french-pattern';
+
+const title = 'Crazy Paving vs French Pattern | Which Paving Style Suits Your Melbourne Home?';
+const description =
+	'Compare crazy paving and French pattern paving for Melbourne homes, including look, cost, labour, pool suitability, maintenance and design fit.';
+
+const calculatorUrl = '/paving-cost-calculator';
+const calculatorCrazyUrl = '/paving-cost-calculator?style=crazy';
+const calculatorFrenchUrl = '/paving-cost-calculator?style=french-pattern';
+
+const faqItems: { q: string; a: string }[] = [
+	{
+		q: 'Is crazy paving cheaper than French pattern?',
+		a: 'Neither is automatically cheaper in Melbourne. Crazy paving is slow to lay because each piece is selected, trimmed and jointed; French pattern needs disciplined modular set-out and can create offcuts depending on the perimeter. Site preparation, drainage, stone grade and access often move the total more than the pattern name alone—run both options through the calculator before you assume a winner.',
+	},
+	{
+		q: 'Which style is better around pools?',
+		a: 'French pattern is often chosen for pool surrounds because the modular field reads controlled and can align cleanly with coping lines—but slip rating, falls, stone thickness and your certifier’s requirements still decide suitability. Crazy paving can work when joints, drainage detail and stone choice are resolved for wet use; it is less common where bare feet, strict geometry and long straight rebates are priorities.',
+	},
+	{
+		q: 'Which paving style looks more natural?',
+		a: 'Crazy paving usually reads as more organic because the layout is irregular and the joints follow the stone edges. French pattern still uses natural stone with tonal variation, but the repeat is structured, so it tends to feel more ordered from a distance. “Natural” is subjective and should be weighed against your architecture, planting and how formal the space should feel.',
+	},
+	{
+		q: 'Does French pattern paving date?',
+		a: 'Modular natural stone layouts have a long pedigree; projects date when detailing is careless, stone colour follows a short-lived trend, or falls and joints are neglected. Neutral stone, consistent joints and well-managed drainage tend to age calmly—whether the pattern is French or irregular.',
+	},
+	{
+		q: 'Can Made By Mobbs help choose between the two?',
+		a: 'Yes. We review levels, drainage paths, how you move through the garden, planting, edging and the relationship to the house before shortlisting finishes. The aim is a coherent landscape design rather than picking from a single reference photograph.',
+	},
+];
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqItems.map((item) => ({
+		'@type': 'Question',
+		name: item.q,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.a,
+		},
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Paving comparison guide</p>
+				<h1 class="hero__title">Crazy Paving vs French Pattern</h1>
+				<p class="hero__sub">
+					Crazy paving and French pattern paving can both create a premium natural stone finish, but they suit different homes, layouts and
+					budgets. This guide compares the two styles so you can make a clearer decision before estimating costs or booking a site visit.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorUrl}>Compare costs in the paving calculator</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label="Comparison of crazy paving and French pattern paving">
+			<div class="media-section__duo">
+				<div class="media-section__frame">
+					<img
+						class="media-section__img"
+						src="/images/crazy-paving.avif"
+						alt="Crazy paving natural stone close-up"
+						width="380"
+						height="300"
+						loading="eager"
+						decoding="async"
+						fetchpriority="high"
+					/>
+				</div>
+				<div class="media-section__frame">
+					<img
+						class="media-section__img"
+						src="/images/french-pattern.webp"
+						alt="French pattern travertine paving in Melbourne backyard entertaining area"
+						width="1151"
+						height="1200"
+						loading="eager"
+						decoding="async"
+					/>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="quick-heading">
+			<div class="section__inner section__inner--wide">
+				<h2 id="quick-heading" class="section__title">Quick comparison</h2>
+				<p class="section__lead section__lead--tight">
+					Use this table as a shorthand when comparing <strong>French pattern paving vs crazy paving</strong> for the same brief. It is not a
+					substitute for set-out on site, but it helps align expectations before you speak with a contractor about
+					<strong>crazy paving vs French pattern in Melbourne</strong> conditions—access, fall and stone availability included.
+				</p>
+				<div class="compare-wrap">
+					<table class="compare-table">
+						<caption class="visually-hidden">
+							Quick comparison of crazy paving and French pattern paving for homeowners
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col" class="compare-table__factor">Factor</th>
+								<th scope="col">Crazy paving</th>
+								<th scope="col">French pattern</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" class="compare-table__factor">Visual style</th>
+								<td>Irregular pieces and wandering joints; strong texture and movement across the field.</td>
+								<td>Repeating modular sizes; orderly rhythm that still breaks up a plain grid.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Best suited to</th>
+								<td>Garden paths, intimate courtyards and feature pockets where planting leads the design.</td>
+								<td>Larger entertaining slabs, pool surrounds and architecture-led outdoor rooms with clear geometry.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Cost tendency</th>
+								<td>Often driven by laying time: fitting, trimming and consistent jointing are slow.</td>
+								<td>Modular packs and careful set-out; perimeter cuts and pattern repeats can add waste.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Labour complexity</th>
+								<td>High craft load per square metre—each stone is handled repeatedly.</td>
+								<td>Demanding alignment: small early errors compound across the field.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Formality</th>
+								<td>Reads relaxed and organic; suits less formal garden languages.</td>
+								<td>Reads more structured without feeling as rigid as single-size paving.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Pool suitability</th>
+								<td>Possible when slip rating, falls, drainage and coping detail suit wet use—less common as a default.</td>
+								<td>Frequently specified around pools when modules, coping lines and certifier rules align.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Maintenance considerations</th>
+								<td>Joint width and debris control matter; sealing depends on stone and exposure.</td>
+								<td>Joint discipline and cleaning routines show quickly; sealing choices follow stone type.</td>
+							</tr>
+							<tr>
+								<th scope="row" class="compare-table__factor">Design risk</th>
+								<td>Poor bedding or inconsistent joints look unintentional rather than “rustic”.</td>
+								<td>Drift in the repeat or mixed batches reads as a layout mistake, not character.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="difference-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="difference-heading" class="section__title">The main difference</h2>
+				<p class="prose">
+					Crazy paving is irregular, organic and typically reads as the more hand-laid of the two. French pattern is modular and structured: a
+					fixed repeat of several sizes that still feels softer than a single paver size, but the eye picks up the order.
+				</p>
+				<p class="prose">
+					Neither approach is automatically better. The right choice depends on the house, surrounding materials, how you use the space and
+					whether the garden needs a calm floor plane or a more textured, naturalistic surface.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="crazy-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="crazy-heading" class="section__title">When crazy paving is the better choice</h2>
+				<p class="section__lead section__lead--tight">
+					Choose crazy paving when the brief rewards irregularity rather than fighting it—especially where paths curve through planting or the
+					pavement sits visually close to loose, naturalistic beds.
+				</p>
+				<ul class="bullets">
+					<li>Organic garden paths that tie circulation to planting</li>
+					<li>Textured courtyard areas where you want the floor to feel less “installed”</li>
+					<li>Feature zones near planting where stone echo helps link hard and soft landscape</li>
+					<li>Less formal garden styles and smaller-scale outdoor rooms</li>
+					<li>Heritage or relaxed natural landscapes where rigid modular lines would feel out of character</li>
+				</ul>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={calculatorCrazyUrl}>Estimate crazy paving cost</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="french-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="french-heading" class="section__title">When French pattern is the better choice</h2>
+				<p class="section__lead section__lead--tight">
+					French pattern comes into its own where there is enough area to run full repeats and where the architecture or pool geometry benefits
+					from a legible, controlled field.
+				</p>
+				<ul class="bullets">
+					<li>Pool surrounds, subject to slip rating, falls, coping junctions and certification detail</li>
+					<li>Larger entertaining areas and outdoor dining slabs that need a single clear paving language</li>
+					<li>Structured patios where furniture groups align with modular lines</li>
+					<li>Mediterranean-inspired spaces using travertine or limestone tonal ranges</li>
+					<li>Homes where a more regular pattern suits the façade, eaves lines or internal floor transitions</li>
+				</ul>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={calculatorFrenchUrl}>Estimate French pattern paving cost</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="cost-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-heading" class="section__title">Cost comparison</h2>
+				<p class="prose">
+					Both options are more involved than simple stretcher-bond paving with one repeated unit. Crazy paving is labour-intensive because
+					irregular pieces must be bedded consistently and jointed without the field looking accidental. French pattern requires careful modular
+					set-out from the first repeat and can carry material waste where edges, steps or cut-outs do not suit the module.
+				</p>
+				<p class="prose">
+					In real Melbourne quotes, site preparation, drainage, access constraints and stone selection often move the price more than the label
+					on the pattern. Compare like-for-like scope—not just square metres—before drawing a firm conclusion.
+				</p>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={calculatorUrl}>Use the paving cost calculator</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="design-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="design-heading" class="section__title">Design and maintenance considerations</h2>
+				<ul class="bullets">
+					<li>
+						<strong>Joint consistency</strong> — readable joints make both styles look intentional; wandering widths read as poor workmanship.
+					</li>
+					<li>
+						<strong>Cleaning</strong> — plan for leaf litter, pool chemistry and outdoor dining spills; wider joints on crazy work can need more
+						attention.
+					</li>
+					<li>
+						<strong>Sealing where appropriate</strong> — follow stone supplier guidance; wet areas and light-toned limestones are sensitive to
+						wrong product choices.
+					</li>
+					<li>
+						<strong>Slip resistance</strong> — select finish and stone for how the area is used, including damp shade and bare feet.
+					</li>
+					<li>
+						<strong>Drainage and falls</strong> — surface water must leave the pavement cleanly; low spots stain and worry pool certifiers.
+					</li>
+					<li>
+						<strong>Relationship to planting, edging, coping and levels</strong> — thresholds, grate positions and lawn interfaces should be
+						resolved before stone is ordered.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mobbs-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mobbs-heading" class="section__title">Which one would Made By Mobbs usually recommend?</h2>
+				<p class="prose">
+					We stay pattern-agnostic until context is clear. For organic garden spaces and path-led gardens, crazy paving often integrates more
+					convincingly with planting and looser forms. For larger entertaining areas and many pool surrounds, French pattern often delivers a
+					more controlled floor plane that sits comfortably beside coping, fencing and architecture.
+				</p>
+				<p class="prose">
+					The final decision should be made with the whole landscape in view—levels, drainage, movement lines and materials—not from a single
+					photograph or mood board in isolation.
+				</p>
+			</div>
+		</section>
+
+		<RelatedPavingGuides excludeHref="/crazy-paving-vs-french-pattern" />
+
+		<section class="section faq section--alt" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						faqItems.map((item) => (
+							<div class="faq__item">
+								<dt class="faq__q">{item.q}</dt>
+								<dd class="faq__a">{item.a}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="final-cta"
+			headingId="final-cta-heading"
+			title="Still choosing between paving styles?"
+			description="Use the calculator for a guide price, then book a site visit when you are ready to properly compare stone, set-out, drainage and finish."
+			ctaHref={calculatorUrl}
+			ctaLabel="Use the paving cost calculator"
+		/>
+	</div>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__duo {
+		max-width: 56rem;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(0.75rem, 2.5vw, 1rem);
+	}
+
+	@media (min-width: 40rem) {
+		.media-section__duo {
+			grid-template-columns: 1fr 1fr;
+			align-items: stretch;
+		}
+	}
+
+	.media-section__frame {
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 12rem;
+		object-fit: cover;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__inner--wide {
+		max-width: 56rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 42rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0 0 1.5rem;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.inline-cta {
+		margin: 0;
+		text-align: center;
+	}
+
+	.compare-wrap {
+		margin-top: 0.35rem;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		border: 1px solid var(--color-border);
+		border-radius: 10px;
+		background-color: var(--color-white);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.compare-table {
+		width: 100%;
+		min-width: 36rem;
+		border-collapse: collapse;
+		font-size: 0.9375rem;
+		line-height: 1.5;
+	}
+
+	.compare-table caption {
+		padding: 0;
+	}
+
+	.compare-table thead th {
+		background-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-white));
+		font-weight: 650;
+		color: var(--color-text);
+		text-align: left;
+		vertical-align: bottom;
+	}
+
+	.compare-table th,
+	.compare-table td {
+		padding: 0.85rem 1rem;
+		border-bottom: 1px solid var(--color-border);
+		vertical-align: top;
+		color: color-mix(in srgb, var(--color-text) 84%, var(--color-background));
+	}
+
+	.compare-table tbody tr:last-child th,
+	.compare-table tbody tr:last-child td {
+		border-bottom: none;
+	}
+
+	.compare-table__factor {
+		width: 9.5rem;
+		font-weight: 650;
+		color: var(--color-text);
+		background-color: color-mix(in srgb, var(--color-accent) 22%, var(--color-white));
+	}
+
+	.compare-table thead .compare-table__factor {
+		background-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-white));
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>
