@@ -33,6 +33,21 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 			</div>
 		</header>
 
+		<section class="media-section" aria-label="Herringbone brick paving example">
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src="/images/herringbone-paving.jpg"
+					alt="Herringbone natural stone paving in light grey tones, Melbourne outdoor area"
+					width="800"
+					height="800"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
 		<section class="section section--styles" id="styles" aria-labelledby="styles-heading">
 			<div class="section__inner">
 				<h2 id="styles-heading" class="section__title">Paving styles</h2>
@@ -184,6 +199,28 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	.btn--primary:focus-visible {
 		outline: 2px solid var(--color-primary-dark);
 		outline-offset: 3px;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
 	}
 
 	.section {

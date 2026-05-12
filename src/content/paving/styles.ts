@@ -48,8 +48,8 @@ export const pavingStyles: PavingStyle[] = [
 	{
 		slug: 'herringbone',
 		name: 'Herringbone',
-		image: '/images/herringbone.webp',
-		alt: 'Herringbone brick paving pattern',
+		image: '/images/herringbone-paving.jpg',
+		alt: 'Herringbone natural stone paving in light grey tones',
 		description:
 			'A traditional interlocking pattern often used with brick or rectangular pavers. Strong visual movement and a timeless look.',
 		calculatorStyleParam: 'herringbone',
