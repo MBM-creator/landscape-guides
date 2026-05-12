@@ -10,6 +10,9 @@ interface Props {
 
 const { title, description, site, canonical } = Astro.props;
 const ogUrl = canonical;
+
+const GA_MEASUREMENT_ID = 'G-5PJ2TP2PN0';
+const enableGoogleAnalytics = import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -31,9 +34,37 @@ const ogUrl = canonical;
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		{
+			enableGoogleAnalytics && (
+				<script
+					async
+					src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+				></script>
+			)
+		}
+		{
+			enableGoogleAnalytics && (
+				<script is:inline define:vars={{ measurementId: GA_MEASUREMENT_ID }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						dataLayer.push(arguments);
+					}
+					gtag('js', new Date());
+					gtag('config', measurementId);
+				</script>
+			)
+		}
 	</head>
 	<body>
 		<slot />
+		<script>
+			import Clarity from '@microsoft/clarity';
+
+			const projectId = import.meta.env.PUBLIC_CLARITY_PROJECT_ID ?? 'wq5xyynrrs';
+			if (import.meta.env.PROD && projectId) {
+				Clarity.init(projectId);
+			}
+		</script>
 	</body>
 </html>
 
