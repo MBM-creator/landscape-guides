@@ -1,0 +1,92 @@
+---
+import type { SiteConfig } from '../config/sites';
+
+interface Props {
+	site: SiteConfig;
+	variant?: 'default' | 'compact';
+}
+
+const { site, variant = 'default' } = Astro.props;
+const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'primaryCtaHref' in site;
+---
+
+<header class:list={['site-header', variant === 'compact' && 'site-header--compact']} role="banner">
+	<div class="site-header__inner">
+		<a class="site-header__brand" href="/">{site.name}</a>
+		{
+			hasPrimaryCta && variant === 'default' ? (
+				<a class="site-header__cta" href={site.primaryCtaHref}>
+					{site.primaryCta}
+				</a>
+			) : null
+		}
+	</div>
+</header>
+
+<style>
+	.site-header {
+		padding: 0.75rem clamp(1.25rem, 4vw, 2rem);
+		background-color: var(--color-white);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.site-header--compact {
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+
+	.site-header__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.site-header__brand {
+		font-size: 1rem;
+		font-weight: 650;
+		color: var(--color-text);
+		text-decoration: none;
+		letter-spacing: -0.02em;
+	}
+
+	.site-header__brand:hover {
+		color: var(--color-primary-dark);
+	}
+
+	.site-header__brand:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 4px;
+	}
+
+	.site-header__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border: 1px solid var(--color-primary-dark);
+		transition:
+			background-color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.site-header__cta:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.site-header__cta:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+</style>

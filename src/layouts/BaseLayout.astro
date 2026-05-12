@@ -1,0 +1,77 @@
+---
+import type { SiteConfig } from '../config/sites';
+
+interface Props {
+	title: string;
+	description: string;
+	site: SiteConfig;
+	canonical: string;
+}
+
+const { title, description, site, canonical } = Astro.props;
+const ogUrl = canonical;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={ogUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={site.name} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--color-text: #1f1f1f;
+		--color-background: #f5f4f2;
+		--color-primary: #7a9a8b;
+		--color-primary-dark: #5f7f73;
+		--color-accent: #c9d8d0;
+		--color-white: #ffffff;
+		--color-border: #e5e3df;
+	}
+
+	html {
+		box-sizing: border-box;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+
+	body {
+		margin: 0;
+		min-height: 100%;
+		font-family:
+			system-ui,
+			-apple-system,
+			'Segoe UI',
+			Roboto,
+			'Helvetica Neue',
+			Arial,
+			sans-serif;
+		color: var(--color-text);
+		background-color: var(--color-background);
+		line-height: 1.5;
+	}
+</style>

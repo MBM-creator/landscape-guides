@@ -1,11 +1,310 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SiteCard from '../components/SiteCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { getSiteByHost } from '../config/sites';
+import { pavingHomepageStyles } from '../content/paving/styles';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = new URL(Astro.url.pathname, `https://${site.domain}`).href;
+
+const title = 'Melbourne Paving Cost Guide | Made By Mobbs Landscapes';
+const description =
+	'Understand real paving costs in Melbourne, compare paving styles, and learn what drives quotes—then book a site visit with Made By Mobbs Landscapes.';
+
+const bookUrl = '#';
+const heroCtaHref = site.status !== 'future' && 'primaryCtaHref' in site ? site.primaryCtaHref : '/paving-cost-calculator';
+const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.primaryCta : 'Estimate Your Paving Cost';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Melbourne · Landscaping</p>
+				<h1 class="hero__title">Melbourne Paving Cost Guide</h1>
+				<p class="hero__sub">
+					Understand real paving costs, compare options, and estimate your project in minutes.
+				</p>
+				<a class="btn btn--primary" href={heroCtaHref}>{heroCtaLabel}</a>
+			</div>
+		</header>
+
+		<section class="section section--styles" id="styles" aria-labelledby="styles-heading">
+			<div class="section__inner">
+				<h2 id="styles-heading" class="section__title">Paving styles</h2>
+				<p class="section__lead">
+					Each pattern and layout has different material and labour needs—here’s a quick overview.
+				</p>
+				<ul class="grid">
+					{pavingHomepageStyles.map((style) => <SiteCard style={style} />)}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--estimate" id="estimate" aria-labelledby="estimate-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="estimate-heading" class="section__title">What impacts paving cost</h2>
+				<p class="section__lead section__lead--tight">
+					Quotes aren’t random—they reflect how much work and material your specific site needs.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Size (m²)</strong>
+						<span>Area scales material volumes and laying time; edge detail and cuts often grow with perimeter.</span>
+					</li>
+					<li>
+						<strong>Base type</strong>
+						<span>Crushed rock vs concrete base changes preparation depth, compaction, and long-term stability.</span>
+					</li>
+					<li>
+						<strong>Material type</strong>
+						<span>
+							Natural stone, concrete pavers, and porcelain differ in supply cost, thickness, and handling. Pavers on driveways
+							almost always need to be 30mm thick.
+						</span>
+					</li>
+					<li>
+						<strong>Site conditions</strong>
+						<span>Access, slope, demolition, drainage, and soil all affect machine use and labour hours.</span>
+					</li>
+					<li>
+						<strong>Use &amp; Longevity</strong>
+						<span>
+							Paving on driveways should always be laid on a concrete base. We recommend laying all solid paving on concrete to
+							minimise the risk of heaving and depressions.
+						</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--mistakes" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<ul class="mistakes">
+					<li>
+						<strong>Choosing on price only</strong> — The lowest quote can miss base spec or drainage; compare scope, not just dollars.
+					</li>
+					<li>
+						<strong>Poor base preparation</strong> — Skipping depth, compaction, or correct bedding leads to movement and failures.
+					</li>
+					<li>
+						<strong>Ignoring drainage</strong> — Water must be managed away from structures and across the paved surface.
+					</li>
+					<li>
+						<strong>Wrong material for use</strong> — Driveways, pool surrounds, and paths need different thickness and slip resistance.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="book"
+			headingId="cta-heading"
+			title="Ready to get a real price for your project?"
+			ctaHref={bookUrl}
+			ctaLabel="Book a site visit with Made By Mobbs"
+		/>
+	</div>
+	<Footer site={site} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(3rem, 10vw, 6rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+	}
+
+	.section--styles {
+		background-color: var(--color-background);
+	}
+
+	.section--estimate {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--mistakes {
+		background-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-background));
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__lead {
+		margin: 0 0 2rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.5rem;
+	}
+
+	.grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.25rem, 3vw, 1.75rem);
+	}
+
+	@media (min-width: 36rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 56rem) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
+	}
+</style>

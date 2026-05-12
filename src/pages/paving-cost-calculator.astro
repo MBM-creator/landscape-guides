@@ -1,0 +1,550 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import { getSiteByHost } from '../config/sites';
+import { pavingCalculatorStyleOrder, pavingStyles } from '../content/paving/styles';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = new URL(Astro.url.pathname, `https://${site.domain}`).href;
+
+const title = 'Paving Cost Calculator | Melbourne | Made By Mobbs Landscapes';
+const description =
+	'Rough paving cost estimate by area, base type and paving style. Guide only—book a site visit with Made By Mobbs Landscapes for a firm quote.';
+
+const bookUrl = '#';
+
+const orderedCalculatorStyles = pavingCalculatorStyleOrder
+	.map((param) => pavingStyles.find((s) => s.calculatorStyleParam === param))
+	.filter((s): s is (typeof pavingStyles)[number] => s != null);
+
+const multipliersRecord = Object.fromEntries(pavingStyles.map((s) => [s.calculatorStyleParam, s.multiplier]));
+const allowedStyleParams = pavingStyles.map((s) => s.calculatorStyleParam);
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<Header site={site} variant="compact" />
+	<div class="calc-page">
+		<a class="back-link" href="/">← Back to Paving Guide</a>
+
+		<section class="hero" aria-labelledby="hero-heading">
+			<h1 id="hero-heading" class="hero__title">Paving Cost Calculator</h1>
+			<p class="hero__sub">
+				Estimate the likely cost of a paving project based on size, base preparation and paving style.
+			</p>
+		</section>
+
+		<form class="calc-form" id="calc-form" novalidate>
+			<div class="field">
+				<label class="label" for="area">Paving area (m²)</label>
+				<input
+					class="input"
+					type="number"
+					id="area"
+					name="area"
+					min="0"
+					step="0.01"
+					placeholder="e.g. 45"
+					inputmode="decimal"
+					required
+				/>
+			</div>
+
+			<fieldset class="fieldset">
+				<legend class="legend">Base type</legend>
+				<p class="fieldset__note">
+					Most paving projects need proper excavation and base preparation. The right base depends on the site, use and drainage
+					requirements.
+				</p>
+				<label class="radio-line">
+					<input type="radio" name="base" value="crushed" checked />
+					<span>Crushed rock and wet bed</span>
+				</label>
+				<label class="radio-line">
+					<input type="radio" name="base" value="concrete" />
+					<span>Concrete base and glue</span>
+				</label>
+			</fieldset>
+
+			<fieldset class="fieldset">
+				<legend class="legend">Paving style</legend>
+				<p class="fieldset__hint">
+					Steppers use crushed rock and wet bed only. Crazy paving, Filetti and French pattern use a concrete base and glue only.
+				</p>
+				{
+					orderedCalculatorStyles.map((style) => (
+						<label class="radio-line">
+							<input
+								type="radio"
+								name="style"
+								value={style.calculatorStyleParam}
+								checked={style.calculatorStyleParam === 'stretcher'}
+							/>
+							<span>{style.name}</span>
+						</label>
+					))
+				}
+			</fieldset>
+		</form>
+
+		<section class="results" id="results" aria-live="polite">
+			<h2 class="results__heading">Estimated project range</h2>
+			<p class="results__placeholder" id="results-placeholder">
+				Enter an area above to see an indicative range.
+			</p>
+			<div class="results__figures hidden" id="results-figures">
+				<p class="results__range">
+					<span class="results__label">Low</span>
+					<span class="results__value" id="out-low">—</span>
+				</p>
+				<p class="results__range results__range--high">
+					<span class="results__label">High</span>
+					<span class="results__value" id="out-high">—</span>
+				</p>
+			</div>
+		</section>
+
+		<section class="disclaimer">
+			<h2 class="disclaimer__title">Important</h2>
+			<p class="disclaimer__text">
+				This calculator is a <strong>guide only</strong>. Site conditions, access, drainage, material choice, set-out, edging, demolition,
+				and supplier pricing can all change the real cost. Always confirm scope on site before committing.
+			</p>
+		</section>
+
+		<div class="cta-wrap">
+			<a class="btn btn--primary" href={bookUrl}>Book a site visit with Made By Mobbs</a>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	.calc-page {
+		max-width: 36rem;
+		margin: 0 auto;
+		padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1.25rem, 4vw, 2rem) 3rem;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 1.25rem;
+		font-size: 0.875rem;
+		color: color-mix(in srgb, var(--color-text) 68%, var(--color-background));
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 65%, var(--color-border));
+	}
+
+	.back-link:hover {
+		color: var(--color-primary-dark);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.back-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.hero {
+		margin-bottom: 2rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.75rem, 4.5vw, 2.125rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		max-width: 34rem;
+	}
+
+	.calc-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 1.5rem;
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		margin-bottom: 2rem;
+	}
+
+	.field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.label {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.input {
+		padding: 0.75rem 0.875rem;
+		font-size: 1.125rem;
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		background: var(--color-background);
+		color: var(--color-text);
+	}
+
+	.input:focus {
+		outline: none;
+		border-color: var(--color-primary-dark);
+		box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 35%, transparent);
+	}
+
+	.fieldset {
+		margin: 0;
+		padding: 0;
+		border: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
+	}
+
+	.legend {
+		float: left;
+		width: 100%;
+		padding: 0;
+		margin: 0 0 0.5rem;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-text);
+	}
+
+	.fieldset__note {
+		clear: both;
+		margin: 0 0 0.75rem;
+		padding: 0;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		color: color-mix(in srgb, var(--color-text) 65%, var(--color-background));
+	}
+
+	.fieldset__hint {
+		clear: both;
+		margin: 0 0 0.75rem;
+		padding: 0;
+		font-size: 0.8125rem;
+		line-height: 1.45;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.radio-line {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		font-size: 0.9375rem;
+		line-height: 1.45;
+		color: color-mix(in srgb, var(--color-text) 88%, var(--color-background));
+		cursor: pointer;
+	}
+
+	.radio-line input {
+		margin-top: 0.2rem;
+		accent-color: var(--color-primary-dark);
+	}
+
+	.radio-line--disabled {
+		opacity: 0.48;
+		cursor: not-allowed;
+	}
+
+	.radio-line--disabled span {
+		cursor: not-allowed;
+	}
+
+	.results {
+		padding: 1.5rem;
+		background: color-mix(in srgb, var(--color-accent) 38%, var(--color-background));
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		margin-bottom: 2rem;
+	}
+
+	.results__heading {
+		margin: 0 0 1rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.results__placeholder {
+		margin: 0;
+		font-size: 0.9375rem;
+		color: color-mix(in srgb, var(--color-text) 62%, var(--color-background));
+	}
+
+	.results__figures {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+	}
+
+	.results__figures.hidden {
+		display: none;
+	}
+
+	.results__placeholder.is-hidden {
+		display: none;
+	}
+
+	.results__range {
+		margin: 0;
+		padding: 1rem;
+		background: var(--color-white);
+		border-radius: 6px;
+		border: 1px solid var(--color-border);
+	}
+
+	.results__label {
+		display: block;
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: color-mix(in srgb, var(--color-text) 52%, var(--color-background));
+		margin-bottom: 0.35rem;
+	}
+
+	.results__value {
+		font-size: 1.375rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.disclaimer {
+		margin-bottom: 2rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.disclaimer__title {
+		margin: 0 0 0.5rem;
+		font-size: 0.8125rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: color-mix(in srgb, var(--color-text) 52%, var(--color-background));
+	}
+
+	.disclaimer__text {
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 74%, var(--color-background));
+	}
+
+	.cta-wrap {
+		text-align: center;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+		width: 100%;
+		max-width: 22rem;
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	@media (max-width: 24rem) {
+		.results__figures {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script is:inline define:vars={{ multipliers: multipliersRecord, allowedStyles: allowedStyleParams }}>
+	(function () {
+		const LABOUR_PER_M2 = 350;
+		const CRUSHED_BASE_PER_M2 = 120;
+		const CONCRETE_BASE_PER_M2 = 160;
+		const WET_BED_PER_M2 = 25;
+		const ROCK_RATE_PER_M3 = 160;
+		const ROCK_DEPTH_M = 0.07;
+		const ROCK_MIN_M3 = 0.25;
+		const ROCK_DELIVERY_PER_3M3 = 90;
+		const CONCRETE_DEPTH_M = 0.1;
+		const CONCRETE_FLAT_TO_M3 = 3;
+		const CONCRETE_MIN = 400;
+		const CONCRETE_INCREMENT_M3 = 0.2;
+		const CONCRETE_INCREMENT_PRICE = 25;
+
+		const fmt = new Intl.NumberFormat('en-AU', {
+			style: 'currency',
+			currency: 'AUD',
+			maximumFractionDigits: 0,
+		});
+
+		function rockDeliveryFee(m3) {
+			if (m3 <= 0) return 0;
+			return ROCK_DELIVERY_PER_3M3 * Math.ceil(m3 / 3);
+		}
+
+		function concreteCost(volumeM3) {
+			if (volumeM3 <= 0) return 0;
+			let cost = CONCRETE_MIN;
+			if (volumeM3 > CONCRETE_FLAT_TO_M3) {
+				const extra = volumeM3 - CONCRETE_FLAT_TO_M3;
+				const steps = Math.ceil(extra / CONCRETE_INCREMENT_M3);
+				cost += steps * CONCRETE_INCREMENT_PRICE;
+			}
+			return cost;
+		}
+
+		function computeTotal(area, styleKey, baseKey) {
+			const M = multipliers[styleKey] ?? 1;
+			let total = LABOUR_PER_M2 * area * M;
+
+			if (baseKey === 'crushed') {
+				total += CRUSHED_BASE_PER_M2 * area;
+				total += WET_BED_PER_M2 * area;
+				const rawVol = area * ROCK_DEPTH_M;
+				const orderVol = Math.max(rawVol, ROCK_MIN_M3);
+				total += orderVol * ROCK_RATE_PER_M3;
+				total += rockDeliveryFee(orderVol);
+			} else {
+				total += CONCRETE_BASE_PER_M2 * area;
+				const vol = area * CONCRETE_DEPTH_M;
+				total += concreteCost(vol);
+			}
+
+			return total;
+		}
+
+		function update() {
+			const areaEl = document.getElementById('area');
+			const styleEl = document.querySelector('input[name="style"]:checked');
+			const baseEl = document.querySelector('input[name="base"]:checked');
+			const placeholder = document.getElementById('results-placeholder');
+			const figures = document.getElementById('results-figures');
+			const lowEl = document.getElementById('out-low');
+			const highEl = document.getElementById('out-high');
+
+			const raw = areaEl && areaEl.value !== '' ? parseFloat(areaEl.value) : NaN;
+			const area = Number.isFinite(raw) && raw >= 0 ? raw : NaN;
+
+			if (!Number.isFinite(area) || area <= 0) {
+				placeholder.classList.remove('is-hidden');
+				figures.classList.add('hidden');
+				placeholder.textContent = 'Enter an area above to see an indicative range.';
+				return;
+			}
+
+			const style = styleEl ? styleEl.value : 'stretcher';
+			const base = baseEl ? baseEl.value : 'crushed';
+
+			const mid = computeTotal(area, style, base);
+			const low = mid * 0.9;
+			const high = mid * 1.15;
+
+			placeholder.classList.add('is-hidden');
+			figures.classList.remove('hidden');
+			lowEl.textContent = fmt.format(Math.round(low));
+			highEl.textContent = fmt.format(Math.round(high));
+		}
+
+		function setStyleRadioDisabled(input, disabled) {
+			if (!input) return;
+			input.disabled = disabled;
+			const lab = input.closest('label');
+			if (lab) lab.classList.toggle('radio-line--disabled', disabled);
+		}
+
+		function syncStyleBaseConstraints() {
+			const base = document.querySelector('input[name="base"]:checked')?.value || 'crushed';
+
+			const steppers = document.querySelector('input[name="style"][value="steppers"]');
+			const crazy = document.querySelector('input[name="style"][value="crazy"]');
+			const filetti = document.querySelector('input[name="style"][value="filetti"]');
+			const french = document.querySelector('input[name="style"][value="french"]');
+
+			setStyleRadioDisabled(steppers, base === 'concrete');
+			setStyleRadioDisabled(crazy, base === 'crushed');
+			setStyleRadioDisabled(filetti, base === 'crushed');
+			setStyleRadioDisabled(french, base === 'crushed');
+
+			const checked = document.querySelector('input[name="style"]:checked');
+			if (checked && checked.disabled) {
+				const fallback = document.querySelector('input[name="style"][value="stretcher"]');
+				if (fallback) fallback.checked = true;
+			}
+		}
+
+		function applyStyleFromQuery() {
+			const params = new URLSearchParams(window.location.search);
+			const q = params.get('style');
+			if (!q || !allowedStyles.includes(q)) return;
+
+			if (q === 'crazy' || q === 'filetti' || q === 'french') {
+				const concrete = document.querySelector('input[name="base"][value="concrete"]');
+				if (concrete) concrete.checked = true;
+			}
+			if (q === 'steppers') {
+				const crushed = document.querySelector('input[name="base"][value="crushed"]');
+				if (crushed) crushed.checked = true;
+			}
+
+			const input = document.querySelector('input[name="style"][value="' + q + '"]');
+			if (input) input.checked = true;
+		}
+
+		function init() {
+			const form = document.getElementById('calc-form');
+			if (!form) return;
+
+			applyStyleFromQuery();
+			syncStyleBaseConstraints();
+
+			function onFormInteraction() {
+				syncStyleBaseConstraints();
+				update();
+			}
+
+			form.addEventListener('input', onFormInteraction);
+			form.addEventListener('change', onFormInteraction);
+			update();
+		}
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init);
+		} else {
+			init();
+		}
+	})();
+</script>

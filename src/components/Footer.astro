@@ -1,0 +1,70 @@
+---
+import type { SiteConfig } from '../config/sites';
+
+interface Props {
+	site: SiteConfig;
+	/** Extra inline links after the main website link (e.g. “Paving guide home”). */
+	extraLinks?: { href: string; label: string }[];
+}
+
+const { site, extraLinks = [] } = Astro.props;
+const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.mainWebsiteUrl : null;
+---
+
+<footer class="site-footer">
+	<p class="site-footer__brand">{site.brandLine}</p>
+	<p class="site-footer__links">
+		{mainUrl ? <a class="site-footer__link" href={mainUrl}>Visit main website</a> : null}
+		{
+			extraLinks.map((link, i) => (
+				<span class="site-footer__link-cluster">
+					{mainUrl || i > 0 ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+					<a class="site-footer__link" href={link.href}>
+						{link.label}
+					</a>
+				</span>
+			))
+		}
+	</p>
+</footer>
+
+<style>
+	.site-footer {
+		padding: 2rem clamp(1.25rem, 5vw, 3rem) 2.5rem;
+		text-align: center;
+		background-color: var(--color-background);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.site-footer__brand {
+		margin: 0 0 0.75rem;
+		font-size: 0.875rem;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.site-footer__links {
+		margin: 0;
+		font-size: 0.875rem;
+	}
+
+	.site-footer__sep {
+		color: color-mix(in srgb, var(--color-text) 45%, var(--color-background));
+	}
+
+	.site-footer__link {
+		font-size: 0.875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	.site-footer__link:hover {
+		color: var(--color-primary-dark);
+	}
+
+	.site-footer__link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+</style>

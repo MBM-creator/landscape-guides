@@ -1,0 +1,625 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = new URL(Astro.url.pathname, `https://${site.domain}`).href;
+
+const title = 'Crazy Paving Melbourne | Costs, Styles & Advice';
+const description =
+	'Learn what crazy paving costs in Melbourne, where it works best, and what affects pricing, base preparation, drainage and material choice.';
+
+const bookUrl = '#';
+const calculatorCrazyUrl = '/paving-cost-calculator?style=crazy';
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Paving Style Guide</p>
+				<h1 class="hero__title">Crazy Paving Melbourne</h1>
+				<p class="hero__sub">
+					Crazy paving is one of the most distinctive ways to create a natural stone path, patio or entertaining area. It suits Melbourne
+					homes where texture, movement and a less formal finish are part of the design.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorCrazyUrl}>Estimate your crazy paving cost in minutes</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label="Porphy crazy paving driveway">
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src="/images/porphy-crazy-paving-driveway.jpg"
+					alt="Porphy crazy paving driveway"
+					width="748"
+					height="643"
+					loading="eager"
+					decoding="async"
+				/>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="what-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="what-heading" class="section__title">What is crazy paving?</h2>
+				<p class="section__lead section__lead--tight">
+					Crazy paving uses irregular pieces of natural stone, fitted together to form an organic pattern rather than a strict grid. Each
+					piece is handled and trimmed to suit its neighbours, which gives the finished surface real character—and takes more time than
+					laying uniform rectangular pavers.
+				</p>
+				<ul class="bullets">
+					<li>Irregular natural stone pieces, selected and trimmed to lock together</li>
+					<li>An organic pattern with movement and variation across the surface</li>
+					<li>More labour-intensive than standard rectangular paving</li>
+					<li>Strong visual character that reads as natural and crafted rather than mass-produced</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="where-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="where-heading" class="section__title">Where crazy paving works best</h2>
+				<p class="section__lead section__lead--tight">
+					It shines where you want the paving to feel connected to the garden and architecture, not stamped out in repeating rows.
+				</p>
+				<ul class="bullets">
+					<li>Garden paths that curve through planting or connect outdoor “rooms”</li>
+					<li>Courtyards where a softer, less formal surface suits the scale of the space</li>
+					<li>Pool surrounds, when stone type, thickness, slip resistance and falls are chosen for wet use</li>
+					<li>Entertaining areas where an organic layout anchors seating and tables</li>
+					<li>Feature zones near planting, where the stone can echo natural textures in the landscape</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="cost-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-heading" class="section__title">What affects crazy paving cost?</h2>
+				<p class="section__lead section__lead--tight">
+					Quotes reflect how much stone, bedding and skilled laying time your site needs—not just the square metres on the plan.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Size (m²)</strong>
+						<span>Overall project size scales material volumes and laying time; perimeter length often drives cuts and edging.</span>
+					</li>
+					<li>
+						<strong>Stone type and thickness</strong>
+						<span>Supply cost, handling weight and suitability for foot traffic or vehicles all follow from the product you choose.</span>
+					</li>
+					<li>
+						<strong>Base preparation</strong>
+						<span>Excavation depth, compaction and what sits below the bedding layer determine long-term stability.</span>
+					</li>
+					<li>
+						<strong>Wet bed or concrete base</strong>
+						<span>The fixing method depends on use, soil and movement risk; structural areas often spec a concrete slab or wet bed.</span>
+					</li>
+					<li>
+						<strong>Drainage and fall</strong>
+						<span>Surface water must sheet away cleanly; poor falls show up as ponding, staining or premature wear.</span>
+					</li>
+					<li>
+						<strong>Number of cuts and edges</strong>
+						<span>Tight curves, steps and borders multiply trimming and jointing compared with a simple rectangle.</span>
+					</li>
+					<li>
+						<strong>Site access</strong>
+						<span>Narrow side paths, stairs or long barrow runs add labour and sometimes crane or machine constraints.</span>
+					</li>
+				</ul>
+				<div class="cost-range" aria-labelledby="cost-range-heading">
+					<h3 id="cost-range-heading" class="cost-range__title">Typical crazy paving cost range</h3>
+					<p class="cost-range__text">
+						Most crazy paving projects in Melbourne sit between $500–$700 per m², depending on size, stone type, base preparation and access.
+					</p>
+					<p class="cost-range__text cost-range__text--last">
+						Use the calculator below to get a project-specific range.
+					</p>
+					<p class="inline-cta">
+						<a class="btn btn--primary btn--wide" href={calculatorCrazyUrl}>Estimate your cost</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="pros-heading">
+			<div class="section__inner">
+				<h2 id="pros-heading" class="section__title section__title--centered">Pros and cons</h2>
+				<p class="section__lead section__lead--centered">
+					Useful for deciding whether the look and ongoing care match how you use the space.
+				</p>
+				<div class="split">
+					<div class="split__col split__col--pros">
+						<h3 class="split__heading">Pros</h3>
+						<ul class="bullets bullets--tight">
+							<li>Natural, premium appearance that ages well when detailed correctly</li>
+							<li>Works beautifully with planting and softer landscape forms</li>
+							<li>Can suit heritage façades and contemporary architecture alike</li>
+							<li>Less rigid than standard paving; movement in the pattern hides minor irregularity</li>
+						</ul>
+					</div>
+					<div class="split__col split__col--cons">
+						<h3 class="split__heading">Cons</h3>
+						<ul class="bullets bullets--tight">
+							<li>More labour-intensive to lay and to adjust on site</li>
+							<li>Quality depends heavily on set-out, joint width and consistent bedding</li>
+							<li>Poor drainage or base preparation will eventually telegraph through the stone</li>
+							<li>Not always the cheapest option when total scope is compared like-for-like</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<ul class="mistakes">
+					<li>
+						<strong>Choosing stone only by appearance</strong> — Slip rating, thickness and suitability for the location matter as much as
+						colour.
+					</li>
+					<li>
+						<strong>Inconsistent joints</strong> — Wide, wandering joints or uneven bedding read as rushed workmanship and trap debris.
+					</li>
+					<li>
+						<strong>Poor base preparation</strong> — Skipping depth, compaction or specification leads to movement and cracked bedding.
+					</li>
+					<li>
+						<strong>Ignoring falls and drainage</strong> — Water must leave the pavement and stay away from structures and adjoining finishes.
+					</li>
+					<li>
+						<strong>Using the wrong finish around wet areas</strong> — Pool surrounds and splash zones need compatible stone, sealers and
+						detail at coping and grate lines.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="mobbs-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mobbs-heading" class="section__title">When to involve Made By Mobbs</h2>
+				<p class="prose">
+					Made By Mobbs Landscapes designs and builds complete outdoor spaces—no need to employ individual trades in isolation.
+				</p>
+				<p class="prose">
+					Crazy paving sits alongside planting, finished levels, drainage, lighting and the correct materials that set your finished project
+					apart. Getting those relationships right is what makes the paving feel intentional rather than bolted on.
+				</p>
+				<p class="prose">
+					This page is a guide only: sensible ranges and checklist thinking before you commit. Firm pricing always requires a proper review of
+					access, existing surfaces, services and how you intend to use the area.
+				</p>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={bookUrl}>Book a site visit with Made By Mobbs</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					<div class="faq__item">
+						<dt class="faq__q">Is crazy paving expensive?</dt>
+						<dd class="faq__a">
+							It is usually more per square metre than straightforward rectangular paving because of cutting, fitting and jointing time.
+							Stone choice and site access move the figure a lot; the calculator gives a sensible guide range before a site-specific
+							quote.
+						</dd>
+					</div>
+					<div class="faq__item">
+						<dt class="faq__q">Is crazy paving suitable around pools?</dt>
+						<dd class="faq__a">
+							It can be, when stone type, thickness, slip resistance and falls are selected for wet use and your pool certifier’s
+							requirements. Detail at the coping and drainage matters as much as the stone itself.
+						</dd>
+					</div>
+					<div class="faq__item">
+						<dt class="faq__q">Does crazy paving need a concrete base?</dt>
+						<dd class="faq__a">
+							Not every path needs a slab, but many Melbourne installations use a concrete base or wet bed where stability, vehicle load
+							or ground movement is a concern. The right specification follows from use, soil and drainage—not a one-size rule.
+						</dd>
+					</div>
+					<div class="faq__item">
+						<dt class="faq__q">Is crazy paving slippery?</dt>
+						<dd class="faq__a">
+							Slip resistance depends on the stone, finish and whether the surface is wet. We can shortlist materials and treatments for
+							steps, paths and areas that stay damp or see bare feet.
+						</dd>
+					</div>
+					<div class="faq__item">
+						<dt class="faq__q">How long does crazy paving take to install?</dt>
+						<dd class="faq__a">
+							A small garden path might take a few days on site; larger entertaining areas or complex edges take longer. Weather, access
+							and how much existing paving or lawn needs removing also affect the programme—something we clarify after a walk-through.
+						</dd>
+					</div>
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="estimate"
+			headingId="final-cta-heading"
+			title="Planning a crazy paving project?"
+			description="Start with a guide price, then book a site visit when you're ready for a proper scope."
+			ctaHref={calculatorCrazyUrl}
+			ctaLabel="Estimate your crazy paving cost in minutes"
+		/>
+	</div>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__title--centered {
+		text-align: center;
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.section__lead--centered {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.bullets--tight {
+		gap: 0.5rem;
+		font-size: 0.96875rem;
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0 0 1.75rem;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.cost-range {
+		margin-top: 2rem;
+		padding: 1.35rem 1.25rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background-color: color-mix(in srgb, var(--color-accent) 38%, var(--color-white));
+	}
+
+	.cost-range__title {
+		margin: 0 0 0.85rem;
+		font-size: 1.1875rem;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.cost-range__text {
+		margin: 0 0 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.cost-range__text--last {
+		margin-bottom: 1.15rem;
+	}
+
+	.inline-cta {
+		margin: 0;
+		text-align: center;
+	}
+
+	.cost-range .inline-cta {
+		margin-top: 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.5rem, 4vw, 2.5rem);
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 40rem) {
+		.split {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+	}
+
+	.split__col {
+		background: var(--color-background);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		padding: 1.25rem 1.35rem 1.35rem;
+	}
+
+	.section--alt .split__col {
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+	}
+
+	.split__heading {
+		margin: 0 0 0.85rem;
+		font-size: 1.125rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+</style>

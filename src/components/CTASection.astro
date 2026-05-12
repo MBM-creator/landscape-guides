@@ -1,0 +1,90 @@
+---
+interface Props {
+	sectionId?: string;
+	headingId: string;
+	title: string;
+	description?: string;
+	ctaHref: string;
+	ctaLabel: string;
+}
+
+const { sectionId, headingId, title, description, ctaHref, ctaLabel } = Astro.props;
+---
+
+<section class="cta" id={sectionId} aria-labelledby={headingId}>
+	<div class="cta__inner">
+		<h2 id={headingId} class="cta__title">{title}</h2>
+		{description ? <p class="cta__text">{description}</p> : null}
+		<a class="btn btn--primary btn--wide" href={ctaHref}>{ctaLabel}</a>
+	</div>
+</section>
+
+<style>
+	.cta {
+		padding: clamp(3rem, 8vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background: color-mix(in srgb, var(--color-accent) 55%, var(--color-background));
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+		color: var(--color-text);
+		text-align: center;
+	}
+
+	.cta__inner {
+		max-width: 36rem;
+		margin: 0 auto;
+	}
+
+	.cta__title {
+		margin: 0 0 1.5rem;
+		font-size: clamp(1.375rem, 3.5vw, 1.75rem);
+		font-weight: 650;
+		line-height: 1.3;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.cta__text {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+</style>
