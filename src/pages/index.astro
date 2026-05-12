@@ -60,6 +60,22 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 			</div>
 		</section>
 
+		<section class="section section--compare" id="compare-styles" aria-labelledby="compare-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="compare-heading" class="section__title">Compare paving styles</h2>
+				<p class="section__lead section__lead--tight">
+					Not sure which paving pattern suits your project? Start with a side-by-side comparison before estimating cost.
+				</p>
+				<article class="compare-card">
+					<h3 class="compare-card__title">Crazy paving vs French pattern</h3>
+					<p class="compare-card__text">
+						Compare two premium natural stone paving styles, including look, cost, labour and where each works best.
+					</p>
+					<a class="compare-card__cta" href="/crazy-paving-vs-french-pattern">Compare styles</a>
+				</article>
+			</div>
+		</section>
+
 		<section class="section section--estimate" id="estimate" aria-labelledby="estimate-heading">
 			<div class="section__inner section__inner--narrow">
 				<h2 id="estimate-heading" class="section__title">What impacts paving cost</h2>
@@ -229,6 +245,62 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 
 	.section--styles {
 		background-color: var(--color-background);
+	}
+
+	.section--compare {
+		background-color: var(--color-background);
+		padding-top: clamp(1.5rem, 4vw, 2.25rem);
+	}
+
+	.compare-card {
+		background: var(--color-white);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		max-width: 36rem;
+	}
+
+	.compare-card__title {
+		margin: 0;
+		padding: 1rem 1.125rem 0.25rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.compare-card__text {
+		margin: 0;
+		padding: 0 1.125rem 1rem;
+		font-size: 0.9375rem;
+		color: color-mix(in srgb, var(--color-text) 74%, var(--color-background));
+		line-height: 1.55;
+		flex-grow: 1;
+	}
+
+	.compare-card__cta {
+		margin: 0 1.125rem 1.125rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		align-self: flex-start;
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.compare-card__cta:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.compare-card__cta:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
 	}
 
 	.section--estimate {
