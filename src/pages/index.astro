@@ -60,6 +60,31 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 			</div>
 		</section>
 
+		<section class="section section--where-paving" id="where-paving" aria-labelledby="where-heading">
+			<div class="section__inner">
+				<h2 id="where-heading" class="section__title">Where are you paving?</h2>
+				<p class="section__lead section__lead--tight">
+					Driveways and pool surrounds answer to different loads, drainage rules and material choices—start with the zone that matches your project.
+				</p>
+				<div class="compare-cards">
+					<article class="compare-card">
+						<h3 class="compare-card__title">Driveway Paving Melbourne</h3>
+						<p class="compare-card__text">
+							Learn what matters for paved driveways, including base preparation, drainage, edge restraint and suitable paving styles.
+						</p>
+						<a class="compare-card__cta" href="/driveway-paving-melbourne">Read driveway guide</a>
+					</article>
+					<article class="compare-card">
+						<h3 class="compare-card__title">Pool Paving Melbourne</h3>
+						<p class="compare-card__text">
+							Understand pool surrounds and pool paving in Melbourne, including slip resistance, drainage, coping, materials and typical cost drivers.
+						</p>
+						<a class="compare-card__cta" href="/pool-paving-melbourne">Read pool paving guide</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
 		<section class="section section--compare" id="compare-styles" aria-labelledby="compare-heading">
 			<div class="section__inner">
 				<h2 id="compare-heading" class="section__title">Compare paving styles</h2>
@@ -87,13 +112,6 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 							Understand what affects paving costs before using the calculator.
 						</p>
 						<a class="compare-card__cta" href="/paving-cost-melbourne">Read the cost guide</a>
-					</article>
-					<article class="compare-card">
-						<h3 class="compare-card__title">Driveway Paving Melbourne</h3>
-						<p class="compare-card__text">
-							Learn what matters for paved driveways, including base preparation, drainage, edge restraint and suitable paving styles.
-						</p>
-						<a class="compare-card__cta" href="/driveway-paving-melbourne">Read driveway guide</a>
 					</article>
 				</div>
 			</div>
@@ -268,6 +286,12 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 
 	.section--styles {
 		background-color: var(--color-background);
+	}
+
+	.section--where-paving {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
 	}
 
 	.section--compare {
