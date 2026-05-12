@@ -1,0 +1,731 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = 'https://pavingguide.com.au/driveway-paving-melbourne';
+
+const title = 'Driveway Paving Melbourne | Design, Costs & Material Guide';
+const description =
+	'Learn what affects driveway paving costs in Melbourne, which paving styles suit vehicle areas and how to estimate your project realistically.';
+
+const calculatorUrl = '/paving-cost-calculator';
+
+const relatedGuidesOverride = [
+	{
+		href: '/herringbone-paving-melbourne',
+		title: 'Herringbone Paving Melbourne',
+		description:
+			'Interlocking rectangular layouts, driveway suitability, edge restraint and how herringbone paving cost in Melbourne is usually scoped on site.',
+	},
+	{
+		href: '/paving-cost-melbourne',
+		title: 'Paving Cost Melbourne',
+		description:
+			'Broader outdoor paving price drivers—pattern, access, drainage and base type—so you can compare driveway quotes on a like-for-like written scope.',
+	},
+	{
+		href: '/wet-bed-vs-concrete-base-paving',
+		title: 'Wet Bed vs Concrete Base Paving',
+		description:
+			'Plain-language comparison of crushed-rock bedding against slab-and-adhesive systems, and why driveway paving often sits on the more structural end of the spectrum.',
+	},
+] as const;
+
+const faqCopy = [
+	{
+		q: 'What is the best paving style for driveways?',
+		a: 'There is no single winner. <strong>Herringbone driveway paving</strong> is common because the bond interlocks and spreads load, but <strong>stretcher bond</strong> can work when units are thick enough, edges are restrained and the base matches vehicle use. Choose from specification first, appearance second.',
+	},
+	{
+		q: 'Is driveway paving expensive?',
+		a: '<strong>Driveway paving cost Melbourne</strong> quotes reflect excavation, base depth, drainage, kerbs, access and whether you choose <strong>brick driveway paving</strong>, concrete modules or <strong>stone driveway paving</strong>—not just the visible top layer. Use the <a class="inline-link" href="/paving-cost-calculator">paving cost calculator</a> for a guide bracket, then refine on site.',
+	},
+	{
+		q: 'Does driveway paving need concrete underneath?',
+		a: 'Not on every site, but many <strong>outdoor driveway paving</strong> specifications step up to a concrete slab and adhesive where wheel loads, poor soils or tight falls demand it. The correct build-up follows from engineering judgement and your brief—not a blanket rule.',
+	},
+	{
+		q: 'Is herringbone better for driveways?',
+		a: 'Often, yes, for rectangular units: the pattern interlocks and helps distribute tracking loads when bedding and edges are right. It is not a substitute for correct thickness or base work. Read the detail in our <a class="inline-link" href="/herringbone-paving-melbourne">herringbone paving Melbourne</a> guide.',
+	},
+	{
+		q: 'Can natural stone be used on driveways?',
+		a: 'Yes, when thickness, strength and slip resistance suit vehicle use and the installer matches <strong>stone driveway paving</strong> to a base designed for your ground conditions. Irregular crazy-style fields are usually slower and dearer; large format stone can look superb but needs careful set-out at turning points.',
+	},
+] as const;
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqCopy.map((item) => ({
+		'@type': 'Question',
+		name: item.q,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.a.replace(/<[^>]+>/g, ''),
+		},
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Driveway paving guide</p>
+				<h1 class="hero__title">Driveway Paving Melbourne</h1>
+				<p class="hero__sub">
+					Driveway paving needs to do more than look good. Vehicle loads, drainage, edge restraint and base preparation all affect long-term
+					performance. This guide explains the main paving options, common mistakes and what influences <strong>driveway paving costs in
+					Melbourne</strong> for a typical <strong>paved driveway Melbourne</strong> project.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorUrl}>Estimate driveway paving cost</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label="Herringbone driveway paving example">
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src="/images/herringbone.webp"
+					alt="Herringbone driveway paving in Melbourne residential property"
+					width="800"
+					height="800"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="different-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="different-heading" class="section__title">What makes driveway paving different?</h2>
+				<p class="section__lead section__lead--tight">
+					A path that only sees foot traffic can sometimes tolerate lighter build-ups. A <strong>paved driveway Melbourne</strong> installers quote
+					on is a working pavement: tyres scrub at turns, water has to leave the surface, and the edges want to spread unless they are tied in
+					properly.
+				</p>
+				<ul class="bullets">
+					<li><strong>Vehicle loads</strong> — Static parking weight, slow steering inputs and delivery vans all test the pavement differently from a garden path.</li>
+					<li><strong>Movement</strong> — Tracking forces try to push courses sideways; bond lines and restraint detail matter more than on decorative foot traffic areas.</li>
+					<li><strong>Drainage requirements</strong> — Sheet flow must clear garage thresholds, letterboxes and neighbouring properties; low spots show up quickly under headlights after rain.</li>
+					<li><strong>Stronger base requirements</strong> — Depth, compaction and layer quality carry the load; thin or poorly compacted bases telegraph through as dips, steps and joint opening.</li>
+					<li><strong>Edge restraint importance</strong> — Kerbs, haunching or concealed profiles stop lateral creep where the pavement is open to garden or lawn.</li>
+					<li><strong>Turning areas and access</strong> — Radii, crossover levels and how vehicles approach the garage set practical constraints on module size and joint layout.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="styles-heading">
+			<div class="section__inner">
+				<h2 id="styles-heading" class="section__title section__title--centered">Popular driveway paving styles</h2>
+				<p class="section__lead section__lead--centered">
+					Each layout below is widely used on residential driveways. Suitability still hinges on unit thickness, bedding specification and
+					drainage—think of these as design directions, not shortcuts past proper preparation.
+				</p>
+				<ul class="style-grid" role="list">
+					<li class="style-grid__cell">
+						<article class="style-card">
+							<h3 class="style-card__title">Herringbone</h3>
+							<p class="style-card__text">
+								<strong>Herringbone driveway paving</strong> interlocks rectangular units so joints do not run in long continuous lines. It
+								reads classic with <strong>brick driveway paving</strong> and suits many Melbourne vernacular façades; set-out and borders
+								take more care than a plain grid.
+							</p>
+						</article>
+					</li>
+					<li class="style-grid__cell">
+						<article class="style-card">
+							<h3 class="style-card__title">Stretcher bond</h3>
+							<p class="style-card__text">
+								Courses stepped in half-bond read calm and contemporary on larger concrete modules. Structurally acceptable for driveways
+								when edges are restrained and pavers are rated for wheels—just avoid treating it as the “cheap” option if the base still needs
+								full depth.
+							</p>
+						</article>
+					</li>
+					<li class="style-grid__cell">
+						<article class="style-card">
+							<h3 class="style-card__title">Cobblestone</h3>
+							<p class="style-card__text">
+								Small modules and textured faces suit heritage kerb appeal and slower vehicle speeds. Joints are numerous, so bedding and
+								cleaning expectations should be discussed up front alongside <strong>driveway paving cost Melbourne</strong> allowances.
+							</p>
+						</article>
+					</li>
+					<li class="style-grid__cell">
+						<article class="style-card">
+							<h3 class="style-card__title">Large format stone</h3>
+							<p class="style-card__text">
+								Fewer joints and a cleaner plane suit architectural entries. <strong>Stone driveway paving</strong> at large sizes needs
+								confident falls, careful handling and often more structural support at vehicle turning points than small-unit fields.
+							</p>
+						</article>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="cost-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-heading" class="section__title">What affects driveway paving cost?</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Driveway paving cost Melbourne</strong> homeowners compare should be read as a bundled scope: groundworks, materials, restraint
+					and finishing—not a headline rate per square metre. For wider pricing context, see our{' '}
+					<a class="inline-link" href="/paving-cost-melbourne">paving cost Melbourne</a> guide, then cross-check items below on your written quotes.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Area size</strong>
+						<span>Larger fields increase material and laying time; wide frontages add perimeter restraint and kerb metres.</span>
+					</li>
+					<li>
+						<strong>Excavation depth</strong>
+						<span>Removing soft topsoil, rubble or failed concrete changes machine time, cartage and disposal.</span>
+					</li>
+					<li>
+						<strong>Base preparation</strong>
+						<span>Sub-grade improvement, geotextile, crushed-rock depth and compaction are the invisible majority of a durable driveway.</span>
+					</li>
+					<li>
+						<strong>Concrete base requirements</strong>
+						<span>Some sites specify slab-and-adhesive where loads, soils or falls demand a stiffer platform than sand bedding alone.</span>
+					</li>
+					<li>
+						<strong>Paver or stone type</strong>
+						<span>Clay brick, concrete units and natural stone differ in supply cost, thickness rules and handling on site.</span>
+					</li>
+					<li>
+						<strong>Drainage</strong>
+						<span>Surface falls, grated pits, soakage and ties to existing stormwater often decide whether the pavement stays serviceable in winter.</span>
+					</li>
+					<li>
+						<strong>Kerbs and edging</strong>
+						<span>Aluminium profiles, concrete haunching or masonry kerbs are frequently essential line items, not decorative afterthoughts.</span>
+					</li>
+					<li>
+						<strong>Vehicle type and use</strong>
+						<span>Family cars, SUVs with wide tyres and occasional van deliveries each suggest slightly different tracking and edge protection thinking.</span>
+					</li>
+					<li>
+						<strong>Access</strong>
+						<span>Narrow side gates, steps, long barrow runs and protection of existing surfaces add labour hours every day of the job.</span>
+					</li>
+				</ul>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={calculatorUrl}>Estimate driveway paving cost</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="herringbone-why-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="herringbone-why-heading" class="section__title">Why herringbone is common for driveways</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Herringbone driveway paving</strong> is not mandatory, but it is popular for sensible reasons: the bond helps distribute steering
+					forces across neighbouring units, and suppliers routinely stock rectangular modules that suit the pattern.
+				</p>
+				<ul class="bullets">
+					<li><strong>Interlocking strength</strong> — Short ends meet long faces in a woven field, so there is less temptation for courses to shift along a single weak line.</li>
+					<li><strong>Load distribution</strong> — Tracking loads share across several pavers at once, which pairs well with correctly specified bedding.</li>
+					<li><strong>Traditional driveway use</strong> — Melbourne streets and period homes often reference clay brick herringbone; the look signals “driveway” without shouting.</li>
+					<li><strong>Works well with brick and rectangular pavers</strong> — Most <strong>brick driveway paving</strong> and concrete rectangular ranges are sized with herringbone set-out in mind.</li>
+				</ul>
+				<p class="prose">
+					Pattern choice does not replace thickness, falls or edge restraint. For layout detail and typical pitfalls, read{' '}
+					<a class="inline-link" href="/herringbone-paving-melbourne">herringbone paving Melbourne</a>.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common driveway paving mistakes</h2>
+				<p class="section__lead section__lead--tight">
+					Most failures on a <strong>paved driveway Melbourne</strong> properties rely on are boring: water in the wrong place, edges that walk,
+					or a base that was never built to carry what the garage already serves.
+				</p>
+				<ul class="mistakes">
+					<li>
+						<strong>Weak base prep</strong> — Shallow excavation, under-compacted layers or wet fills telegraph as movement and ponding within a season or two.
+					</li>
+					<li>
+						<strong>Poor drainage</strong> — Flat spots against thresholds stain, heave joints and annoy everyone in waterproof shoes.
+					</li>
+					<li>
+						<strong>Inadequate edge restraint</strong> — Open sides to lawn or garden creep outwards under steering unless haunched or kerbed properly.
+					</li>
+					<li>
+						<strong>Wrong paver thickness</strong> — Footpath-rated units under regular vehicle use risk cracking and pumping no matter how attractive the colour.
+					</li>
+					<li>
+						<strong>Chasing appearance only</strong> — The right finish is important, but specifying from photographs without falls and structure usually ends in rework.
+					</li>
+					<li>
+						<strong>Ignoring vehicle loads</strong> — Briefs that skip the “who parks what here?” conversation often miss the specification step that keeps the pavement level.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="base-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="base-heading" class="section__title">Concrete base vs wet bed for driveways</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Outdoor driveway paving</strong> often ends up on the more structural side of residential work: you are building a small pavement,
+					not a thin veneer over whatever was there before.
+				</p>
+				<p class="prose">
+					A well-built crushed-rock bed with compliant sand bedding can serve many residential drives when soils are stable, falls are generous and
+					product thickness matches wheel loads. Where reactive soils, tight levels to the garage slab or heavier use suggest otherwise, teams
+					specify a concrete slab with adhesive bedding to stiffen the system.
+				</p>
+				<p class="prose">
+					Site conditions—not internet rules of thumb—should steer the decision. The same street can present different sub-grades front-to-back.
+					For a balanced comparison, see{' '}
+					<a class="inline-link" href="/wet-bed-vs-concrete-base-paving">wet bed vs concrete base paving</a>.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="suits-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="suits-heading" class="section__title">Which driveway paving style suits your home?</h2>
+				<p class="section__lead section__lead--tight">
+					Match module scale, joint colour and restraint detail to the architecture you already have. Driveways sit between fence lines, planting
+					and the façade—so the pavement should agree with all three.
+				</p>
+				<ul class="bullets">
+					<li><strong>Heritage homes</strong> — Narrow brick or cobble-scale modules, softer joint tones and soldier borders often sit comfortably with weatherboards and tuckpointed chimneys.</li>
+					<li><strong>Contemporary homes</strong> — Larger concrete or stone formats, tight joints and minimal border can read cleaner against flat eaves, steel and render.</li>
+					<li><strong>Natural landscapes</strong> — Textured stone and slightly wider joints can bridge lawn, mulch and loose planting; falls still need to be disciplined at the garage.</li>
+					<li><strong>Architectural homes</strong> — Consider axis: how the bond aligns with the front door, carport posts and feature walls matters as much as the catalogue swatch.</li>
+					<li><strong>Fences, planting and façade materials</strong> — Repeat a colour cue from cladding or gate metal in restraint or header courses; keep planting clear of low spots that block drainage.</li>
+				</ul>
+			</div>
+		</section>
+
+		<RelatedPavingGuides heading="Related paving guides" guidesOverride={relatedGuidesOverride} />
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						faqCopy.map((item) => (
+							<div class="faq__item">
+								<dt class="faq__q">{item.q}</dt>
+								<dd class="faq__a" set:html={item.a} />
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="estimate"
+			headingId="final-cta-heading"
+			title="Planning a paved driveway project?"
+			description="Use the calculator for a realistic guide range, then organise a site visit when you're ready to properly assess drainage, levels and material selection."
+			ctaHref={calculatorUrl}
+			ctaLabel="Estimate driveway paving cost"
+		/>
+	</div>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.inline-link {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.inline-link:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.inline-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__title--centered {
+		text-align: center;
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.section__lead--centered {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		max-width: 44rem;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0 0 1.75rem;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.inline-cta {
+		margin: 0;
+		text-align: center;
+	}
+
+	.style-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1rem, 3vw, 1.25rem);
+		margin: 0;
+		list-style: none;
+		padding: 0;
+	}
+
+	@media (min-width: 36rem) {
+		.style-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.style-grid__cell {
+		margin: 0;
+	}
+
+	.style-card {
+		margin: 0;
+		padding: 1.2rem 1.3rem 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+		height: 100%;
+	}
+
+	.style-card__title {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.style-card__text {
+		margin: 0;
+		font-size: 0.9375rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 74%, var(--color-background));
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.faq__a :global(strong) {
+		color: var(--color-text);
+	}
+
+	.faq__a :global(a.inline-link) {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.faq__a :global(a.inline-link):hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.faq__a :global(a.inline-link):focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+</style>

@@ -1,16 +1,30 @@
 ---
-interface Props {
-	/** Pathname of the current paving guide page (e.g. `/crazy-paving-melbourne`) — that guide is omitted from the list. */
-	excludeHref: string;
-	/** Optional section heading (defaults to “Related paving guides”). */
-	heading?: string;
+interface GuideCard {
+	href: string;
+	title: string;
+	description: string;
 }
 
-const { excludeHref, heading = 'Related paving guides' } = Astro.props;
+interface Props {
+	/** Pathname of the current paving guide page (e.g. `/crazy-paving-melbourne`) — that guide is omitted from the list. Ignored when `guidesOverride` is set. */
+	excludeHref?: string;
+	/** Optional section heading (defaults to “Related paving guides”). */
+	heading?: string;
+	/** When set, render exactly these cards (e.g. a curated trio) instead of the default filtered list. */
+	guidesOverride?: readonly GuideCard[];
+}
+
+const { excludeHref = '', heading = 'Related paving guides', guidesOverride } = Astro.props;
 
 const normalize = (path: string) => path.replace(/\/$/, '') || '/';
 
-const allGuides = [
+const allGuides: GuideCard[] = [
+	{
+		href: '/driveway-paving-melbourne',
+		title: 'Driveway Paving Melbourne',
+		description:
+			'Vehicle loads, drainage and base build-up for residential driveways—how paving choices differ from paths, and what moves quotes in Melbourne.',
+	},
 	{
 		href: '/paving-cost-melbourne',
 		title: 'Paving Cost Melbourne',
@@ -37,7 +51,7 @@ const allGuides = [
 	},
 ];
 
-const guides = allGuides.filter((g) => normalize(g.href) !== normalize(excludeHref));
+const guides = guidesOverride?.length ? [...guidesOverride] : allGuides.filter((g) => normalize(g.href) !== normalize(excludeHref));
 ---
 
 <section class="related" aria-labelledby="related-guides-heading">
