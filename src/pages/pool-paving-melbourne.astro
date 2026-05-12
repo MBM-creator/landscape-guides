@@ -1,0 +1,688 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
+import { getSiteByHost } from '../config/sites';
+
+const site = getSiteByHost(Astro.url.hostname);
+const canonical = 'https://pavingguide.com.au/pool-paving-melbourne';
+
+const title = 'Pool Paving Melbourne | Pool Surrounds, Costs & Material Guide';
+const description =
+	'Learn what affects pool paving costs in Melbourne, including material choice, slip resistance, drainage, coping, base preparation and pool surround design.';
+
+const calculatorUrl = '/paving-cost-calculator';
+const bookUrl = '#';
+
+const relatedGuides = [
+	{
+		href: '/french-pattern-paving-melbourne',
+		title: 'French Pattern Paving Melbourne',
+		description:
+			'Modular repeats, set-out around curves and how French pattern paving cost in Melbourne typically behaves on larger slabs and pool decks.',
+	},
+	{
+		href: '/paving-cost-melbourne',
+		title: 'Paving Cost Melbourne',
+		description:
+			'How base preparation, access, drainage and pattern complexity feed into quotes—useful context when you are comparing pool paving cost in Melbourne.',
+	},
+	{
+		href: '/wet-bed-vs-concrete-base-paving',
+		title: 'Wet Bed vs Concrete Base Paving',
+		description:
+			'A plain-language comparison of bedding approaches that often matter around pools, thresholds and areas where levels must stay disciplined.',
+	},
+] as const;
+
+const faqCopy = [
+	{
+		q: 'What paving is best around pools?',
+		a: 'There is no single “best” product for every pool in Melbourne. The sensible shortlist balances <strong>slip resistance</strong> for wet bare feet, <strong>heat underfoot</strong> in summer, <strong>drainage and falls</strong>, how the stone meets <strong>coping</strong>, and exposure to <strong>salt or chlorine splash</strong>. Your certifier, fence detail and cleaning expectations also narrow options. Use the calculator for a guide bracket, then confirm materials on site.',
+	},
+	{
+		q: 'Is travertine good around pools?',
+		a: '<strong>Travertine pool paving in Melbourne</strong> is common because modular packs suit entertaining scale and the tone sits well beside water. Suitability still depends on the <strong>finish</strong> (filled, honed, brushed or tumbled), expected wet use, maintenance and how joints and coping are detailed. Always treat “travertine” as a category, not a guarantee.',
+	},
+	{
+		q: 'Is pool paving expensive?',
+		a: '<strong>Pool paving cost in Melbourne</strong> reflects more than visible stone—tight curves, bond breaks, drainage, demolition and access all add labour. Premium stone on a well-specified base can represent good long-term value; a low headline figure that omits preparation rarely does. See our <a class="inline-link" href="/paving-cost-melbourne">paving cost Melbourne</a> guide for how quotes are usually built up.',
+	},
+	{
+		q: 'Does pool paving need to be non-slip?',
+		a: 'Wet pool surrounds should prioritise <strong>non-slip pool paving</strong> characteristics appropriate to how the area will be used, including winter algae and mould in shaded Melbourne gardens. Ratings, test methods and certifier expectations vary—material selection should follow professional advice for your specific finish and maintenance plan, not a brochure photo alone.',
+	},
+	{
+		q: 'Does pool paving need sealing?',
+		a: 'Many natural stones benefit from informed <strong>sealing</strong> to slow staining and salt/chlorine ingress, but product choice, reapplication cycles and breathability matter. Some porcelain outdoor tiles need little beyond cleaning. Follow supplier guidance and align sealing decisions with how much splash, leaf litter and sun the <strong>pool surround</strong> receives.',
+	},
+] as const;
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqCopy.map((item) => ({
+		'@type': 'Question',
+		name: item.q,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: item.a.replace(/<[^>]+>/g, ''),
+		},
+	})),
+};
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Pool paving guide</p>
+				<h1 class="hero__title">Pool Paving Melbourne</h1>
+				<p class="hero__sub">
+					Pool paving needs to handle water, bare feet, heat, drainage and constant use. The right pool surround should feel comfortable, look integrated with
+					the landscape and perform safely over time.
+				</p>
+				<p class="hero__note">
+					If you are researching <strong>pool surrounds Melbourne</strong>, <strong>pool paving cost Melbourne</strong>, <strong>stone paving around pools</strong>,
+					<strong>travertine pool paving Melbourne</strong> or <strong>non slip pool paving</strong>, start with how the area will be used—then match materials,
+					falls and detailing to that brief.
+				</p>
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={calculatorUrl}>Estimate pool paving cost</a>
+					<a class="hero__secondary" href="/">Back to Paving Guide</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label="Stone paving around a pool surround">
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src="/images/pool-paving.jpg"
+					alt="Natural stone paving around a swimming pool in a Melbourne outdoor setting"
+					width="4000"
+					height="1800"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="different-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="different-heading" class="section__title">What makes pool paving different?</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Pool paving Melbourne</strong> homeowners specify is still paving—but the environment is harsher than a dry path. Expectations around safety,
+					comfort and longevity are higher, and small detailing errors show up quickly.
+				</p>
+				<ul class="bullets">
+					<li><strong>Wet areas</strong> — Splash, rain and cleaning cycles keep surfaces damp more often than typical garden paths.</li>
+					<li><strong>Slip resistance</strong> — Bare feet, toys and winter growth on joints mean grip needs thoughtful material and finish choices.</li>
+					<li><strong>Heat underfoot</strong> — Dark stone can become uncomfortably hot in direct sun; light tones are not automatically cool.</li>
+					<li><strong>Drainage</strong> — Water must leave the pavement without ponding against the shell, fence posts or adjoining finishes.</li>
+					<li><strong>Coping details</strong> — How paving meets coping, rebates and expansion considerations affects both appearance and performance.</li>
+					<li><strong>Salt and chlorine exposure</strong> — Splash and chemistry influence sealing, metal corrosion near the waterline and long-term surface care.</li>
+					<li><strong>Levels and landscape</strong> — The pool surround should read as part of the wider garden: lawn, planting, steps and entertaining zones need coherent falls.</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="materials-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="materials-heading" class="section__title">Popular pool paving materials</h2>
+				<p class="section__lead section__lead--tight">
+					No single material suits every Melbourne site. Use the notes below as a conversation framework with your contractor, not a universal prescription.
+				</p>
+				<ul class="bullets">
+					<li>
+						<strong>Travertine</strong> — Often chosen for modular layouts and a calm, resort-adjacent look; finish and fill level still determine wet performance
+						and cleaning effort.
+					</li>
+					<li>
+						<strong>Limestone</strong> — Tonal softness suits many contemporary pools; density and porosity vary, so supplier advice on exposure matters.
+					</li>
+					<li>
+						<strong>Bluestone</strong> — Familiar in Melbourne gardens; surface texture and sawn versus flamed finishes change grip and stain behaviour.
+					</li>
+					<li>
+						<strong>Porcelain outdoor tiles</strong> — Consistent thickness and low porosity appeal on paper; module size, grout detail and slip ratings still need
+						careful pairing to pool rules and maintenance habits.
+					</li>
+					<li>
+						<strong>Natural stone (broader category)</strong> — Includes granites and quartzites with tougher wear characteristics; each batch differs, so dry-lay
+						and blending discipline matter beside water.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="cost-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-heading" class="section__title">What affects pool paving cost?</h2>
+				<p class="section__lead section__lead--tight">
+					<strong>Pool paving cost in Melbourne</strong> is driven by area, geometry and everything hidden below the finished stone. Compare written scopes, not
+					headline rates.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Pool size and surround area</strong>
+						<span>Larger decks increase supply volumes; tight perimeters multiply cuts and slow the lay.</span>
+					</li>
+					<li>
+						<strong>Stone or tile selection</strong>
+						<span>Premium imports, unusual thicknesses or large formats change handling, wastage and adhesive bedding decisions.</span>
+					</li>
+					<li>
+						<strong>Coping detail</strong>
+						<span>Bullnose, rebated units and junctions to fencing or timber decks add setting-out time and tolerance checks.</span>
+					</li>
+					<li>
+						<strong>Base preparation</strong>
+						<span>Excavation depth, stabilisation and whether you work over a slab or a mortar bed feed directly into programme and price.</span>
+					</li>
+					<li>
+						<strong>Drainage and falls</strong>
+						<span>Grates, strip drains and sheet falls must align with architecture and certifier expectations—not afterthoughts.</span>
+					</li>
+					<li>
+						<strong>Cuts around pool edges</strong>
+						<span>Curves, tight radii and step returns consume labour even when the stone itself is mid-market.</span>
+					</li>
+					<li>
+						<strong>Access</strong>
+						<span>Narrow side paths, stairs and protection of existing surfaces add daily barrow time.</span>
+					</li>
+					<li>
+						<strong>Existing demolition</strong>
+						<span>Removing tired concrete, old coping or failed paving changes disposal and make-good.</span>
+					</li>
+					<li>
+						<strong>Sealing requirements</strong>
+						<span>Product choice, application timing and re-seal cycles belong in the scope if natural stone is shortlisted.</span>
+					</li>
+				</ul>
+				<p class="prose">
+					For broader pricing context beyond the pool shell, read our <a class="inline-link" href="/paving-cost-melbourne">paving cost Melbourne</a> guide, then use
+					the <a class="inline-link" href={calculatorUrl}>paving cost calculator</a> for a planning bracket.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="styles-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="styles-heading" class="section__title">Which paving styles suit pool surrounds?</h2>
+				<p class="prose">
+					<strong>French pattern</strong> modular repeats can look disciplined beside water when joint rhythm and module scale suit the pool geometry. They also
+					demand accurate set-out where the field meets coping and steps. See <a class="inline-link" href="/french-pattern-paving-melbourne">French pattern paving Melbourne</a> for pattern-specific notes.
+				</p>
+				<p class="prose">
+					<strong>Large format paving</strong> reads clean and contemporary; fewer joints can simplify cleaning if falls are perfect. Large units telegraph level
+					errors, so bedding and substrate tolerances matter more.
+				</p>
+				<p class="prose">
+					<strong>Crazy paving</strong> can suit informal pools and garden-style surrounds when the brief calls for organic movement—but busy grain beside busy
+					water can feel restless. It is also slower to lay; review <a class="inline-link" href="/crazy-paving-melbourne">crazy paving Melbourne</a> before assuming
+					it is the economical option.
+				</p>
+				<p class="prose">
+					Some highly ornamental patterns fight with pool reflections and fence lines. If the stone itself is strongly figured, a simpler layout often keeps the
+					composition calmer.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="slip-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="slip-heading" class="section__title">Slip resistance and comfort</h2>
+				<p class="prose">
+					Finish matters as much as stone family. <strong>Honed</strong> surfaces can be appropriate in some dry zones yet questionable beside active wet use;
+					brushed, tumbled or textured treatments often trade a little refinement for safer grip underfoot.
+				</p>
+				<p class="prose">
+					Balance <strong>texture</strong>, <strong>comfort for bare feet</strong> and realistic cleaning habits. Aggressive profiles that catch debris can annoy
+					homeowners; overly slick honing can worry parents. Professional material selection should reference how your pool is used, not catalogue defaults alone.
+				</p>
+				<p class="prose">
+					Remember <strong>dark stone can become hot</strong> in Melbourne summers—shade, planting and hose-down routines all influence whether a sample slab
+					approved in spring still feels acceptable in January.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="base-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="base-heading" class="section__title">Concrete base vs wet bed around pools</h2>
+				<p class="prose">
+					Pool surrounds often need careful decisions about <strong>levels</strong>, <strong>drainage</strong> and <strong>movement</strong> where paving meets
+					the shell, coping and any structural slab. A rigid concrete base with adhesive suits some specifications; a mortar wet bed over compacted road base
+					suits others—site geology, engineering input and the proposed stone format steer the answer.
+				</p>
+				<p class="prose">
+					Because mistakes are expensive to reverse, treat online articles as background reading. Compare options with your contractor and, where required, your
+					engineer—our <a class="inline-link" href="/wet-bed-vs-concrete-base-paving">wet bed vs concrete base paving</a> page outlines the trade-offs in plain language.
+				</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common pool paving mistakes</h2>
+				<ul class="mistakes">
+					<li>
+						<strong>Choosing only by appearance</strong> — A sample that looks stunning indoors may behave differently beside chlorinated splash and UV.
+					</li>
+					<li>
+						<strong>Poor falls and drainage</strong> — Ponding beside the shell stains coping, encourages algae and undermines confidence in the detail.
+					</li>
+					<li>
+						<strong>Slippery finish</strong> — Wet performance ignored until after handover, when the remedy is expensive.
+					</li>
+					<li>
+						<strong>Ignoring coping detail</strong> — Paving that fights the coping line reads as an afterthought and can trap water.
+					</li>
+					<li>
+						<strong>Poor set-out around curves and corners</strong> — Small angular errors accumulate where everyone’s eye naturally travels.
+					</li>
+					<li>
+						<strong>Mismatched stone batches</strong> — Different calibres or tonal lots read as patch repairs rather than natural variation.
+					</li>
+					<li>
+						<strong>Inadequate sealing advice</strong> — Either skipping guidance entirely or specifying the wrong product for splash exposure.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--alt" aria-labelledby="mobbs-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mobbs-heading" class="section__title">When to involve Made By Mobbs</h2>
+				<p class="prose">
+					Pool paving should be considered alongside <strong>planting</strong>, <strong>lighting</strong>, <strong>fencing</strong>, <strong>levels</strong> and
+					<strong>outdoor entertaining</strong>. A pool deck that ignores how you move from kitchen to water to lawn rarely feels finished.
+				</p>
+				<p class="prose">
+					Made By Mobbs designs and builds complete outdoor spaces—not isolated paving patches. We are most useful when you want the pool surround, garden and
+					built elements to share one coherent idea rather than three competing trades.
+				</p>
+				<p class="prose">
+					<strong>Real pricing</strong> still requires project context: access, demolition, engineering constraints and your material shortlist all move the number.
+					Use the calculator for orientation, then organise a site visit when you are ready to assess the site properly.
+				</p>
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={bookUrl}>Book a site visit with Made By Mobbs</a>
+				</p>
+			</div>
+		</section>
+
+		<RelatedPavingGuides heading="Related paving guides" guidesOverride={relatedGuides} />
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						faqCopy.map((item) => (
+							<div class="faq__item">
+								<dt class="faq__q">{item.q}</dt>
+								<dd class="faq__a" set:html={item.a} />
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="estimate"
+			headingId="final-cta-heading"
+			title="Planning pool paving or pool surrounds?"
+			description="Use the calculator for a guide range, then organise a site visit when you're ready to properly assess levels, drainage, coping and material selection."
+			ctaHref={calculatorUrl}
+			ctaLabel="Estimate pool paving cost"
+		/>
+	</div>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 1.25rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__note {
+		margin: 0 0 2rem;
+		font-size: 0.96875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 68%, var(--color-background));
+		text-align: left;
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.inline-link {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.inline-link:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.inline-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0 0 1.75rem;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.inline-cta {
+		margin: 0;
+		text-align: center;
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.faq__a :global(strong) {
+		color: var(--color-text);
+	}
+
+	.faq__a :global(a.inline-link) {
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.faq__a :global(a.inline-link):hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.faq__a :global(a.inline-link):focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+		border-radius: 2px;
+	}
+</style>
