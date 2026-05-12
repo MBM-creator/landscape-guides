@@ -7,9 +7,12 @@ interface Props {
 	extraLinks?: { href: string; label: string }[];
 	/** Hide the sitewide “Paving Cost Melbourne” link (e.g. on that page). */
 	hidePavingCostMelbourneLink?: boolean;
+	/** Hide the sitewide “Driveway Paving Melbourne” link (e.g. on that page). */
+	hideDrivewayPavingMelbourneLink?: boolean;
 }
 
-const { site, extraLinks = [], hidePavingCostMelbourneLink = false } = Astro.props;
+const { site, extraLinks = [], hidePavingCostMelbourneLink = false, hideDrivewayPavingMelbourneLink = false } =
+	Astro.props;
 const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.mainWebsiteUrl : null;
 ---
 
@@ -25,8 +28,20 @@ const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.main
 				</span>
 			)
 		}
+		{
+			hideDrivewayPavingMelbourneLink ? null : (
+				<span class="site-footer__link-cluster">
+					{mainUrl || !hidePavingCostMelbourneLink ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+					<a class="site-footer__link" href="/driveway-paving-melbourne">Driveway Paving Melbourne</a>
+				</span>
+			)
+		}
 		<span class="site-footer__link-cluster">
-			{mainUrl || !hidePavingCostMelbourneLink ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
+			{
+				mainUrl || !hidePavingCostMelbourneLink || !hideDrivewayPavingMelbourneLink ? (
+					<span class="site-footer__sep" aria-hidden="true"> · </span>
+				) : null
+			}
 			<a class="site-footer__link" href="/wet-bed-vs-concrete-base-paving">Wet Bed vs Concrete Base</a>
 		</span>
 		{
