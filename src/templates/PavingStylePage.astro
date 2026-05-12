@@ -1,0 +1,615 @@
+---
+import type { SiteConfig } from '../config/sites';
+import type { PavingStylePageContent } from '../content/paving/pavingStylePage.types';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTASection from '../components/CTASection.astro';
+import RelatedPavingGuides from '../components/RelatedPavingGuides.astro';
+
+interface Props {
+	site: SiteConfig;
+	canonical: string;
+	content: PavingStylePageContent;
+}
+
+const { site, canonical, content } = Astro.props;
+
+function stripHtmlForJsonLd(html: string): string {
+	return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: content.faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.question,
+		acceptedAnswer: {
+			'@type': 'Answer',
+			text: f.answerJsonLd ?? stripHtmlForJsonLd(f.answer),
+		},
+	})),
+};
+
+const mobbs = content.mobbsSection;
+const compare = content.compareSection;
+const relatedFirst = content.relatedGuidesPosition === 'before-faq';
+
+const heroImgAttrs = {
+	width: content.heroImageWidth ?? 1200,
+	height: content.heroImageHeight ?? 1200,
+	...(content.heroFetchPriority ? { fetchpriority: content.heroFetchPriority } : {}),
+};
+---
+
+<BaseLayout title={content.metaTitle} description={content.metaDescription} site={site} canonical={canonical}>
+	<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">{content.eyebrow}</p>
+				<h1 class="hero__title">{content.h1}</h1>
+				<p class="hero__sub" set:html={content.intro} />
+				<div class="hero__actions">
+					<a class="btn btn--primary" href={content.primaryCtaHref}>{content.primaryCtaText}</a>
+					<a class="hero__secondary" href={content.secondaryLinkHref}>{content.secondaryLinkText}</a>
+				</div>
+			</div>
+		</header>
+
+		<section class="media-section" aria-label={content.heroAlt}>
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src={content.heroImage}
+					alt={content.heroAlt}
+					{...heroImgAttrs}
+					loading="eager"
+					decoding="async"
+				/>
+			</div>
+		</section>
+
+		{
+			content.sections.map((sec) => (
+				<section class:list={['section', sec.variant === 'alt' && 'section--alt']} aria-labelledby={`${sec.id}-heading`}>
+					<div class:list={['section__inner', 'section__inner--narrow']}>
+						<h2 id={`${sec.id}-heading`} class="section__title">
+							{sec.title}
+						</h2>
+						{sec.leads?.map((html) => <p class="section__lead section__lead--tight" set:html={html} />)}
+						{sec.compareLink ? (
+							<p class="compare-link-wrap">
+								<a class="hero__secondary" href={sec.compareLink.href}>
+									{sec.compareLink.text}
+								</a>
+							</p>
+						) : null}
+						{sec.bullets?.length ? (
+							<ul class="bullets">
+								{sec.bullets.map((item) => (
+									<li set:html={item} />
+								))}
+							</ul>
+						) : null}
+						{sec.factors?.length ? (
+							<ul class="factors">
+								{sec.factors.map((row) => (
+									<li>
+										<strong>{row.label}</strong>
+										<span set:html={row.detailHtml} />
+									</li>
+								))}
+							</ul>
+						) : null}
+						{sec.costRange ? (
+							<div class="cost-range" aria-labelledby={`${sec.id}-cost-range-heading`}>
+								<h3 id={`${sec.id}-cost-range-heading`} class="cost-range__title">
+									{sec.costRange.title}
+								</h3>
+								{sec.costRange.paragraphs.map((p, i) => (
+									<p
+										class:list={[
+											'cost-range__text',
+											i === sec.costRange!.paragraphs.length - 1 && 'cost-range__text--last',
+										]}
+										set:html={p}
+									/>
+								))}
+								<p class="inline-cta">
+									<a class="btn btn--primary btn--wide" href={sec.costRange.ctaHref}>
+										{sec.costRange.ctaText}
+									</a>
+								</p>
+							</div>
+						) : null}
+						{sec.inlineCta ? (
+							<p class="inline-cta">
+								<a class="btn btn--primary btn--wide" href={sec.inlineCta.href}>
+									{sec.inlineCta.label}
+								</a>
+							</p>
+						) : null}
+					</div>
+				</section>
+			))
+		}
+
+		<section class="section section--alt" aria-labelledby="pros-heading">
+			<div class="section__inner">
+				<h2 id="pros-heading" class="section__title section__title--centered">Pros and cons</h2>
+				{content.prosConsIntro ? <p class="section__lead section__lead--centered" set:html={content.prosConsIntro} /> : null}
+				<div class="split">
+					<div class="split__col split__col--pros">
+						<h3 class="split__heading">Pros</h3>
+						<ul class="bullets bullets--tight">
+							{content.pros.map((item) => (
+								<li set:html={item} />
+							))}
+						</ul>
+					</div>
+					<div class="split__col split__col--cons">
+						<h3 class="split__heading">Cons</h3>
+						<ul class="bullets bullets--tight">
+							{content.cons.map((item) => (
+								<li set:html={item} />
+							))}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<ul class="mistakes">
+					{content.commonMistakes.map((html) => (
+						<li set:html={html} />
+					))}
+				</ul>
+			</div>
+		</section>
+
+		{
+			compare ? (
+				<section class:list={['section', compare.variant === 'alt' && 'section--alt']} aria-labelledby={`${compare.id}-heading`}>
+					<div class="section__inner section__inner--narrow">
+						<h2 id={`${compare.id}-heading`} class="section__title">
+							{compare.title}
+						</h2>
+						{compare.leads.map((html) => (
+							<p class="section__lead section__lead--tight" set:html={html} />
+						))}
+					</div>
+				</section>
+			) : null
+		}
+
+		<section class:list={['section', mobbs.variant === 'alt' && 'section--alt']} aria-labelledby={`${mobbs.id}-heading`}>
+			<div class="section__inner section__inner--narrow">
+				<h2 id={`${mobbs.id}-heading`} class="section__title">{mobbs.title}</h2>
+				{mobbs.paragraphs.map((html) => (
+					<p class="prose" set:html={html} />
+				))}
+				<p class="inline-cta">
+					<a class="btn btn--primary btn--wide" href={mobbs.bookCta.href}>{mobbs.bookCta.label}</a>
+				</p>
+			</div>
+		</section>
+
+		{
+			relatedFirst ? (
+				content.relatedGuides.mode === 'override' ? (
+					<RelatedPavingGuides guidesOverride={content.relatedGuides.guides} />
+				) : (
+					<RelatedPavingGuides excludeHref={content.relatedGuides.excludeHref} />
+				)
+			) : null
+		}
+
+		<section class="section faq" aria-labelledby="faq-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<dl class="faq__list">
+					{
+						content.faqs.map((f) => (
+							<div class="faq__item">
+								<dt class="faq__q">{f.question}</dt>
+								<dd class="faq__a" set:html={f.answer} />
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</section>
+
+		{
+			!relatedFirst ? (
+				content.relatedGuides.mode === 'override' ? (
+					<RelatedPavingGuides guidesOverride={content.relatedGuides.guides} />
+				) : (
+					<RelatedPavingGuides excludeHref={content.relatedGuides.excludeHref} />
+				)
+			) : null
+		}
+
+		<CTASection
+			sectionId={content.finalCta.sectionId}
+			headingId={content.finalCta.headingId}
+			title={content.finalCta.title}
+			description={content.finalCta.description}
+			ctaHref={content.finalCta.ctaHref}
+			ctaLabel={content.finalCta.ctaLabel}
+		/>
+	</div>
+	<Footer site={site} extraLinks={[{ href: '/', label: 'Paving guide home' }]} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 2rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.hero__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.btn--wide {
+		min-width: min(100%, 22rem);
+		padding-left: 1.75rem;
+		padding-right: 1.75rem;
+	}
+
+	.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
+		background-color: var(--color-background);
+	}
+
+	.media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	.media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	.section--alt {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__title--centered {
+		text-align: center;
+	}
+
+	.section__lead {
+		margin: 0 0 1.5rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.25rem;
+	}
+
+	.compare-link-wrap {
+		margin: -0.35rem 0 1.25rem;
+	}
+
+	.section__lead--centered {
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+
+	.prose {
+		margin: 0 0 1.25rem;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.prose:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.bullets--tight {
+		gap: 0.5rem;
+		font-size: 0.96875rem;
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0 0 1.75rem;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.cost-range {
+		margin-top: 2rem;
+		padding: 1.35rem 1.25rem 1.25rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background-color: color-mix(in srgb, var(--color-accent) 38%, var(--color-white));
+	}
+
+	.cost-range__title {
+		margin: 0 0 0.85rem;
+		font-size: 1.1875rem;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.cost-range__text {
+		margin: 0 0 0.65rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+
+	.cost-range__text--last {
+		margin-bottom: 1.15rem;
+	}
+
+	.inline-cta {
+		margin: 0;
+		text-align: center;
+	}
+
+	.cost-range .inline-cta {
+		margin-top: 0;
+	}
+
+	.split {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.5rem, 4vw, 2.5rem);
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 40rem) {
+		.split {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+	}
+
+	.split__col {
+		background: var(--color-background);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		padding: 1.25rem 1.35rem 1.35rem;
+	}
+
+	.section--alt .split__col {
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+	}
+
+	.split__heading {
+		margin: 0 0 0.85rem;
+		font-size: 1.125rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
+	}
+
+	.faq__list {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.faq__item {
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq__item:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.faq__q {
+		margin: 0 0 0.5rem;
+		font-size: 1.0625rem;
+		font-weight: 650;
+		color: var(--color-text);
+	}
+
+	.faq__a {
+		margin: 0;
+		font-size: 0.96875rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+</style>
