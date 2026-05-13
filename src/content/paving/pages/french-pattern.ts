@@ -44,7 +44,7 @@ export const frenchPatternPavingMelbournePage: PavingStylePageContent = {
 			title: 'Where French pattern paving works best',
 			variant: 'alt',
 			leads: [
-				'The pattern needs enough area to show several full repeats; tiny landings rarely do it justice. Where there is room, it carries <strong>French pattern paving around pools</strong>, alfresco slabs and garden connections with equal confidence—as long as stone choice, slip resistance and falls suit each use.',
+				'The pattern needs enough area to show several full repeats; tiny landings rarely do it justice. Where there is room, it carries <strong>French pattern paving around pools</strong>, alfresco slabs and garden connections with equal confidence—as long as stone choice, slip resistance and falls suit each use. For travertine specifically beside water, see our <a class="hero__secondary" href="/travertine-pool-paving-melbourne">travertine pool paving Melbourne</a> guide.',
 			],
 			bullets: [
 				'Pool surrounds, when drainage, coping lines and wet-area slip ratings are resolved with the pool fence and certifier in mind',
