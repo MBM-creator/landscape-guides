@@ -59,7 +59,7 @@ const heroImgAttrs = {
 			</div>
 		</header>
 
-		<section class="media-section" aria-label={content.heroAlt}>
+		<section class="media-section media-section--compact" aria-label={content.heroAlt}>
 			<div class="media-section__inner">
 				<img
 					class="media-section__img"
@@ -139,11 +139,11 @@ const heroImgAttrs = {
 
 		<section class="section section--alt" aria-labelledby="pros-heading">
 			<div class="section__inner">
-				<h2 id="pros-heading" class="section__title section__title--centered">Pros and cons</h2>
+				<h2 id="pros-heading" class="section__title section__title--centered">Strengths and trade-offs</h2>
 				{content.prosConsIntro ? <p class="section__lead section__lead--centered" set:html={content.prosConsIntro} /> : null}
 				<div class="split">
 					<div class="split__col split__col--pros">
-						<h3 class="split__heading">Pros</h3>
+						<h3 class="split__heading">Strengths</h3>
 						<ul class="bullets bullets--tight">
 							{content.pros.map((item) => (
 								<li set:html={item} />
@@ -151,7 +151,7 @@ const heroImgAttrs = {
 						</ul>
 					</div>
 					<div class="split__col split__col--cons">
-						<h3 class="split__heading">Cons</h3>
+						<h3 class="split__heading">Trade-offs</h3>
 						<ul class="bullets bullets--tight">
 							{content.cons.map((item) => (
 								<li set:html={item} />
@@ -164,7 +164,7 @@ const heroImgAttrs = {
 
 		<section class="section" aria-labelledby="mistakes-heading">
 			<div class="section__inner section__inner--narrow">
-				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<h2 id="mistakes-heading" class="section__title">Common paving mistakes</h2>
 				<ul class="mistakes">
 					{content.commonMistakes.map((html) => (
 						<li set:html={html} />
@@ -212,7 +212,7 @@ const heroImgAttrs = {
 
 		<section class="section faq" aria-labelledby="faq-heading">
 			<div class="section__inner section__inner--narrow">
-				<h2 id="faq-heading" class="section__title">Frequently asked questions</h2>
+				<h2 id="faq-heading" class="section__title">Questions we hear on site</h2>
 				<dl class="faq__list">
 					{
 						content.faqs.map((f) => (
@@ -239,6 +239,7 @@ const heroImgAttrs = {
 		<CTASection
 			sectionId={content.finalCta.sectionId}
 			headingId={content.finalCta.headingId}
+			bridge={content.finalCta.bridge}
 			title={content.finalCta.title}
 			description={content.finalCta.description}
 			ctaHref={content.finalCta.ctaHref}
@@ -254,7 +255,7 @@ const heroImgAttrs = {
 	}
 
 	.hero {
-		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(2.25rem, 6vw, 4rem);
+		padding: clamp(1.6rem, 4.5vw, 3rem) clamp(1.25rem, 5vw, 3rem) clamp(1.35rem, 3.5vw, 2.35rem);
 		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
 		border-bottom: 1px solid var(--color-border);
 	}
@@ -266,7 +267,7 @@ const heroImgAttrs = {
 	}
 
 	.hero__eyebrow {
-		margin: 0 0 0.75rem;
+		margin: 0 0 0.45rem;
 		font-size: 0.8125rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -274,7 +275,7 @@ const heroImgAttrs = {
 	}
 
 	.hero__title {
-		margin: 0 0 1rem;
+		margin: 0 0 0.55rem;
 		font-size: clamp(1.875rem, 5vw, 2.75rem);
 		font-weight: 650;
 		line-height: 1.15;
@@ -283,7 +284,7 @@ const heroImgAttrs = {
 	}
 
 	.hero__sub {
-		margin: 0 0 2rem;
+		margin: 0 0 1.1rem;
 		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
 		line-height: 1.55;
 		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
@@ -354,28 +355,6 @@ const heroImgAttrs = {
 		min-width: min(100%, 22rem);
 		padding-left: 1.75rem;
 		padding-right: 1.75rem;
-	}
-
-	.media-section {
-		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
-		background-color: var(--color-background);
-	}
-
-	.media-section__inner {
-		max-width: 56rem;
-		margin: 0 auto;
-		border-radius: 10px;
-		overflow: hidden;
-		border: 1px solid var(--color-border);
-		background-color: var(--color-accent);
-		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
-	}
-
-	.media-section__img {
-		display: block;
-		width: 100%;
-		height: auto;
-		vertical-align: middle;
 	}
 
 	.section {

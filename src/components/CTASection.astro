@@ -2,17 +2,20 @@
 interface Props {
 	sectionId?: string;
 	headingId: string;
+	/** Short bridge line before the heading—sets context so the CTA feels earned */
+	bridge?: string;
 	title: string;
 	description?: string;
 	ctaHref: string;
 	ctaLabel: string;
 }
 
-const { sectionId, headingId, title, description, ctaHref, ctaLabel } = Astro.props;
+const { sectionId, headingId, bridge, title, description, ctaHref, ctaLabel } = Astro.props;
 ---
 
 <section class="cta" id={sectionId} aria-labelledby={headingId}>
 	<div class="cta__inner">
+		{bridge ? <p class="cta__bridge">{bridge}</p> : null}
 		<h2 id={headingId} class="cta__title">{title}</h2>
 		{description ? <p class="cta__text">{description}</p> : null}
 		<a class="btn btn--primary btn--wide" href={ctaHref}>{ctaLabel}</a>
@@ -32,6 +35,13 @@ const { sectionId, headingId, title, description, ctaHref, ctaLabel } = Astro.pr
 	.cta__inner {
 		max-width: 36rem;
 		margin: 0 auto;
+	}
+
+	.cta__bridge {
+		margin: 0 0 1rem;
+		font-size: 0.9375rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 68%, var(--color-background));
 	}
 
 	.cta__title {

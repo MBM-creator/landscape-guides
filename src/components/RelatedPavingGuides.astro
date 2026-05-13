@@ -14,40 +14,40 @@ interface Props {
 	guidesOverride?: readonly GuideCard[];
 }
 
-const { excludeHref = '', heading = 'Related paving guides', guidesOverride } = Astro.props;
+const { excludeHref = '', heading = 'More reading', guidesOverride } = Astro.props;
 
 const normalize = (path: string) => path.replace(/\/$/, '') || '/';
 
 const allGuides: GuideCard[] = [
 	{
 		href: '/driveway-paving-melbourne',
-		title: 'Driveway Paving Melbourne',
+		title: 'Driveway paving: loads, falls and restraint',
 		description:
-			'Vehicle loads, drainage and base build-up for residential driveways—how paving choices differ from paths, and what moves quotes in Melbourne.',
+			'Cars test the base and edges harder than a footpath. Here’s what usually shifts driveway quotes in Melbourne.',
 	},
 	{
 		href: '/paving-cost-melbourne',
-		title: 'Paving Cost Melbourne',
+		title: 'Melbourne paving cost guide',
 		description:
-			'What drives outdoor paving prices in Melbourne, how pattern and base preparation affect quotes, and how to use the calculator before organising a site visit.',
+			'How excavation, drainage and access show up on quotes—so your calculator matches what contractors price.',
 	},
 	{
 		href: '/crazy-paving-melbourne',
-		title: 'Crazy Paving Melbourne',
+		title: 'Crazy paving on site',
 		description:
-			'Irregular natural stone fitted in an organic pattern—where it shines in Melbourne gardens, typical cost drivers, and what to watch on base and drainage.',
+			'Irregular stone means more cutting and jointing time. Wastage and drainage often matter more than the per m² rate.',
 	},
 	{
 		href: '/french-pattern-paving-melbourne',
-		title: 'French Pattern Paving Melbourne',
+		title: 'French pattern: repeats that stay true',
 		description:
-			'A repeating modular layout of mixed tile sizes—strong around pools and large entertaining slabs, with notes on set-out, stone choice and Melbourne pricing context.',
+			'Mixed sizes in a fixed pattern. Good set-out saves rework on pools and wide slabs.',
 	},
 	{
 		href: '/herringbone-paving-melbourne',
-		title: 'Herringbone Paving Melbourne',
+		title: 'Herringbone under traffic',
 		description:
-			'Rectangular pavers in an interlocking zig-zag—suited to driveways and paths when thickness and edge restraint match the load, plus cost and layout considerations.',
+			'Zig-zag joints suit wheel traffic when pavers are thick enough and edges are held. Borders need extra care.',
 	},
 ];
 

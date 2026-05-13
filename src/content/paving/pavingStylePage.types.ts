@@ -59,6 +59,8 @@ export type PavingStyleFaq = {
 export type PavingStyleFinalCta = {
 	sectionId?: string;
 	headingId: string;
+	/** Optional lead-in before the CTA heading (plain text) */
+	bridge?: string;
 	title: string;
 	description?: string;
 	ctaHref: string;

@@ -12,7 +12,7 @@ const canonical = new URL(Astro.url.pathname, `https://${site.domain}`).href;
 
 const title = 'Melbourne Paving Cost Guide | Made By Mobbs Landscapes';
 const description =
-	'Understand real paving costs in Melbourne, compare paving styles, and learn what drives quotes—then book a site visit with Made By Mobbs Landscapes.';
+	'Melbourne paving in plain terms: base work, drainage, materials and rough costs—so you know what to ask before you get quotes.';
 
 const bookUrl = '#';
 const heroCtaHref = site.status !== 'future' && 'primaryCtaHref' in site ? site.primaryCtaHref : '/paving-cost-calculator';
@@ -24,16 +24,17 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	<div class="page">
 		<header class="hero" id="top">
 			<div class="hero__inner">
-				<p class="hero__eyebrow">Melbourne · Landscaping</p>
+				<p class="hero__eyebrow">Made By Mobbs · Melbourne landscaping</p>
 				<h1 class="hero__title">Melbourne Paving Cost Guide</h1>
 				<p class="hero__sub">
-					Understand real paving costs, compare options, and estimate your project in minutes.
+					The pattern matters less than what sits underneath: drainage, base depth and how the area will be used. This guide walks through materials and
+					preparation so you can compare quotes on similar work.
 				</p>
 				<a class="btn btn--primary" href={heroCtaHref}>{heroCtaLabel}</a>
 			</div>
 		</header>
 
-		<section class="media-section" aria-label="Herringbone brick paving example">
+		<section class="media-section media-section--compact" aria-label="Herringbone brick paving example">
 			<div class="media-section__inner">
 				<img
 					class="media-section__img"
@@ -50,9 +51,9 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 
 		<section class="section section--styles" id="styles" aria-labelledby="styles-heading">
 			<div class="section__inner">
-				<h2 id="styles-heading" class="section__title">Paving styles</h2>
+				<h2 id="styles-heading" class="section__title">Choosing the right paving layout</h2>
 				<p class="section__lead">
-					Each pattern and layout has different material and labour needs—here’s a quick overview.
+					Patterns change cutting time and how fussy the lay is when levels aren’t perfect. Sort the layout before you lock in a paver colour.
 				</p>
 				<ul class="grid">
 					{pavingHomepageStyles.map((style) => <SiteCard style={style} />)}
@@ -60,68 +61,11 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 			</div>
 		</section>
 
-		<section class="section section--where-paving" id="where-paving" aria-labelledby="where-heading">
-			<div class="section__inner">
-				<h2 id="where-heading" class="section__title">Where are you paving?</h2>
-				<p class="section__lead section__lead--tight">
-					Driveways and pool surrounds answer to different loads, drainage rules and material choices—start with the zone that matches your project.
-				</p>
-				<div class="compare-cards">
-					<article class="compare-card">
-						<h3 class="compare-card__title">Driveway Paving Melbourne</h3>
-						<p class="compare-card__text">
-							Learn what matters for paved driveways, including base preparation, drainage, edge restraint and suitable paving styles.
-						</p>
-						<a class="compare-card__cta" href="/driveway-paving-melbourne">Read driveway guide</a>
-					</article>
-					<article class="compare-card">
-						<h3 class="compare-card__title">Pool Paving Melbourne</h3>
-						<p class="compare-card__text">
-							Understand pool surrounds and pool paving in Melbourne, including slip resistance, drainage, coping, materials and typical cost drivers.
-						</p>
-						<a class="compare-card__cta" href="/pool-paving-melbourne">Read pool paving guide</a>
-					</article>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section--compare" id="compare-styles" aria-labelledby="compare-heading">
-			<div class="section__inner">
-				<h2 id="compare-heading" class="section__title">Compare paving styles</h2>
-				<p class="section__lead section__lead--tight">
-					Not sure which paving pattern or base suits your project? Start with a side-by-side comparison before estimating cost.
-				</p>
-				<div class="compare-cards">
-					<article class="compare-card">
-						<h3 class="compare-card__title">Crazy paving vs French pattern</h3>
-						<p class="compare-card__text">
-							Compare two premium natural stone paving styles, including look, cost, labour and where each works best.
-						</p>
-						<a class="compare-card__cta" href="/crazy-paving-vs-french-pattern">Compare styles</a>
-					</article>
-					<article class="compare-card">
-						<h3 class="compare-card__title">Wet Bed vs Concrete Base Paving</h3>
-						<p class="compare-card__text">
-							Understand how base preparation affects paving cost, drainage and long-term performance.
-						</p>
-						<a class="compare-card__cta" href="/wet-bed-vs-concrete-base-paving">Compare paving bases</a>
-					</article>
-					<article class="compare-card">
-						<h3 class="compare-card__title">Paving Cost Melbourne</h3>
-						<p class="compare-card__text">
-							Understand what affects paving costs before using the calculator.
-						</p>
-						<a class="compare-card__cta" href="/paving-cost-melbourne">Read the cost guide</a>
-					</article>
-				</div>
-			</div>
-		</section>
-
 		<section class="section section--estimate" id="estimate" aria-labelledby="estimate-heading">
 			<div class="section__inner section__inner--narrow">
-				<h2 id="estimate-heading" class="section__title">What impacts paving cost</h2>
+				<h2 id="estimate-heading" class="section__title">What affects paving cost</h2>
 				<p class="section__lead section__lead--tight">
-					Quotes aren’t random—they reflect how much work and material your specific site needs.
+					Quotes follow excavation depth, base build-up and where water goes. Below is what usually shifts Melbourne prices.
 				</p>
 				<ul class="factors">
 					<li>
@@ -156,7 +100,7 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 
 		<section class="section section--mistakes" aria-labelledby="mistakes-heading">
 			<div class="section__inner section__inner--narrow">
-				<h2 id="mistakes-heading" class="section__title">Common mistakes</h2>
+				<h2 id="mistakes-heading" class="section__title">Why paving projects fail</h2>
 				<ul class="mistakes">
 					<li>
 						<strong>Choosing on price only</strong> — The lowest quote can miss base spec or drainage; compare scope, not just dollars.
@@ -174,10 +118,70 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 			</div>
 		</section>
 
+		<section class="section section--where-paving" id="where-paving" aria-labelledby="where-heading">
+			<div class="section__inner">
+				<h2 id="where-heading" class="section__title">Which outdoor zone are you paving?</h2>
+				<p class="section__lead section__lead--tight">
+					A driveway wears differently from a pool deck: wheels, turning and stormwater vs wet feet, coping and slip ratings. Start from how you use the
+					space, then pick stone and base.
+				</p>
+				<div class="compare-cards">
+					<article class="compare-card">
+						<h3 class="compare-card__title">Driveways</h3>
+						<p class="compare-card__text">
+							Wheels test the base and edges. Sort wheel paths, restraint and drainage before you worry about colour.
+						</p>
+						<a class="compare-card__cta" href="/driveway-paving-melbourne">Driveway paving in Melbourne</a>
+					</article>
+					<article class="compare-card">
+						<h3 class="compare-card__title">Pool surrounds</h3>
+						<p class="compare-card__text">
+							Falls, drainage and how paving meets coping matter beside water. Stone choice comes after that.
+						</p>
+						<a class="compare-card__cta" href="/pool-paving-melbourne">Pool paving in Melbourne</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section--compare" id="compare-styles" aria-labelledby="compare-heading">
+			<div class="section__inner">
+				<h2 id="compare-heading" class="section__title">Compare layouts and bases</h2>
+				<p class="section__lead section__lead--tight">
+					Short reads when you’re torn between options—check each against access, slope and how long you need the paving to stay level.
+				</p>
+				<div class="compare-cards">
+					<article class="compare-card">
+						<h3 class="compare-card__title">Crazy paving vs French pattern</h3>
+						<p class="compare-card__text">
+							Random fitted stone versus fixed modular repeats—labour, waste and where each style fits.
+						</p>
+						<a class="compare-card__cta" href="/crazy-paving-vs-french-pattern">Open the comparison</a>
+					</article>
+					<article class="compare-card">
+						<h3 class="compare-card__title">Wet bed vs concrete base: what lasts longer?</h3>
+						<p class="compare-card__text">
+							Mortar on crushed rock versus slab and adhesive—different answers for cars, pools and drainage.
+						</p>
+						<a class="compare-card__cta" href="/wet-bed-vs-concrete-base-paving">How bases differ</a>
+					</article>
+					<article class="compare-card">
+						<h3 class="compare-card__title">Melbourne paving costs explained</h3>
+						<p class="compare-card__text">
+							What shows up on quotes so you can match the calculator to your site—not a generic per m² guess.
+						</p>
+						<a class="compare-card__cta" href="/paving-cost-melbourne">Read the cost breakdown</a>
+					</article>
+				</div>
+			</div>
+		</section>
+
 		<CTASection
 			sectionId="book"
 			headingId="cta-heading"
-			title="Ready to get a real price for your project?"
+			bridge="Each site has its own falls, soil and traffic. A fixed price needs preparation spelt out—not a square-metre thumb rule."
+			title="Ready to scope the work properly?"
+			description="Book a site visit when you want drainage, structure and finishes lined up with the rest of the garden, not patched in later."
 			ctaHref={bookUrl}
 			ctaLabel="Book a site visit with Made By Mobbs"
 		/>
@@ -191,7 +195,7 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	}
 
 	.hero {
-		padding: clamp(2.5rem, 8vw, 5rem) clamp(1.25rem, 5vw, 3rem) clamp(3rem, 10vw, 6rem);
+		padding: clamp(1.6rem, 4.5vw, 3rem) clamp(1.25rem, 5vw, 3rem) clamp(1.35rem, 3.5vw, 2.35rem);
 		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
 		border-bottom: 1px solid var(--color-border);
 	}
@@ -203,7 +207,7 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	}
 
 	.hero__eyebrow {
-		margin: 0 0 0.75rem;
+		margin: 0 0 0.45rem;
 		font-size: 0.8125rem;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -211,7 +215,7 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	}
 
 	.hero__title {
-		margin: 0 0 1rem;
+		margin: 0 0 0.55rem;
 		font-size: clamp(1.875rem, 5vw, 2.75rem);
 		font-weight: 650;
 		line-height: 1.15;
@@ -220,7 +224,7 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	}
 
 	.hero__sub {
-		margin: 0 0 2rem;
+		margin: 0 0 1.1rem;
 		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
 		line-height: 1.55;
 		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
@@ -256,28 +260,6 @@ const heroCtaLabel = site.status !== 'future' && 'primaryCta' in site ? site.pri
 	.btn--primary:focus-visible {
 		outline: 2px solid var(--color-primary-dark);
 		outline-offset: 3px;
-	}
-
-	.media-section {
-		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 7vw, 4rem);
-		background-color: var(--color-background);
-	}
-
-	.media-section__inner {
-		max-width: 56rem;
-		margin: 0 auto;
-		border-radius: 10px;
-		overflow: hidden;
-		border: 1px solid var(--color-border);
-		background-color: var(--color-accent);
-		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
-	}
-
-	.media-section__img {
-		display: block;
-		width: 100%;
-		height: auto;
-		vertical-align: middle;
 	}
 
 	.section {

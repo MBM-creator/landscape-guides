@@ -105,4 +105,42 @@ const enableGoogleAnalytics = import.meta.env.PROD;
 		background-color: var(--color-background);
 		line-height: 1.5;
 	}
+
+	/* Single-image hero bands (see `.media-section__inner`). Duo/compare layouts use their own frames. */
+	section.media-section {
+		padding: 0 clamp(1.25rem, 5vw, 3rem) clamp(2rem, 5.5vw, 3rem);
+		background-color: var(--color-background);
+	}
+
+	section.media-section .media-section__inner {
+		max-width: 56rem;
+		margin: 0 auto;
+		border-radius: 10px;
+		overflow: hidden;
+		border: 1px solid var(--color-border);
+		background-color: var(--color-accent);
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 6%, transparent);
+	}
+
+	section.media-section .media-section__inner > .media-section__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		vertical-align: middle;
+	}
+
+	section.media-section.media-section--compact {
+		padding-bottom: clamp(1.35rem, 3.5vw, 2.25rem);
+	}
+
+	section.media-section.media-section--compact .media-section__inner {
+		max-height: min(34vw, 13.75rem);
+		aspect-ratio: 2.35 / 1;
+	}
+
+	section.media-section.media-section--compact .media-section__inner > .media-section__img {
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
 </style>

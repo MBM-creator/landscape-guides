@@ -18,7 +18,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/crazy-paving.avif',
 		alt: 'Crazy paving natural stone close-up',
 		description:
-			'Irregular natural stone pieces for organic paths, patios and feature areas. Labour-intensive laying with a natural, textured finish.',
+			'Irregular stone pieced in by hand. Takes longer than grid paving; joints and drainage need a clear plan before you start.',
 		calculatorStyleParam: 'crazy',
 		multiplier: 1.2,
 		showOnHomepage: true,
@@ -29,7 +29,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/filetti.jpg',
 		alt: 'Filetti paving with narrow stone pieces',
 		description:
-			'A Melbourne favourite, long, narrow natural stone laid in a random linear pattern. Similar labour and cutting requirements to crazy paving.',
+			'Long thin pieces in a broken stack. Expect plenty of cuts and waste on tight curves, same as tighter crazy paving.',
 		calculatorStyleParam: 'filetti',
 		multiplier: 1.4,
 		showOnHomepage: true,
@@ -40,7 +40,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/french-pattern.webp',
 		alt: 'French pattern stone paving layout',
 		description:
-			'A modular mix of stone sizes laid in a repeating pattern. Classic, structured and suited to larger paved areas.',
+			'Mixed tile sizes in a fixed repeat. Needs careful set-out; suits big flat areas when levels run true.',
 		calculatorStyleParam: 'french',
 		multiplier: 1.3,
 		showOnHomepage: true,
@@ -51,7 +51,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/herringbone-paving.jpg',
 		alt: 'Herringbone natural stone paving in light grey tones',
 		description:
-			'A traditional interlocking pattern often used with brick or rectangular pavers. Strong visual movement and a timeless look.',
+			'Rectangles laid in a zig-zag so joints lock. Common on driveways and paths; borders mean extra cuts.',
 		calculatorStyleParam: 'herringbone',
 		multiplier: 1.25,
 		showOnHomepage: true,
@@ -62,7 +62,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/basket-weave.jpg',
 		alt: 'Basket weave brick paving pattern',
 		description:
-			'Pairs of pavers laid horizontally and vertically in an alternating woven grid. Suited to clay brick and rectangular stones; works on crushed rock or concrete base depending on site.',
+			'Pairs of pavers woven in a grid. Works with brick or rectangular stone; base depends on the job.',
 		calculatorStyleParam: 'basketweave',
 		multiplier: 1,
 		showOnHomepage: false,
@@ -73,7 +73,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/steppers.webp',
 		alt: 'Garden steppers spaced through lawn',
 		description:
-			'Spaced stones through lawn, gravel or garden areas. Usually lighter coverage than full paving, with costs affected by spacing and stone size.',
+			'Stepping stones through lawn or gravel. Fewer square metres on the ground, more time getting each stone level.',
 		calculatorStyleParam: 'steppers',
 		multiplier: 0.8,
 		showOnHomepage: true,
@@ -84,7 +84,7 @@ export const pavingStyles: PavingStyle[] = [
 		image: '/images/stretcher-bond.jpg',
 		alt: 'Stretcher bond rectangular paving layout',
 		description:
-			'A clean, simple rectangular paving layout. Often one of the more predictable options when dimensions and set-out are clear.',
+			'Simple offset rows. Quick when your grid stays square; a crooked bond line is obvious on long runs.',
 		calculatorStyleParam: 'stretcher',
 		multiplier: 1,
 		showOnHomepage: true,
