@@ -14,7 +14,6 @@ type LiveSite = {
 	name: string;
 	domain: string;
 	alternateDomains: string[];
-	brandLine: string;
 	primaryCta: string;
 	primaryCtaHref: string;
 	mainWebsiteUrl: string;
@@ -24,7 +23,6 @@ type FutureSite = {
 	status: 'future';
 	name: string;
 	domain: string;
-	brandLine: string;
 };
 
 export type SiteConfig = { key: SiteKey } & (LiveSite | FutureSite);
@@ -35,7 +33,6 @@ export const sites = {
 		name: 'Paving Guide',
 		domain: 'pavingguide.com.au',
 		alternateDomains: ['pavingcostguide.com.au'],
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		primaryCta: 'Estimate Your Paving Cost',
 		primaryCtaHref: '/paving-cost-calculator',
 		mainWebsiteUrl: 'https://madebymobbs.com.au',
@@ -44,35 +41,30 @@ export const sites = {
 		key: 'decking',
 		name: 'Deck Cost Guide',
 		domain: 'deckcostguide.com.au',
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		status: 'future' as const,
 	},
 	irrigation: {
 		key: 'irrigation',
 		name: 'Irrigation Guide',
 		domain: 'irrigationguide.com.au',
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		status: 'future' as const,
 	},
 	landscapeCost: {
 		key: 'landscapeCost',
 		name: 'Landscape Cost Guide',
 		domain: 'landscapecostguide.com.au',
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		status: 'future' as const,
 	},
 	outdoorKitchen: {
 		key: 'outdoorKitchen',
 		name: 'Outdoor Kitchen Guide',
 		domain: 'outdoorkitchenguide.com.au',
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		status: 'future' as const,
 	},
 	poolSurrounds: {
 		key: 'poolSurrounds',
 		name: 'Pool Surrounds Guide',
 		domain: 'poolsurroundsguide.com.au',
-		brandLine: 'A resource from Made By Mobbs Landscapes',
 		status: 'future' as const,
 	},
 } satisfies Record<SiteKey, SiteConfig>;

@@ -17,16 +17,18 @@ const { site, extraLinks = [], hidePavingCostMelbourneLink = false, hideDriveway
 ---
 
 <footer class="site-footer">
-	<p class="site-footer__brand">{site.brandLine}</p>
-	<p class="site-footer__trust">
-		Melbourne design-and-build landscaping · Natural stone &amp; outdoor paving · Practical guidance from{' '}
+	<p class="site-footer__brand">
+		A resource from{' '}
 		{
 			mainUrl ? (
-				<a class="site-footer__trust-link" href={mainUrl}>Made By Mobbs Landscapes</a>
+				<a class="site-footer__link" href={mainUrl}>Made By Mobbs Landscapes</a>
 			) : (
-				<span class="site-footer__trust-name">Made By Mobbs Landscapes</span>
+				<>Made By Mobbs Landscapes</>
 			)
 		}
+	</p>
+	<p class="site-footer__trust">
+		Made By Mobbs Landscapes is a Melbourne landscape design and construction company specialising in natural stone paving, gardens and outdoor spaces.
 	</p>
 	<p class="site-footer__links">
 		{mainUrl ? <a class="site-footer__link" href={mainUrl}>Visit main website</a> : null}
@@ -91,20 +93,6 @@ const { site, extraLinks = [], hidePavingCostMelbourneLink = false, hideDriveway
 		font-size: 0.8125rem;
 		line-height: 1.55;
 		color: color-mix(in srgb, var(--color-text) 62%, var(--color-background));
-	}
-
-	.site-footer__trust-link {
-		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
-		text-decoration: underline;
-		text-underline-offset: 3px;
-	}
-
-	.site-footer__trust-link:hover {
-		color: var(--color-primary-dark);
-	}
-
-	.site-footer__trust-name {
-		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
 	}
 
 	.site-footer__links {
