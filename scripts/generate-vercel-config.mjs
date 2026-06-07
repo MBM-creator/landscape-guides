@@ -1,5 +1,7 @@
 /**
- * Generates vercel.json host rewrites and cross-domain redirects from micrositeRoutes.ts.
+ * Generates vercel.json host redirects and cross-domain redirects from micrositeRoutes.ts.
+ * Root `/` on the outdoor kitchen domain uses redirects (not rewrites) because Vercel
+ * serves filesystem routes before rewrites and src/pages/index.astro is the paving home.
  * Run: node scripts/generate-vercel-config.mjs
  */
 import { writeFileSync } from 'node:fs';
@@ -51,13 +53,23 @@ function stripTrailingSlash(path) {
 	return path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 }
 
-const rewrites = OUTDOOR_KITCHEN_HOSTS.map((host) => ({
-	source: '/',
-	has: [{ type: 'host', value: host }],
-	destination: OUTDOOR_KITCHEN_HOME_PATH,
-}));
+/** Root redirects must precede cross-domain rules. Temporary (307) while routing is verified. */
+const rootRedirects = [
+	{
+		source: '/',
+		has: [{ type: 'host', value: OUTDOOR_KITCHEN_DOMAIN }],
+		destination: OUTDOOR_KITCHEN_HOME_PATH,
+		permanent: false,
+	},
+	{
+		source: '/',
+		has: [{ type: 'host', value: `www.${OUTDOOR_KITCHEN_DOMAIN}` }],
+		destination: `https://${OUTDOOR_KITCHEN_DOMAIN}${OUTDOOR_KITCHEN_HOME_PATH}`,
+		permanent: false,
+	},
+];
 
-const redirects = [];
+const redirects = [...rootRedirects];
 
 for (const host of PAVING_HOSTS) {
 	redirects.push({
@@ -110,9 +122,8 @@ for (const host of OUTDOOR_KITCHEN_HOSTS) {
 
 const vercelConfig = {
 	$schema: 'https://openapi.vercel.sh/vercel.json',
-	rewrites,
 	redirects,
 };
 
 writeFileSync(join(root, 'vercel.json'), `${JSON.stringify(vercelConfig, null, '\t')}\n`);
-console.log(`Wrote vercel.json (${rewrites.length} rewrites, ${redirects.length} redirects)`);
+console.log(`Wrote vercel.json (${rootRedirects.length} root redirects, ${redirects.length} redirects total)`);

@@ -18,7 +18,7 @@ export const PAVING_HOSTS = [
 /** Hostnames that serve the outdoor kitchen microsite. */
 export const OUTDOOR_KITCHEN_HOSTS = [OUTDOOR_KITCHEN_DOMAIN, `www.${OUTDOOR_KITCHEN_DOMAIN}`] as const;
 
-/** Internal build path for the outdoor kitchen homepage (rewritten from `/` on OK domain). */
+/** Internal build path for the outdoor kitchen homepage (redirect target from `/` on OK domain). */
 export const OUTDOOR_KITCHEN_HOME_PATH = '/outdoor-kitchen/';
 
 /** Public outdoor kitchen guide paths (excluding homepage). */

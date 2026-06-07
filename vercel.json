@@ -1,6 +1,6 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
-	"rewrites": [
+	"redirects": [
 		{
 			"source": "/",
 			"has": [
@@ -9,7 +9,8 @@
 					"value": "outdoorkitchenguide.com.au"
 				}
 			],
-			"destination": "/outdoor-kitchen/"
+			"destination": "/outdoor-kitchen/",
+			"permanent": false
 		},
 		{
 			"source": "/",
@@ -19,10 +20,9 @@
 					"value": "www.outdoorkitchenguide.com.au"
 				}
 			],
-			"destination": "/outdoor-kitchen/"
-		}
-	],
-	"redirects": [
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen/",
+			"permanent": false
+		},
 		{
 			"source": "/outdoor-kitchen",
 			"has": [
