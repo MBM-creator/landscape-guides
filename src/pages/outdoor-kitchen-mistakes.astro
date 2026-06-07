@@ -1,0 +1,10 @@
+---
+import OutdoorKitchenGuidePage from '../templates/OutdoorKitchenGuidePage.astro';
+import { outdoorKitchenMistakesPage } from '../content/outdoorKitchen/pages/mistakes';
+import { sites } from '../config/sites';
+
+const site = sites.outdoorKitchen;
+const canonical = new URL(outdoorKitchenMistakesPage.canonical, `https://${site.domain}`).href;
+---
+
+<OutdoorKitchenGuidePage site={site} canonical={canonical} content={outdoorKitchenMistakesPage} />

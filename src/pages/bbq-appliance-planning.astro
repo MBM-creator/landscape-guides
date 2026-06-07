@@ -1,0 +1,10 @@
+---
+import OutdoorKitchenGuidePage from '../templates/OutdoorKitchenGuidePage.astro';
+import { bbqAppliancePlanningPage } from '../content/outdoorKitchen/pages/bbq-appliances';
+import { sites } from '../config/sites';
+
+const site = sites.outdoorKitchen;
+const canonical = new URL(bbqAppliancePlanningPage.canonical, `https://${site.domain}`).href;
+---
+
+<OutdoorKitchenGuidePage site={site} canonical={canonical} content={bbqAppliancePlanningPage} />

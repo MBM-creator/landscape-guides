@@ -2,7 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import { sites } from '../../config/sites';
+import OutdoorKitchenGuideCard from '../../components/OutdoorKitchenGuideCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { sites, OUTDOOR_KITCHEN_CTA_URL } from '../../config/sites';
+import { outdoorKitchenHomepageGuides } from '../../content/outdoorKitchen/guides';
 
 const site = sites.outdoorKitchen;
 
@@ -12,6 +15,10 @@ const canonical = `https://${site.domain}/`;
 const title = 'Outdoor Kitchen Guide | Made By Mobbs Landscapes';
 const description =
 	'A practical guide to planning an outdoor kitchen in Melbourne or Sydney — costs, layouts, materials, appliances and the mistakes worth avoiding.';
+
+// TODO: replace with dedicated outdoor kitchen hero image
+const heroImage = '/images/pool-paving.jpg';
+const heroAlt = 'Outdoor entertaining area with paved flooring beside a pool';
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
@@ -19,47 +26,176 @@ const description =
 	<div class="page">
 		<header class="hero" id="top">
 			<div class="hero__inner">
-				<p class="hero__eyebrow">Routing test · Outdoor Kitchen Guide</p>
+				<p class="hero__eyebrow">Made By Mobbs · outdoor kitchen planning</p>
 				<h1 class="hero__title">Outdoor Kitchen Guide</h1>
 				<p class="hero__sub">
-					If you are reading this on <strong>outdoorkitchenguide.com.au/</strong>, host-conditioned routing is working. Full homepage content will replace
-					this stub after routing is confirmed on a deployed Vercel preview.
+					A practical guide to planning an outdoor kitchen in Melbourne or Sydney — costs, layouts, materials, appliances and the mistakes worth avoiding.
 				</p>
+				<a class="btn btn--primary" href={OUTDOOR_KITCHEN_CTA_URL}>Speak with Made By Mobbs Landscapes</a>
 			</div>
 		</header>
+
+		<section class="media-section media-section--compact" aria-label={heroAlt}>
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src={heroImage}
+					alt={heroAlt}
+					width="800"
+					height="600"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
+		<section class="section section--intro" id="intro" aria-labelledby="intro-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="intro-heading" class="section__title">An outdoor kitchen is not just a BBQ bench</h2>
+				<p class="section__lead section__lead--tight">
+					A built-in grill on a slab is the visible part. What makes it work is gas and power routed before paving goes down, bench depth for prep, storage you will
+					actually use, cover that does not trap smoke, and paving falls that keep water off the house. Skip that thinking and you get a expensive BBQ bay that
+					nobody uses past the first summer.
+				</p>
+				<p class="section__lead section__lead--tight">
+					This guide walks through the decisions in the order they matter on site — not the order they appear in a catalogue.
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--guides" id="guides" aria-labelledby="guides-heading">
+			<div class="section__inner">
+				<h2 id="guides-heading" class="section__title">Start with the guide that matches your question</h2>
+				<p class="section__lead section__lead--tight">
+					Cost, layout, materials, appliances, cover and common mistakes — each page goes deep on one part of the build so you can compare quotes on similar scope.
+				</p>
+				<ul class="grid">
+					{outdoorKitchenHomepageGuides.map((guide) => (
+						<OutdoorKitchenGuideCard guide={guide} />
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--works" id="works" aria-labelledby="works-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="works-heading" class="section__title">What makes an outdoor kitchen actually work?</h2>
+				<ul class="factors">
+					<li>
+						<strong>Services in the right order</strong>
+						<span>Gas, power and drainage trenched while the ground is open — not cut through new paving because the kitchen moved two metres.</span>
+					</li>
+					<li>
+						<strong>Layout before stone</strong>
+						<span>Bench depth, fridge door swing, prep space beside the BBQ and clearances under cover fixed before cladding and benchtops are ordered.</span>
+					</li>
+					<li>
+						<strong>Materials that suit grease and weather</strong>
+						<span>Outdoor-rated cabinetry, sealed or low-porosity benchtops, and cladding details that do not trap water on horizontal ledges.</span>
+					</li>
+					<li>
+						<strong>Relationship to the house and seating</strong>
+						<span>Short trip from the pantry, guests facing the cook, lighting on the bench — kitchens at the back fence look good on paper and wear you out in practice.</span>
+					</li>
+					<li>
+						<strong>Cover with ventilation</strong>
+						<span>Shade and rain protection without a low ceiling that fills with smoke — open sides, hoods or higher roofs with thought about wind.</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--cities" aria-labelledby="cities-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cities-heading" class="section__title">Melbourne and Sydney considerations</h2>
+				<p class="section__lead section__lead--tight">
+					Both cities cook outdoors year-round when the layout suits the weather — but the details differ block by block more than city by city.
+				</p>
+				<ul class="bullets">
+					<li>
+						<strong>Melbourne:</strong> Cool evenings, wind shifts and four-season use mean lighting, partial cover and wind-aware BBQ orientation matter. Gas reticulation
+						is common; allow time for licensed connection and paving reinstatement.
+					</li>
+					<li>
+						<strong>Sydney:</strong> Heavier rain bursts and stronger sun push roofed cover and afternoon shade higher up the list. Coastal sites add salt air and wind —
+						material choice and extraction paths need extra thought.
+					</li>
+					<li>
+						<strong>Both:</strong> Council rules for roofed structures, boundary setbacks and gas compliance vary by municipality — check early, not after posts are in the
+						ground.
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--mistakes" aria-labelledby="mistakes-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="mistakes-heading" class="section__title">Where outdoor kitchens usually go wrong</h2>
+				<ul class="mistakes">
+					<li>
+						<strong>Planned after the backyard is finished</strong> — Services and slab work mean cutting new paving and patching falls.
+					</li>
+					<li>
+						<strong>Too far from the house</strong> — Long trenches, dark paths and carrying hot food across the lawn.
+					</li>
+					<li>
+						<strong>No prep bench or storage</strong> — A grill with nowhere to land a tray or store tongs gets abandoned.
+					</li>
+					<li>
+						<strong>Cover too low or too enclosed</strong> — Smoke stains ceilings and the cook stands in a grease haze.
+					</li>
+					<li>
+						<strong>Quotes compared on price, not scope</strong> — Gas, slab, cover and paving may be missing from the cheaper line item.
+					</li>
+				</ul>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/outdoor-kitchen-mistakes/">Read the full mistakes guide</a>
+				</p>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="contact"
+			headingId="cta-heading"
+			bridge="Layout, services and structure need to line up before stone goes on — otherwise every trade is fixing the last one's assumptions."
+			title="Planning an outdoor kitchen in Melbourne?"
+			description="Speak with Made By Mobbs Landscapes about layout, paving, cover and the services that sit underneath — as one coordinated outdoor build."
+			ctaHref={OUTDOOR_KITCHEN_CTA_URL}
+			ctaLabel="Speak with Made By Mobbs Landscapes"
+		/>
 	</div>
 	<Footer site={site} />
 </BaseLayout>
 
 <style>
 	.page {
-		background-color: var(--color-background);
+		overflow-x: clip;
 	}
 
 	.hero {
-		padding: clamp(2.5rem, 7vw, 4rem) clamp(1.25rem, 5vw, 3rem) clamp(2rem, 5vw, 3rem);
-		background: color-mix(in srgb, var(--color-accent) 40%, var(--color-background));
+		padding: clamp(1.6rem, 4.5vw, 3rem) clamp(1.25rem, 5vw, 3rem) clamp(1.35rem, 3.5vw, 2.35rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
 		border-bottom: 1px solid var(--color-border);
 	}
 
 	.hero__inner {
-		max-width: 42rem;
+		max-width: 40rem;
 		margin: 0 auto;
 		text-align: center;
 	}
 
 	.hero__eyebrow {
-		margin: 0 0 0.75rem;
+		margin: 0 0 0.45rem;
 		font-size: 0.8125rem;
-		font-weight: 600;
-		letter-spacing: 0.04em;
+		letter-spacing: 0.12em;
 		text-transform: uppercase;
-		color: color-mix(in srgb, var(--color-text) 55%, var(--color-background));
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
 	}
 
 	.hero__title {
-		margin: 0 0 1rem;
-		font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+		margin: 0 0 0.55rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
 		font-weight: 650;
 		line-height: 1.15;
 		letter-spacing: -0.02em;
@@ -67,9 +203,209 @@ const description =
 	}
 
 	.hero__sub {
-		margin: 0;
+		margin: 0 0 1.1rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+	}
+
+	.section--intro {
+		background-color: var(--color-white);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--guides {
+		background-color: var(--color-background);
+	}
+
+	.section--works {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--cities {
+		background-color: var(--color-background);
+	}
+
+	.section--mistakes {
+		background-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-background));
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__lead {
+		margin: 0 0 2rem;
 		font-size: 1.0625rem;
-		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.5rem;
+	}
+
+	.section__link-wrap {
+		margin: 1.5rem 0 0;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.25rem, 3vw, 1.75rem);
+	}
+
+	@media (min-width: 36rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 56rem) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.mistakes {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.mistakes li {
+		padding-left: 1rem;
+		border-left: 3px solid var(--color-accent);
+		font-size: 0.96875rem;
 		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.mistakes strong {
+		color: var(--color-text);
 	}
 </style>

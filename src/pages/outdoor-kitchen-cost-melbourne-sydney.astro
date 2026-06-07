@@ -1,0 +1,10 @@
+---
+import OutdoorKitchenGuidePage from '../templates/OutdoorKitchenGuidePage.astro';
+import { outdoorKitchenCostPage } from '../content/outdoorKitchen/pages/cost';
+import { sites } from '../config/sites';
+
+const site = sites.outdoorKitchen;
+const canonical = new URL(outdoorKitchenCostPage.canonical, `https://${site.domain}`).href;
+---
+
+<OutdoorKitchenGuidePage site={site} canonical={canonical} content={outdoorKitchenCostPage} />

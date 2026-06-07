@@ -64,7 +64,7 @@ const rootRedirects = [
 	{
 		source: '/',
 		has: [{ type: 'host', value: `www.${OUTDOOR_KITCHEN_DOMAIN}` }],
-		destination: `https://${OUTDOOR_KITCHEN_DOMAIN}${OUTDOOR_KITCHEN_HOME_PATH}`,
+		destination: OUTDOOR_KITCHEN_HOME_PATH,
 		permanent: false,
 	},
 ];
