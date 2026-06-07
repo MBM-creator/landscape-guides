@@ -27,6 +27,9 @@ type FutureSite = {
 
 export type SiteConfig = { key: SiteKey } & (LiveSite | FutureSite);
 
+// TODO: replace with final Made By Mobbs outdoor kitchen service page URL when available
+export const OUTDOOR_KITCHEN_CTA_URL = 'https://madebymobbs.com.au/';
+
 export const sites = {
 	paving: {
 		key: 'paving',
@@ -59,7 +62,10 @@ export const sites = {
 		key: 'outdoorKitchen',
 		name: 'Outdoor Kitchen Guide',
 		domain: 'outdoorkitchenguide.com.au',
-		status: 'future' as const,
+		alternateDomains: [],
+		primaryCta: 'Speak with Made By Mobbs Landscapes',
+		primaryCtaHref: OUTDOOR_KITCHEN_CTA_URL,
+		mainWebsiteUrl: 'https://madebymobbs.com.au',
 	},
 	poolSurrounds: {
 		key: 'poolSurrounds',
@@ -73,9 +79,20 @@ function normalizeHost(hostname: string): string {
 	return hostname.trim().toLowerCase().replace(/^www\./, '');
 }
 
+function hostsForSite(site: SiteConfig): Set<string> {
+	const hosts = new Set<string>();
+	const domains =
+		site.status === 'future' ? [site.domain] : [site.domain, ...('alternateDomains' in site ? site.alternateDomains : [])];
+	for (const d of domains) {
+		hosts.add(normalizeHost(d));
+		hosts.add(normalizeHost(`www.${d}`));
+	}
+	return hosts;
+}
+
 /**
  * Resolves the active site from the request hostname.
- * Localhost and paving domains map to paving; everything else defaults to paving until additional sites launch.
+ * Localhost maps to paving. Unknown hosts default to paving.
  */
 export function getSiteByHost(hostname: string): SiteConfig {
 	const host = normalizeHost(hostname);
@@ -83,13 +100,11 @@ export function getSiteByHost(hostname: string): SiteConfig {
 		return sites.paving;
 	}
 
-	const pavingHosts = new Set<string>();
-	for (const d of [sites.paving.domain, ...sites.paving.alternateDomains]) {
-		pavingHosts.add(normalizeHost(d));
-		pavingHosts.add(normalizeHost(`www.${d}`));
+	if (hostsForSite(sites.outdoorKitchen).has(host)) {
+		return sites.outdoorKitchen;
 	}
 
-	if (pavingHosts.has(host)) {
+	if (hostsForSite(sites.paving).has(host)) {
 		return sites.paving;
 	}
 

@@ -1,0 +1,1127 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"rewrites": [
+		{
+			"source": "/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "/outdoor-kitchen/"
+		},
+		{
+			"source": "/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "/outdoor-kitchen/"
+		}
+	],
+	"redirects": [
+		{
+			"source": "/outdoor-kitchen",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-cost-melbourne-sydney/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-cost-melbourne-sydney/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-design-guide/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-design-guide/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/bbq-appliance-planning/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/bbq-appliance-planning/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/covered-outdoor-kitchens/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/covered-outdoor-kitchens/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://outdoorkitchenguide.com.au/outdoor-kitchen-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-calculator",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-calculator/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-calculator/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-calculator/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/travertine-pool-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/travertine-pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/travertine-pool-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/travertine-pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/driveway-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/driveway-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/driveway-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/driveway-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/french-pattern-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/french-pattern-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/french-pattern-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/french-pattern-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/herringbone-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/herringbone-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/herringbone-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/herringbone-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/stretcher-bond-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/stretcher-bond-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/stretcher-bond-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/stretcher-bond-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-vs-french-pattern",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-vs-french-pattern/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-vs-french-pattern/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-vs-french-pattern/",
+			"permanent": true
+		},
+		{
+			"source": "/wet-bed-vs-concrete-base-paving",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/wet-bed-vs-concrete-base-paving/",
+			"permanent": true
+		},
+		{
+			"source": "/wet-bed-vs-concrete-base-paving/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/wet-bed-vs-concrete-base-paving/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-calculator",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-calculator/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-calculator/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-calculator/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/paving-cost-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/paving-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/travertine-pool-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/travertine-pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/travertine-pool-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/travertine-pool-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/driveway-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/driveway-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/driveway-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/driveway-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/french-pattern-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/french-pattern-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/french-pattern-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/french-pattern-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/herringbone-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/herringbone-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/herringbone-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/herringbone-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/stretcher-bond-paving-melbourne",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/stretcher-bond-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/stretcher-bond-paving-melbourne/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/stretcher-bond-paving-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-vs-french-pattern",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-vs-french-pattern/",
+			"permanent": true
+		},
+		{
+			"source": "/crazy-paving-vs-french-pattern/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/crazy-paving-vs-french-pattern/",
+			"permanent": true
+		},
+		{
+			"source": "/wet-bed-vs-concrete-base-paving",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/wet-bed-vs-concrete-base-paving/",
+			"permanent": true
+		},
+		{
+			"source": "/wet-bed-vs-concrete-base-paving/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://pavingguide.com.au/wet-bed-vs-concrete-base-paving/",
+			"permanent": true
+		}
+	]
+}

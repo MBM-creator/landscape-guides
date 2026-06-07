@@ -8,6 +8,11 @@ interface Props {
 
 const { site, variant = 'default' } = Astro.props;
 const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'primaryCtaHref' in site;
+
+const navLink =
+	site.key === 'outdoorKitchen'
+		? { href: '/outdoor-kitchen-cost-melbourne-sydney/', label: 'Cost Guide' }
+		: { href: '/paving-cost-melbourne', label: 'Cost Guide' };
 ---
 
 <header class:list={['site-header', variant === 'compact' && 'site-header--compact']} role="banner">
@@ -16,7 +21,7 @@ const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'prima
 		<div class="site-header__end">
 			{variant === 'default' ? (
 				<nav class="site-header__nav" aria-label="Site">
-					<a class="site-header__nav-link" href="/paving-cost-melbourne">Cost Guide</a>
+					<a class="site-header__nav-link" href={navLink.href}>{navLink.label}</a>
 				</nav>
 			) : null}
 			{

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { sites } from '../../config/sites';
+
+const site = sites.outdoorKitchen;
+
+/** Canonical is the public homepage URL, not the internal /outdoor-kitchen/ build path. */
+const canonical = `https://${site.domain}/`;
+
+const title = 'Outdoor Kitchen Guide | Made By Mobbs Landscapes';
+const description =
+	'A practical guide to planning an outdoor kitchen in Melbourne or Sydney — costs, layouts, materials, appliances and the mistakes worth avoiding.';
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Routing test · Outdoor Kitchen Guide</p>
+				<h1 class="hero__title">Outdoor Kitchen Guide</h1>
+				<p class="hero__sub">
+					If you are reading this on <strong>outdoorkitchenguide.com.au/</strong>, host-conditioned routing is working. Full homepage content will replace
+					this stub after routing is confirmed on a deployed Vercel preview.
+				</p>
+			</div>
+		</header>
+	</div>
+	<Footer site={site} />
+</BaseLayout>
+
+<style>
+	.page {
+		background-color: var(--color-background);
+	}
+
+	.hero {
+		padding: clamp(2.5rem, 7vw, 4rem) clamp(1.25rem, 5vw, 3rem) clamp(2rem, 5vw, 3rem);
+		background: color-mix(in srgb, var(--color-accent) 40%, var(--color-background));
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 42rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.75rem;
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 55%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 1rem;
+		font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0;
+		font-size: 1.0625rem;
+		line-height: 1.6;
+		color: color-mix(in srgb, var(--color-text) 78%, var(--color-background));
+	}
+</style>
