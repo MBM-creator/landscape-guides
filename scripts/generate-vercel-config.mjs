@@ -1,7 +1,7 @@
 /**
- * Generates vercel.json host redirects and cross-domain redirects from micrositeRoutes.ts.
- * Root `/` on the outdoor kitchen domain uses redirects (not rewrites) because Vercel
- * serves filesystem routes before rewrites and src/pages/index.astro is the paving home.
+ * Generates vercel.json host rewrites/redirects from micrositeRoutes.ts.
+ * Root `/` on the outdoor kitchen domain uses beforeFiles rewrites so the apex URL
+ * returns 200 (serves /outdoor-kitchen/ content) while paving index.astro stays at `/`.
  * Run: node scripts/generate-vercel-config.mjs
  */
 import { writeFileSync } from 'node:fs';
@@ -53,23 +53,34 @@ function stripTrailingSlash(path) {
 	return path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 }
 
-/** Root redirects must precede cross-domain rules. Temporary (307) while routing is verified. */
-const rootRedirects = [
+/** beforeFiles rewrites run before filesystem — OK apex serves outdoor kitchen home as 200. */
+const rootRewrites = [
 	{
 		source: '/',
 		has: [{ type: 'host', value: OUTDOOR_KITCHEN_DOMAIN }],
 		destination: OUTDOOR_KITCHEN_HOME_PATH,
-		permanent: false,
 	},
 	{
 		source: '/',
 		has: [{ type: 'host', value: `www.${OUTDOOR_KITCHEN_DOMAIN}` }],
 		destination: OUTDOOR_KITCHEN_HOME_PATH,
-		permanent: false,
 	},
 ];
 
-const redirects = [...rootRedirects];
+/** Canonicalise build path to apex homepage on the outdoor kitchen domain. */
+const outdoorKitchenHomeCanonicalRedirects = [];
+for (const host of OUTDOOR_KITCHEN_HOSTS) {
+	for (const source of ['/outdoor-kitchen', '/outdoor-kitchen/']) {
+		outdoorKitchenHomeCanonicalRedirects.push({
+			source,
+			has: [{ type: 'host', value: host }],
+			destination: '/',
+			permanent: true,
+		});
+	}
+}
+
+const redirects = [...outdoorKitchenHomeCanonicalRedirects];
 
 for (const host of PAVING_HOSTS) {
 	redirects.push({
@@ -122,8 +133,13 @@ for (const host of OUTDOOR_KITCHEN_HOSTS) {
 
 const vercelConfig = {
 	$schema: 'https://openapi.vercel.sh/vercel.json',
+	rewrites: {
+		beforeFiles: rootRewrites,
+	},
 	redirects,
 };
 
 writeFileSync(join(root, 'vercel.json'), `${JSON.stringify(vercelConfig, null, '\t')}\n`);
-console.log(`Wrote vercel.json (${rootRedirects.length} root redirects, ${redirects.length} redirects total)`);
+console.log(
+	`Wrote vercel.json (${rootRewrites.length} root rewrites, ${redirects.length} redirects total)`,
+);

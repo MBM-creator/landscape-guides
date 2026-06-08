@@ -1,27 +1,73 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"rewrites": {
+		"beforeFiles": [
+			{
+				"source": "/",
+				"has": [
+					{
+						"type": "host",
+						"value": "outdoorkitchenguide.com.au"
+					}
+				],
+				"destination": "/outdoor-kitchen/"
+			},
+			{
+				"source": "/",
+				"has": [
+					{
+						"type": "host",
+						"value": "www.outdoorkitchenguide.com.au"
+					}
+				],
+				"destination": "/outdoor-kitchen/"
+			}
+		]
+	},
 	"redirects": [
 		{
-			"source": "/",
+			"source": "/outdoor-kitchen",
 			"has": [
 				{
 					"type": "host",
 					"value": "outdoorkitchenguide.com.au"
 				}
 			],
-			"destination": "/outdoor-kitchen/",
-			"permanent": false
+			"destination": "/",
+			"permanent": true
 		},
 		{
-			"source": "/",
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen",
 			"has": [
 				{
 					"type": "host",
 					"value": "www.outdoorkitchenguide.com.au"
 				}
 			],
-			"destination": "/outdoor-kitchen/",
-			"permanent": false
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/outdoor-kitchen/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "/",
+			"permanent": true
 		},
 		{
 			"source": "/outdoor-kitchen",
