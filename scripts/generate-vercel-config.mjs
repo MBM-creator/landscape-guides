@@ -1,7 +1,7 @@
 /**
- * Generates vercel.json host rewrites/redirects from micrositeRoutes.ts.
- * Root `/` on the outdoor kitchen domain uses beforeFiles rewrites so the apex URL
- * returns 200 (serves /outdoor-kitchen/ content) while paving index.astro stays at `/`.
+ * Generates vercel.json host routes/redirects from micrositeRoutes.ts.
+ * Root `/` on the outdoor kitchen domain uses routes (processed before filesystem)
+ * so the apex URL returns 200 while paving index.astro stays at `/` on paving hosts.
  * Run: node scripts/generate-vercel-config.mjs
  */
 import { writeFileSync } from 'node:fs';
@@ -53,17 +53,17 @@ function stripTrailingSlash(path) {
 	return path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 }
 
-/** beforeFiles rewrites run before filesystem — OK apex serves outdoor kitchen home as 200. */
-const rootRewrites = [
+/** Routes run before filesystem — OK apex serves outdoor kitchen home as 200. */
+const rootRoutes = [
 	{
-		source: '/',
+		src: '^/$',
 		has: [{ type: 'host', value: OUTDOOR_KITCHEN_DOMAIN }],
-		destination: OUTDOOR_KITCHEN_HOME_PATH,
+		dest: OUTDOOR_KITCHEN_HOME_PATH,
 	},
 	{
-		source: '/',
+		src: '^/$',
 		has: [{ type: 'host', value: `www.${OUTDOOR_KITCHEN_DOMAIN}` }],
-		destination: OUTDOOR_KITCHEN_HOME_PATH,
+		dest: OUTDOOR_KITCHEN_HOME_PATH,
 	},
 ];
 
@@ -133,13 +133,9 @@ for (const host of OUTDOOR_KITCHEN_HOSTS) {
 
 const vercelConfig = {
 	$schema: 'https://openapi.vercel.sh/vercel.json',
-	rewrites: {
-		beforeFiles: rootRewrites,
-	},
+	routes: rootRoutes,
 	redirects,
 };
 
 writeFileSync(join(root, 'vercel.json'), `${JSON.stringify(vercelConfig, null, '\t')}\n`);
-console.log(
-	`Wrote vercel.json (${rootRewrites.length} root rewrites, ${redirects.length} redirects total)`,
-);
+console.log(`Wrote vercel.json (${rootRoutes.length} root routes, ${redirects.length} redirects total)`);

@@ -1,29 +1,27 @@
 {
 	"$schema": "https://openapi.vercel.sh/vercel.json",
-	"rewrites": {
-		"beforeFiles": [
-			{
-				"source": "/",
-				"has": [
-					{
-						"type": "host",
-						"value": "outdoorkitchenguide.com.au"
-					}
-				],
-				"destination": "/outdoor-kitchen/"
-			},
-			{
-				"source": "/",
-				"has": [
-					{
-						"type": "host",
-						"value": "www.outdoorkitchenguide.com.au"
-					}
-				],
-				"destination": "/outdoor-kitchen/"
-			}
-		]
-	},
+	"routes": [
+		{
+			"src": "^/$",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"dest": "/outdoor-kitchen/"
+		},
+		{
+			"src": "^/$",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"dest": "/outdoor-kitchen/"
+		}
+	],
 	"redirects": [
 		{
 			"source": "/outdoor-kitchen",
