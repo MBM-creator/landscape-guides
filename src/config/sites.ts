@@ -27,8 +27,10 @@ type FutureSite = {
 
 export type SiteConfig = { key: SiteKey } & (LiveSite | FutureSite);
 
-// TODO: replace with final Made By Mobbs outdoor kitchen service page URL when available
-export const OUTDOOR_KITCHEN_CTA_URL = 'https://madebymobbs.com.au/';
+export const OUTDOOR_KITCHEN_CTA_URL = 'https://madebymobbs.com.au/outdoor-kitchen-design-melbourne/';
+
+// TODO: point at the dedicated Made By Mobbs decking service page once it exists.
+export const DECK_CTA_URL = 'https://madebymobbs.com.au';
 
 export const sites = {
 	paving: {
@@ -44,7 +46,10 @@ export const sites = {
 		key: 'decking',
 		name: 'Deck Cost Guide',
 		domain: 'deckcostguide.com.au',
-		status: 'future' as const,
+		alternateDomains: [],
+		primaryCta: 'Speak with Made By Mobbs Landscapes',
+		primaryCtaHref: DECK_CTA_URL,
+		mainWebsiteUrl: 'https://madebymobbs.com.au',
 	},
 	irrigation: {
 		key: 'irrigation',
@@ -102,6 +107,10 @@ export function getSiteByHost(hostname: string): SiteConfig {
 
 	if (hostsForSite(sites.outdoorKitchen).has(host)) {
 		return sites.outdoorKitchen;
+	}
+
+	if (hostsForSite(sites.decking).has(host)) {
+		return sites.decking;
 	}
 
 	if (hostsForSite(sites.paving).has(host)) {

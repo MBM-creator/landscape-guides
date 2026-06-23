@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTASection from '../../components/CTASection.astro';
+import { sites } from '../../config/sites';
+
+const site = sites.decking;
+
+/** Canonical is the public homepage URL, not the internal /deck/ build path. */
+const canonical = `https://${site.domain}/`;
+
+const title = 'Deck Cost Guide | Made By Mobbs Landscapes';
+const description =
+	'A practical guide to what a new deck really costs in Melbourne — materials, structure, site factors and how to compare quotes on the same scope.';
+---
+
+<BaseLayout title={title} description={description} site={site} canonical={canonical}>
+	<Header site={site} />
+	<div class="page">
+		<header class="hero" id="top">
+			<div class="hero__inner">
+				<p class="hero__eyebrow">Made By Mobbs · deck cost planning</p>
+				<h1 class="hero__title">Deck Cost Guide</h1>
+				<p class="hero__sub">
+					What a new deck actually costs in Melbourne — the materials, structure and site factors that move a quote, and how to compare builders on the same scope.
+				</p>
+				<a class="btn btn--primary" href={site.primaryCtaHref}>{site.primaryCta}</a>
+			</div>
+		</header>
+
+		<section class="section section--intro" aria-labelledby="intro-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="intro-heading" class="section__title">A deck price is mostly structure, not boards</h2>
+				<p class="section__lead section__lead--tight">
+					The decking you can see is the cheap part. Footings, bearers, joists, height off the ground, ground conditions and access usually decide the number long
+					before you choose a board. This guide walks through those decisions so you can read a quote properly.
+				</p>
+				<p class="section__lead section__lead--tight">
+					Start with the cost guide below, then talk to a builder about your specific site.
+				</p>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/decking-cost-melbourne/">Read the Melbourne deck cost guide</a>
+				</p>
+			</div>
+		</section>
+
+		<CTASection
+			sectionId="contact"
+			headingId="cta-heading"
+			bridge="Structure, height and site access set the price before boards are chosen — get those right and quotes start comparing fairly."
+			title="Planning a new deck in Melbourne?"
+			description="Speak with Made By Mobbs Landscapes about deck structure, materials and how it ties into the rest of the backyard."
+			ctaHref={site.primaryCtaHref}
+			ctaLabel={site.primaryCta}
+		/>
+	</div>
+	<Footer site={site} />
+</BaseLayout>
+
+<style>
+	.page {
+		overflow-x: clip;
+	}
+
+	.hero {
+		padding: clamp(1.6rem, 4.5vw, 3rem) clamp(1.25rem, 5vw, 3rem) clamp(1.35rem, 3.5vw, 2.35rem);
+		background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.hero__inner {
+		max-width: 40rem;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.hero__eyebrow {
+		margin: 0 0 0.45rem;
+		font-size: 0.8125rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: color-mix(in srgb, var(--color-text) 58%, var(--color-background));
+	}
+
+	.hero__title {
+		margin: 0 0 0.55rem;
+		font-size: clamp(1.875rem, 5vw, 2.75rem);
+		font-weight: 650;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.hero__sub {
+		margin: 0 0 1.1rem;
+		font-size: clamp(1.0625rem, 2.5vw, 1.1875rem);
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid transparent;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.btn--primary {
+		background-color: var(--color-primary-dark);
+		color: var(--color-white);
+		border-color: var(--color-primary-dark);
+	}
+
+	.btn--primary:hover {
+		background-color: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+
+	.btn--primary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.section {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+	}
+
+	.section--intro {
+		background-color: var(--color-white);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.section__inner--narrow {
+		max-width: 38rem;
+	}
+
+	.section__title {
+		margin: 0 0 0.75rem;
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+	}
+
+	.section__lead {
+		margin: 0 0 2rem;
+		font-size: 1.0625rem;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+		line-height: 1.55;
+		max-width: 36rem;
+	}
+
+	.section__lead--tight {
+		margin-bottom: 1.5rem;
+	}
+
+	.section__link-wrap {
+		margin: 1.5rem 0 0;
+	}
+
+	.hero__secondary {
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.hero__secondary:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.hero__secondary:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+</style>

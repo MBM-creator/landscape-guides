@@ -3,3 +3,4 @@ Allow: /
 
 Sitemap: https://pavingguide.com.au/sitemap.xml
 Sitemap: https://outdoorkitchenguide.com.au/sitemap-outdoor-kitchen.xml
+Sitemap: https://deckcostguide.com.au/sitemap-deck.xml

@@ -12,7 +12,9 @@ const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'prima
 const navLink =
 	site.key === 'outdoorKitchen'
 		? { href: '/outdoor-kitchen-cost-melbourne-sydney/', label: 'Cost Guide' }
-		: { href: '/paving-cost-melbourne', label: 'Cost Guide' };
+		: site.key === 'decking'
+			? { href: '/decking-cost-melbourne/', label: 'Cost Guide' }
+			: { href: '/paving-cost-melbourne', label: 'Cost Guide' };
 ---
 
 <header class:list={['site-header', variant === 'compact' && 'site-header--compact']} role="banner">

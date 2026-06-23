@@ -16,6 +16,7 @@ const { site, extraLinks = [], hidePavingCostMelbourneLink = false, hideDriveway
 const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.mainWebsiteUrl : null;
 
 const isOutdoorKitchen = site.key === 'outdoorKitchen';
+const isDecking = site.key === 'decking';
 
 const outdoorKitchenLinks = [
 	{ href: '/outdoor-kitchen-cost-melbourne-sydney/', label: 'Outdoor Kitchen Costs' },
@@ -25,6 +26,8 @@ const outdoorKitchenLinks = [
 	{ href: '/covered-outdoor-kitchens/', label: 'Covered Kitchens' },
 	{ href: '/outdoor-kitchen-mistakes/', label: 'Mistakes to Avoid' },
 ] as const;
+
+const deckingLinks = [{ href: '/decking-cost-melbourne/', label: 'Decking Cost Melbourne' }] as const;
 ---
 
 <footer class="site-footer">
@@ -48,6 +51,15 @@ const outdoorKitchenLinks = [
 				outdoorKitchenLinks.map((link) => (
 					<span class="site-footer__link-cluster">
 						<span class="site-footer__sep" aria-hidden="true"> · </span>
+						<a class="site-footer__link" href={link.href}>
+							{link.label}
+						</a>
+					</span>
+				))
+			) : isDecking ? (
+				deckingLinks.map((link) => (
+					<span class="site-footer__link-cluster">
+						{mainUrl ? <span class="site-footer__sep" aria-hidden="true"> · </span> : null}
 						<a class="site-footer__link" href={link.href}>
 							{link.label}
 						</a>

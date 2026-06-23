@@ -6,6 +6,7 @@
 export const PAVING_DOMAIN = 'pavingguide.com.au';
 export const PAVING_ALTERNATE_DOMAIN = 'pavingcostguide.com.au';
 export const OUTDOOR_KITCHEN_DOMAIN = 'outdoorkitchenguide.com.au';
+export const DECK_DOMAIN = 'deckcostguide.com.au';
 
 /** Hostnames that serve the paving microsite (apex + www + alternate). */
 export const PAVING_HOSTS = [
@@ -30,6 +31,15 @@ export const OUTDOOR_KITCHEN_GUIDE_PATHS = [
 	'/covered-outdoor-kitchens/',
 	'/outdoor-kitchen-mistakes/',
 ] as const;
+
+/** Hostnames that serve the deck cost guide microsite. */
+export const DECK_HOSTS = [DECK_DOMAIN, `www.${DECK_DOMAIN}`] as const;
+
+/** Internal build path for the deck cost guide homepage (rewrite target from `/` on deck domain). */
+export const DECK_HOME_PATH = '/deck/';
+
+/** Public deck cost guide paths (excluding homepage). */
+export const DECK_GUIDE_PATHS = ['/decking-cost-melbourne/'] as const;
 
 /** Existing paving routes that should redirect away from the outdoor kitchen domain. */
 export const PAVING_GUIDE_PATHS = [
