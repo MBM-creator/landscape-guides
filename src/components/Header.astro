@@ -1,5 +1,6 @@
 ---
 import type { SiteConfig } from '../config/sites';
+import { getSiteHomePath, getSiteNavLinks } from '../config/siteNav';
 
 interface Props {
 	site: SiteConfig;
@@ -8,6 +9,9 @@ interface Props {
 
 const { site, variant = 'default' } = Astro.props;
 const hasPrimaryCta = site.status !== 'future' && 'primaryCta' in site && 'primaryCtaHref' in site;
+const homeHref = getSiteHomePath(site.key);
+const siteNavLinks = getSiteNavLinks(site.key);
+const menuId = `site-nav-menu-${site.key}`;
 
 const navLink =
 	site.key === 'outdoorKitchen'
@@ -19,13 +23,50 @@ const navLink =
 
 <header class:list={['site-header', variant === 'compact' && 'site-header--compact']} role="banner">
 	<div class="site-header__inner">
-		<a class="site-header__brand" href="/">{site.name}</a>
+		<a class="site-header__brand" href={homeHref}>{site.name}</a>
 		<div class="site-header__end">
-			{variant === 'default' ? (
-				<nav class="site-header__nav" aria-label="Site">
-					<a class="site-header__nav-link" href={navLink.href}>{navLink.label}</a>
-				</nav>
-			) : null}
+			{
+				variant === 'default' && siteNavLinks ? (
+					<div class="site-header__menu">
+						<button
+							type="button"
+							class="site-header__menu-toggle"
+							aria-expanded="false"
+							aria-controls={menuId}
+							aria-label="Open site menu"
+						>
+							<span class="site-header__menu-icon" aria-hidden="true">
+								<span />
+								<span />
+								<span />
+							</span>
+							<span class="site-header__menu-label">Menu</span>
+						</button>
+						<nav class="site-header__menu-panel" id={menuId} aria-label="Site sections" hidden>
+							<ul class="site-header__menu-list">
+								<li>
+									<a class="site-header__menu-link site-header__menu-link--home" href={homeHref}>
+										{site.name} home
+									</a>
+								</li>
+								{
+									siteNavLinks.map((link) => (
+										<li>
+											<a class="site-header__menu-link" href={link.href}>
+												{link.label}
+											</a>
+										</li>
+									))
+								}
+							</ul>
+						</nav>
+					</div>
+				) : variant === 'default' ? (
+					<nav class="site-header__nav" aria-label="Site">
+						<a class="site-header__nav-link" href={navLink.href}>{navLink.label}</a>
+					</nav>
+				) : null
+			}
 			{
 				hasPrimaryCta && variant === 'default' ? (
 					<a class="site-header__cta" href={site.primaryCtaHref}>
@@ -36,6 +77,56 @@ const navLink =
 		</div>
 	</div>
 </header>
+
+<script>
+	function initSiteHeaderMenus() {
+		document.querySelectorAll('.site-header__menu').forEach((menuRoot) => {
+			const toggle = menuRoot.querySelector('.site-header__menu-toggle');
+			const panel = menuRoot.querySelector('.site-header__menu-panel');
+			if (!(toggle instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) return;
+
+			const closeMenu = () => {
+				panel.hidden = true;
+				toggle.setAttribute('aria-expanded', 'false');
+				toggle.setAttribute('aria-label', 'Open site menu');
+			};
+
+			const openMenu = () => {
+				panel.hidden = false;
+				toggle.setAttribute('aria-expanded', 'true');
+				toggle.setAttribute('aria-label', 'Close site menu');
+			};
+
+			toggle.addEventListener('click', () => {
+				const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+				if (isOpen) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			});
+
+			panel.querySelectorAll('a').forEach((link) => {
+				link.addEventListener('click', closeMenu);
+			});
+
+			document.addEventListener('click', (event) => {
+				if (!menuRoot.contains(event.target as Node)) {
+					closeMenu();
+				}
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape') {
+					closeMenu();
+				}
+			});
+		});
+	}
+
+	initSiteHeaderMenus();
+	document.addEventListener('astro:page-load', initSiteHeaderMenus);
+</script>
 
 <style>
 	.site-header {
@@ -94,6 +185,117 @@ const navLink =
 		border-radius: 2px;
 	}
 
+	.site-header__menu {
+		position: relative;
+	}
+
+	.site-header__menu-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.45rem 0.75rem;
+		font: inherit;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+		background-color: var(--color-white);
+		border: 1px solid var(--color-border);
+		border-radius: 6px;
+		cursor: pointer;
+		transition:
+			border-color 0.15s ease,
+			color 0.15s ease,
+			background-color 0.15s ease;
+	}
+
+	.site-header__menu-toggle:hover {
+		color: var(--color-primary-dark);
+		border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+	}
+
+	.site-header__menu-toggle:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+	}
+
+	.site-header__menu-toggle[aria-expanded='true'] {
+		color: var(--color-primary-dark);
+		border-color: var(--color-primary);
+		background-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-white));
+	}
+
+	.site-header__menu-icon {
+		display: inline-flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 3px;
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.site-header__menu-icon span {
+		display: block;
+		height: 2px;
+		border-radius: 1px;
+		background-color: currentColor;
+	}
+
+	.site-header__menu-label {
+		line-height: 1;
+	}
+
+	.site-header__menu-panel {
+		position: absolute;
+		top: calc(100% + 0.45rem);
+		right: 0;
+		z-index: 20;
+		min-width: min(18rem, calc(100vw - 2.5rem));
+		padding: 0.5rem;
+		background-color: var(--color-white);
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		box-shadow: 0 10px 28px color-mix(in srgb, var(--color-text) 12%, transparent);
+	}
+
+	.site-header__menu-panel[hidden] {
+		display: none;
+	}
+
+	.site-header__menu-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.site-header__menu-link {
+		display: block;
+		padding: 0.65rem 0.75rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+		text-decoration: none;
+		border-radius: 6px;
+		transition:
+			background-color 0.15s ease,
+			color 0.15s ease;
+	}
+
+	.site-header__menu-link:hover {
+		color: var(--color-primary-dark);
+		background-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-white));
+	}
+
+	.site-header__menu-link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 2px;
+	}
+
+	.site-header__menu-link--home {
+		border-bottom: 1px solid var(--color-border);
+		margin-bottom: 0.25rem;
+		border-radius: 6px 6px 0 0;
+	}
+
 	.site-header__brand {
 		font-size: 1rem;
 		font-weight: 650;
@@ -137,5 +339,23 @@ const navLink =
 	.site-header__cta:focus-visible {
 		outline: 2px solid var(--color-primary-dark);
 		outline-offset: 3px;
+	}
+
+	@media (max-width: 640px) {
+		.site-header__end {
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.site-header__cta {
+			flex: 1 1 auto;
+			text-align: center;
+		}
+
+		.site-header__menu-panel {
+			left: 0;
+			right: 0;
+			min-width: 0;
+		}
 	}
 </style>

@@ -1,5 +1,6 @@
 ---
 import type { SiteConfig } from '../config/sites';
+import { DECK_NAV_LINKS, OUTDOOR_KITCHEN_NAV_LINKS } from '../config/siteNav';
 
 interface Props {
 	site: SiteConfig;
@@ -18,22 +19,8 @@ const mainUrl = site.status !== 'future' && 'mainWebsiteUrl' in site ? site.main
 const isOutdoorKitchen = site.key === 'outdoorKitchen';
 const isDecking = site.key === 'decking';
 
-const outdoorKitchenLinks = [
-	{ href: '/outdoor-kitchen-cost-melbourne-sydney/', label: 'Outdoor Kitchen Costs' },
-	{ href: '/outdoor-kitchen-design-guide/', label: 'Design Guide' },
-	{ href: '/outdoor-kitchen-materials/', label: 'Materials' },
-	{ href: '/bbq-appliance-planning/', label: 'BBQ & Appliances' },
-	{ href: '/covered-outdoor-kitchens/', label: 'Covered Kitchens' },
-	{ href: '/outdoor-kitchen-mistakes/', label: 'Mistakes to Avoid' },
-] as const;
-
-const deckingLinks = [
-	{ href: '/decking-cost-melbourne/', label: 'Decking Cost Melbourne' },
-	{ href: '/timber-decking-cost/', label: 'Timber Decking Cost' },
-	{ href: '/decking-materials/', label: 'Decking Materials' },
-	{ href: '/pool-decking-cost/', label: 'Pool Decking Cost' },
-	{ href: '/decking-mistakes/', label: 'Common Deck Mistakes' },
-] as const;
+const outdoorKitchenLinks = OUTDOOR_KITCHEN_NAV_LINKS;
+const deckingLinks = DECK_NAV_LINKS;
 ---
 
 <footer class="site-footer">
