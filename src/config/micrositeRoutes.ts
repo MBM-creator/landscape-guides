@@ -39,7 +39,13 @@ export const DECK_HOSTS = [DECK_DOMAIN, `www.${DECK_DOMAIN}`] as const;
 export const DECK_HOME_PATH = '/deck/';
 
 /** Public deck cost guide paths (excluding homepage). */
-export const DECK_GUIDE_PATHS = ['/decking-cost-melbourne/'] as const;
+export const DECK_GUIDE_PATHS = [
+	'/decking-cost-melbourne/',
+	'/timber-decking-cost/',
+	'/decking-materials/',
+	'/pool-decking-cost/',
+	'/decking-mistakes/',
+] as const;
 
 /** Existing paving routes that should redirect away from the outdoor kitchen domain. */
 export const PAVING_GUIDE_PATHS = [

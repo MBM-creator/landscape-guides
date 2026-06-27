@@ -1,0 +1,177 @@
+---
+interface GuideCard {
+	href: string;
+	title: string;
+	description: string;
+}
+
+interface Props {
+	excludeHref?: string;
+	heading?: string;
+	guidesOverride?: readonly GuideCard[];
+}
+
+const { excludeHref = '', heading = 'More reading', guidesOverride } = Astro.props;
+
+const normalize = (path: string) => path.replace(/\/$/, '') || '/';
+
+const allGuides: GuideCard[] = [
+	{
+		href: '/decking-cost-melbourne/',
+		title: 'Decking cost in Melbourne',
+		description: 'The size, height, access and structure factors that move a deck quote — and why quotes vary so much.',
+	},
+	{
+		href: '/timber-decking-cost/',
+		title: 'What drives timber decking cost',
+		description: 'Species, board profile, fixings, finishing and the long-term cost of choosing on price alone.',
+	},
+	{
+		href: '/decking-materials/',
+		title: 'Decking materials compared',
+		description: 'Merbau, spotted gum, blackbutt, treated pine framing and composite — how each suits Melbourne.',
+	},
+	{
+		href: '/pool-decking-cost/',
+		title: 'Pool decking cost',
+		description: 'Wet-area detailing, slip, drainage and coping transitions — why pool decks cost more than alfresco.',
+	},
+	{
+		href: '/decking-mistakes/',
+		title: 'Common deck mistakes',
+		description: 'Ventilation, drainage, subframes and fixings — the errors that shorten a deck’s life.',
+	},
+];
+
+const guides = guidesOverride?.length ? [...guidesOverride] : allGuides.filter((g) => normalize(g.href) !== normalize(excludeHref));
+---
+
+<section class="related" aria-labelledby="related-guides-heading">
+	<div class="related__inner">
+		<h2 id="related-guides-heading" class="related__title">{heading}</h2>
+		<ul class="related__grid" role="list">
+			{
+				guides.map((guide) => (
+					<li class="related__item">
+						<article class="related-card">
+							<h3 class="related-card__heading">{guide.title}</h3>
+							<p class="related-card__text">{guide.description}</p>
+							<a class="related-card__link" href={guide.href}>
+								Read guide
+								<span class="visually-hidden">: {guide.title}</span>
+							</a>
+						</article>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.related {
+		padding: clamp(2.75rem, 7vw, 4.5rem) clamp(1.25rem, 5vw, 3rem);
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.related__inner {
+		max-width: 72rem;
+		margin: 0 auto;
+	}
+
+	.related__title {
+		margin: 0 0 clamp(1.25rem, 4vw, 1.75rem);
+		font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		color: var(--color-text);
+		text-align: center;
+	}
+
+	.related__grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1rem, 3vw, 1.35rem);
+	}
+
+	@media (min-width: 48rem) {
+		.related__grid {
+			grid-template-columns: repeat(2, 1fr);
+			align-items: stretch;
+		}
+	}
+
+	.related__item {
+		margin: 0;
+	}
+
+	.related-card {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+		padding: 1.25rem 1.35rem 1.35rem;
+		border: 1px solid var(--color-border);
+		border-radius: 8px;
+		background: color-mix(in srgb, var(--color-accent) 35%, var(--color-white));
+		box-shadow: 0 1px 0 color-mix(in srgb, var(--color-text) 5%, transparent);
+	}
+
+	.related-card__heading {
+		margin: 0;
+		font-size: 1.125rem;
+		font-weight: 650;
+		line-height: 1.3;
+		letter-spacing: -0.015em;
+		color: var(--color-text);
+	}
+
+	.related-card__text {
+		margin: 0;
+		flex: 1 1 auto;
+		font-size: 0.96875rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 76%, var(--color-background));
+	}
+
+	.related-card__link {
+		align-self: flex-start;
+		margin-top: 0.15rem;
+		font-size: 0.9375rem;
+		font-weight: 600;
+		color: var(--color-primary-dark);
+		text-decoration: none;
+		border-bottom: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent);
+		transition:
+			color 0.15s ease,
+			border-color 0.15s ease;
+	}
+
+	.related-card__link:hover {
+		color: var(--color-primary);
+		border-bottom-color: var(--color-primary);
+	}
+
+	.related-card__link:focus-visible {
+		outline: 2px solid var(--color-primary-dark);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+</style>

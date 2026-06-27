@@ -1276,6 +1276,94 @@
 			"permanent": true
 		},
 		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
 			"source": "/deck",
 			"has": [
 				{
@@ -1317,6 +1405,94 @@
 				}
 			],
 			"destination": "https://deckcostguide.com.au/decking-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
 			"permanent": true
 		},
 		{
@@ -1364,6 +1540,94 @@
 			"permanent": true
 		},
 		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
 			"source": "/deck",
 			"has": [
 				{
@@ -1408,6 +1672,94 @@
 			"permanent": true
 		},
 		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.pavingcostguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
 			"source": "/deck",
 			"has": [
 				{
@@ -1452,6 +1804,94 @@
 			"permanent": true
 		},
 		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
 			"source": "/deck",
 			"has": [
 				{
@@ -1493,6 +1933,94 @@
 				}
 			],
 			"destination": "https://deckcostguide.com.au/decking-cost-melbourne/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/timber-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/timber-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-materials/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-materials/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/pool-decking-cost/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/pool-decking-cost/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
+			"permanent": true
+		},
+		{
+			"source": "/decking-mistakes/",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.outdoorkitchenguide.com.au"
+				}
+			],
+			"destination": "https://deckcostguide.com.au/decking-mistakes/",
 			"permanent": true
 		},
 		{

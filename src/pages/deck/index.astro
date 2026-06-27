@@ -2,8 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import DeckGuideCard from '../../components/DeckGuideCard.astro';
 import CTASection from '../../components/CTASection.astro';
-import { sites } from '../../config/sites';
+import { sites, DECK_CTA_URL } from '../../config/sites';
+import { deckHomepageGuides } from '../../content/decking/guides';
+import { DECK_PLACEHOLDER_HERO } from '../../content/decking/placeholders';
+import { deckCostBands } from '../../content/decking/costBands';
 
 const site = sites.decking;
 
@@ -12,7 +16,11 @@ const canonical = `https://${site.domain}/`;
 
 const title = 'Deck Cost Guide | Made By Mobbs Landscapes';
 const description =
-	'A practical guide to what a new deck really costs in Melbourne — materials, structure, site factors and how to compare quotes on the same scope.';
+	'A plain-English guide to what a deck really costs in Melbourne — what affects the price, why quotes vary, the mistakes worth avoiding, and how to choose a deck that lasts.';
+
+// TODO(images): replace with a dedicated finished natural-timber deck hero photo.
+const heroImage = DECK_PLACEHOLDER_HERO;
+const heroAlt = 'Placeholder: finished timber alfresco deck (photo to follow)';
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
@@ -20,38 +28,216 @@ const description =
 	<div class="page">
 		<header class="hero" id="top">
 			<div class="hero__inner">
-				<p class="hero__eyebrow">Made By Mobbs · deck cost planning</p>
+				<p class="hero__eyebrow">Made By Mobbs · planning a deck</p>
 				<h1 class="hero__title">Deck Cost Guide</h1>
 				<p class="hero__sub">
-					What a new deck actually costs in Melbourne — the materials, structure and site factors that move a quote, and how to compare builders on the same scope.
+					A plain-English guide to what a deck actually costs in Melbourne — what moves the price, why two quotes for the “same” deck can be miles apart, and how to
+					pick a build that is still solid in ten years rather than the one that was cheapest to put down.
 				</p>
-				<a class="btn btn--primary" href={site.primaryCtaHref}>{site.primaryCta}</a>
+				<a class="btn btn--primary" href={DECK_CTA_URL}>{site.primaryCta}</a>
 			</div>
 		</header>
 
-		<section class="section section--intro" aria-labelledby="intro-heading">
+		<section class="media-section media-section--compact" aria-label={heroAlt}>
+			<div class="media-section__inner">
+				<img
+					class="media-section__img"
+					src={heroImage}
+					alt={heroAlt}
+					width="800"
+					height="600"
+					loading="eager"
+					decoding="async"
+					fetchpriority="high"
+				/>
+			</div>
+		</section>
+
+		<section class="section section--intro" id="intro" aria-labelledby="intro-heading">
 			<div class="section__inner section__inner--narrow">
 				<h2 id="intro-heading" class="section__title">A deck price is mostly structure, not boards</h2>
 				<p class="section__lead section__lead--tight">
-					The decking you can see is the cheap part. Footings, bearers, joists, height off the ground, ground conditions and access usually decide the number long
-					before you choose a board. This guide walks through those decisions so you can read a quote properly.
+					The decking you can see is the cheap part. Footings, bearers, joists, the height off the ground, the ground itself and how a truck gets to the backyard
+					usually decide the number long before anyone picks a board. Once you understand that, a stack of quotes starts to make sense — and the suspiciously cheap one
+					usually gives itself away.
 				</p>
 				<p class="section__lead section__lead--tight">
-					Start with the cost guide below, then talk to a builder about your specific site.
+					This guide walks through what affects deck cost, why cheap decks tend to cost more later, and the questions worth asking before you sign anything.
 				</p>
+			</div>
+		</section>
+
+		<section class="section section--cost-bands" id="cost-bands" aria-labelledby="cost-bands-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cost-bands-heading" class="section__title">Melbourne deck cost bands (guide only)</h2>
+				<p class="section__lead section__lead--tight">
+					{deckCostBands.allPricesNote} Treat these as broad planning ranges for properly built Melbourne decks, not fixed quotes.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>{deckCostBands.minimumJob.label}</strong>
+						<span>{deckCostBands.minimumJob.price} for {deckCostBands.minimumJob.size}.</span>
+					</li>
+					<li>
+						<strong>Basic ground-level timber deck</strong>
+						<span>{deckCostBands.basicGroundLevelPerM2}, with many typical small decks landing around {deckCostBands.typicalSmallDeckTotal}.</span>
+					</li>
+					<li>
+						<strong>Properly detailed hardwood deck sweet spot</strong>
+						<span>
+							Many worthwhile projects sit around {deckCostBands.hardwoodSweetSpotTotal} once framing, fixings, finishing and access are allowed for.
+						</span>
+					</li>
+				</ul>
 				<p class="section__link-wrap">
-					<a class="hero__secondary" href="/decking-cost-melbourne/">Read the Melbourne deck cost guide</a>
+					<a class="hero__secondary" href="/decking-cost-melbourne/">See the full deck cost guide and inclusions</a>
 				</p>
+			</div>
+		</section>
+
+		<section class="section section--guides" id="guides" aria-labelledby="guides-heading">
+			<div class="section__inner">
+				<h2 id="guides-heading" class="section__title">Start with the guide that matches your question</h2>
+				<p class="section__lead section__lead--tight">
+					Cost, timber, materials, pool decks and common mistakes — each page goes deep on one part of the job so you can read a quote properly and compare builders on
+					the same scope.
+				</p>
+				<ul class="grid">
+					{deckHomepageGuides.map((guide) => (
+						<DeckGuideCard guide={guide} />
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class="section section--factors" id="what-affects-cost" aria-labelledby="factors-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="factors-heading" class="section__title">What affects deck cost?</h2>
+				<p class="section__lead section__lead--tight">
+					Six things move a deck quote more than the board ever will. Get clear on these and you will understand most of the difference between any two prices.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Height off the ground</strong>
+						<span>The biggest single split. A raised deck needs deeper footings, posts, bracing, a balustrade, stairs and usually a permit. A low deck is cheaper to frame — but it still has to breathe and drain.</span>
+					</li>
+					<li>
+						<strong>Ground and footings</strong>
+						<span>Reactive clay, fill, slope or rock all change how deep and what type the footings need to be. You pay for what is under the deck even though you never see it.</span>
+					</li>
+					<li>
+						<strong>Site access</strong>
+						<span>A narrow side path or no rear access means everything is barrowed by hand and machinery may not fit. Labour climbs fast when nothing can drive in.</span>
+					</li>
+					<li>
+						<strong>The subframe</strong>
+						<span>Footing count, joist size and spacing, and framing treatment level. This is where cheap quotes quietly save money — and where a deck is won or lost.</span>
+					</li>
+					<li>
+						<strong>Timber, fixings and finish</strong>
+						<span>Species, board profile, hidden vs face fixings, hardware grade and the coating. A smaller slice of the total than most people expect, but it sets the look and the upkeep.</span>
+					</li>
+					<li>
+						<strong>Stairs, balustrade and edges</strong>
+						<span>Steps, compliant balustrades and pool or step edges are real line items that are easy to leave out of a sharp-looking quote.</span>
+					</li>
+				</ul>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/decking-cost-melbourne/">Read the full Melbourne deck cost guide</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--cheap" id="cheap-costs-more" aria-labelledby="cheap-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="cheap-heading" class="section__title">Why cheap decks usually cost more later</h2>
+				<p class="section__lead section__lead--tight">
+					The lowest quote rarely describes the same deck as the others — it describes a lighter one. The savings come out of the parts that keep a deck alive, and they
+					come back as repairs.
+				</p>
+				<ul class="bullets">
+					<li>Fewer or shallower footings and a lighter frame feel fine on day one and bouncy within a few years.</li>
+					<li>Wider joist spacing saves timber now and lets boards flex and cup later.</li>
+					<li>Cheap fixings rust, stain the boards and let go early — and redoing them costs more than doing it once.</li>
+					<li>No thought given to ventilation or drainage means trapped moisture and a frame that rots from underneath.</li>
+					<li>A deck built too low to the ground is the cheapest to lay and often the first to fail.</li>
+				</ul>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/decking-mistakes/">See the common deck mistakes</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--timber" id="timber-choices" aria-labelledby="timber-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="timber-heading" class="section__title">Timber and material choices</h2>
+				<p class="section__lead section__lead--tight">
+					There is no single best board. We build mostly in natural timber because, detailed properly, it lasts and ages well — but the right choice depends on your
+					budget, the look you want and how much maintenance you will genuinely do.
+				</p>
+				<ul class="bullets">
+					<li><strong>Treated pine:</strong> the cheapest board and the standard framing timber. Fine when detailed and maintained, but softer and shorter-lived as a deck surface.</li>
+					<li><strong>Merbau:</strong> a dense, durable hardwood at a sensible price — just manage the tannin bleed when it is new.</li>
+					<li><strong>Spotted gum and blackbutt:</strong> hard-wearing Australian hardwoods at the higher end, and our usual recommendation for a deck meant to last.</li>
+					<li><strong>Composite:</strong> low-maintenance and stable, at a higher upfront cost and a more uniform look — a fair choice if you will not maintain timber, but it does not rescue a bad frame.</li>
+				</ul>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/decking-materials/">Compare decking materials</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--types" id="deck-types" aria-labelledby="types-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="types-heading" class="section__title">Pool, alfresco and raised deck cost factors</h2>
+				<p class="section__lead section__lead--tight">
+					Not all decks are the same build. Where the deck sits and what it has to deal with changes the structure and the detailing — and the price with it.
+				</p>
+				<ul class="factors">
+					<li>
+						<strong>Alfresco / low-set deck</strong>
+						<span>The simplest build, but it still needs clearance to ventilate and drain. Done too low with no airflow, the cheapest deck becomes the first to rot.</span>
+					</li>
+					<li>
+						<strong>Raised deck</strong>
+						<span>Posts, bracing, a compliant balustrade, stairs and often a permit. More structure and more compliance — the right call when levels demand it, and the most expensive band.</span>
+					</li>
+					<li>
+						<strong>Pool deck</strong>
+						<span>Wet-area detailing, slip-aware boards, stainless fixings, coping transitions and access panels over services. Usually more than a plain alfresco deck — for good reason.</span>
+					</li>
+				</ul>
+				<p class="section__link-wrap">
+					<a class="hero__secondary" href="/pool-decking-cost/">Read the pool decking cost guide</a>
+				</p>
+			</div>
+		</section>
+
+		<section class="section section--questions" id="questions" aria-labelledby="questions-heading">
+			<div class="section__inner section__inner--narrow">
+				<h2 id="questions-heading" class="section__title">Questions to ask before accepting a decking quote</h2>
+				<p class="section__lead section__lead--tight">
+					A good builder will answer these without hesitating. The answers are also how you compare two quotes on what they actually build, not just the bottom line.
+				</p>
+				<ul class="bullets">
+					<li>How many footings, how deep, and what type — and how were they sized for my ground?</li>
+					<li>What size are the joists and how far apart are they spaced?</li>
+					<li>What treatment level is the framing timber, for in-ground and above-ground use?</li>
+					<li>What fixings — face or hidden, and what grade (stainless near a pool or the coast)?</li>
+					<li>How does the deck ventilate and drain, especially if it sits low?</li>
+					<li>Are stairs, balustrade, demolition and finishing in the price, or extra?</li>
+					<li>How does the deck meet the house, the paving and the rest of the yard?</li>
+				</ul>
 			</div>
 		</section>
 
 		<CTASection
 			sectionId="contact"
 			headingId="cta-heading"
-			bridge="Structure, height and site access set the price before boards are chosen — get those right and quotes start comparing fairly."
-			title="Planning a new deck in Melbourne?"
-			description="Speak with Made By Mobbs Landscapes about deck structure, materials and how it ties into the rest of the backyard."
-			ctaHref={site.primaryCtaHref}
+			bridge="Footings, subframe, airflow and drainage decide whether a deck still feels solid in ten years — they are not details you add after the boards are down."
+			title="Planning a deck in Melbourne?"
+			description="Speak with Made By Mobbs Landscapes about deck structure, timber and detailing — built as part of the whole backyard, not a board count on a quick frame."
+			ctaHref={DECK_CTA_URL}
 			ctaLabel={site.primaryCta}
 		/>
 	</div>
@@ -140,6 +326,40 @@ const description =
 		border-bottom: 1px solid var(--color-border);
 	}
 
+	.section--guides {
+		background-color: var(--color-background);
+	}
+
+	.section--cost-bands {
+		background-color: var(--color-background);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--factors {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--cheap {
+		background-color: var(--color-background);
+	}
+
+	.section--timber {
+		background-color: var(--color-white);
+		border-top: 1px solid var(--color-border);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.section--types {
+		background-color: var(--color-background);
+	}
+
+	.section--questions {
+		background-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-background));
+	}
+
 	.section__inner {
 		max-width: 72rem;
 		margin: 0 auto;
@@ -193,5 +413,74 @@ const description =
 		outline: 2px solid var(--color-primary-dark);
 		outline-offset: 3px;
 		border-radius: 2px;
+	}
+
+	.grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(1.25rem, 3vw, 1.75rem);
+	}
+
+	@media (min-width: 36rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 56rem) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	.factors {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+
+	.factors li {
+		padding-bottom: 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+	}
+
+	.factors li:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.factors strong {
+		font-size: 1rem;
+		color: var(--color-text);
+	}
+
+	.factors span {
+		font-size: 0.96875rem;
+		color: color-mix(in srgb, var(--color-text) 72%, var(--color-background));
+		line-height: 1.55;
+	}
+
+	.bullets {
+		margin: 0;
+		padding-left: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.85rem;
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-text) 82%, var(--color-background));
+	}
+
+	.bullets strong {
+		color: var(--color-text);
 	}
 </style>

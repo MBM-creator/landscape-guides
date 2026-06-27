@@ -1,0 +1,10 @@
+---
+import DeckGuidePage from '../templates/DeckGuidePage.astro';
+import { deckingMaterialsPage } from '../content/decking/pages/materials';
+import { sites } from '../config/sites';
+
+const site = sites.decking;
+const canonical = new URL(deckingMaterialsPage.canonical, `https://${site.domain}`).href;
+---
+
+<DeckGuidePage site={site} canonical={canonical} content={deckingMaterialsPage} />

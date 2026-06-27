@@ -1,0 +1,10 @@
+---
+import DeckGuidePage from '../templates/DeckGuidePage.astro';
+import { timberDeckingCostPage } from '../content/decking/pages/timber-cost';
+import { sites } from '../config/sites';
+
+const site = sites.decking;
+const canonical = new URL(timberDeckingCostPage.canonical, `https://${site.domain}`).href;
+---
+
+<DeckGuidePage site={site} canonical={canonical} content={timberDeckingCostPage} />

@@ -40,7 +40,13 @@ const DECK_HOSTS = [DECK_DOMAIN, `www.${DECK_DOMAIN}`];
 
 const DECK_HOME_PATH = '/deck/';
 
-const DECK_GUIDE_PATHS = ['/decking-cost-melbourne/'];
+const DECK_GUIDE_PATHS = [
+	'/decking-cost-melbourne/',
+	'/timber-decking-cost/',
+	'/decking-materials/',
+	'/pool-decking-cost/',
+	'/decking-mistakes/',
+];
 
 const PAVING_GUIDE_PATHS = [
 	'/paving-cost-calculator/',
