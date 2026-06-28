@@ -1,33 +1,37 @@
 /**
- * Placeholder imagery for the Deck Cost Guide.
- *
- * TODO(images): every path below is a temporary paving photo standing in for a
- * dedicated Made By Mobbs decking shot. None of these are final. Replace with:
- *   - timber close-ups (board grain, oiled vs raw)
- *   - deck framing / subframe details (bearers, joists, footings)
- *   - hidden fixings and fascia detailing
- *   - stairs and balustrade junctions
- *   - pool deck edges and coping transitions
- *   - finished alfresco / raised decks
- * When real photos land, swap the values here and update the alt text at each
- * usage site so it describes the actual image.
+ * Deck Cost Guide imagery — Made By Mobbs project photos in /public/images/deck/.
  */
 
-// TODO(images): replace with a finished natural-timber alfresco deck photo.
-export const DECK_PLACEHOLDER_HERO = '/images/pool-paving.jpg';
-export const DECK_PLACEHOLDER_HERO_ALT = 'Placeholder: outdoor entertaining area (deck photo to follow)';
+const deck = (filename: string) => `/images/deck/${encodeURIComponent(filename)}`;
 
-// TODO(images): replace with a timber board close-up (grain / oiled finish).
-export const DECK_PLACEHOLDER_TIMBER = '/images/herringbone-paving.jpg';
+export const DECK_PLACEHOLDER_HERO = deck('hero-alfresco.jpg');
+export const DECK_PLACEHOLDER_HERO_ALT =
+	'Timber deck boards checked level with a spirit level during installation';
 
-// TODO(images): replace with a deck subframe / framing detail photo.
-export const DECK_PLACEHOLDER_FRAMING = '/images/stretcher-bond.jpg';
+export const DECK_PLACEHOLDER_TIMBER = deck('timber-boards.jpg');
+export const DECK_PLACEHOLDER_TIMBER_ALT =
+	'Merbau timber decking boards laid around the corner of a house';
 
-// TODO(images): replace with a pool-edge deck detail photo.
-export const DECK_PLACEHOLDER_POOL = '/images/travertine-pool-paving.png';
+export const DECK_PLACEHOLDER_MATERIALS = deck('beautiful_spotted_gum.jpg');
+export const DECK_PLACEHOLDER_MATERIALS_ALT =
+	'Spotted gum hardwood decking boards with visible grain and screw fixings';
 
-// TODO(images): replace with a stairs / balustrade junction photo.
-export const DECK_PLACEHOLDER_STAIRS = '/images/french-pattern.webp';
+export const DECK_PLACEHOLDER_FRAMING = deck('subframe-det.jpg');
+export const DECK_PLACEHOLDER_FRAMING_ALT =
+	'Deck subframe with joists, bearers and concrete footings under construction in a Melbourne backyard';
 
-// TODO(images): replace with a weathered / failed deck detail photo.
-export const DECK_PLACEHOLDER_MISTAKES = '/images/crazy-paving.avif';
+export const DECK_PLACEHOLDER_POOL = deck('picture_rail_detail.jpg');
+export const DECK_PLACEHOLDER_POOL_ALT =
+	'Finished timber deck with picture-frame border edging and steps down to paving';
+
+export const DECK_PLACEHOLDER_STAIRS = deck('stairs-balustrade.jpg');
+export const DECK_PLACEHOLDER_STAIRS_ALT =
+	'Timber deck with wide steps, built-in bench seating and wire balustrade';
+
+export const DECK_PLACEHOLDER_MAINTENANCE = deck('heavily_sanded_&_reoiled.jpg');
+export const DECK_PLACEHOLDER_MAINTENANCE_ALT =
+	'Timber deck boards after sanding and re-oiling, showing restored colour and grain';
+
+export const DECK_PLACEHOLDER_MISTAKES = deck('poor-ventalation.jpg');
+export const DECK_PLACEHOLDER_MISTAKES_ALT =
+	'Rotting deck rim joist with peeling timber caused by poor ventilation and trapped moisture';

@@ -1,9 +1,8 @@
 import type { DeckGuidePageContent } from '../deckGuidePage.types';
 import { deckBackLink, deckFinalCta, deckMobbsSection } from '../shared';
-import { DECK_PLACEHOLDER_FRAMING } from '../placeholders';
+import { DECK_PLACEHOLDER_FRAMING, DECK_PLACEHOLDER_FRAMING_ALT } from '../placeholders';
 import { deckCostBands } from '../costBands';
 
-// TODO(images): replace with a Melbourne deck framing / finished deck photo.
 const heroImage = DECK_PLACEHOLDER_FRAMING;
 
 export const deckCostMelbournePage: DeckGuidePageContent = {
@@ -17,7 +16,7 @@ export const deckCostMelbournePage: DeckGuidePageContent = {
 		'A deck almost never comes down to a clean per-square-metre rate. Height off the ground, site access, subframe detail and how the deck meets the house move the number far more than the board on top. Use these Melbourne guide ranges (including GST) to plan and compare scope, then get builder-led quotes for your exact site.',
 	...deckBackLink,
 	heroImage,
-	heroAlt: 'Placeholder: deck framing under construction in a Melbourne backyard (photo to follow)',
+	heroAlt: DECK_PLACEHOLDER_FRAMING_ALT,
 	heroImageWidth: 800,
 	heroImageHeight: 600,
 	sections: [

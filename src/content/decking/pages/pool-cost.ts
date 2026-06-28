@@ -1,9 +1,8 @@
 import type { DeckGuidePageContent } from '../deckGuidePage.types';
 import { deckBackLink, deckFinalCta, deckMobbsSection } from '../shared';
-import { DECK_PLACEHOLDER_POOL } from '../placeholders';
+import { DECK_PLACEHOLDER_POOL, DECK_PLACEHOLDER_POOL_ALT } from '../placeholders';
 import { deckCostBands } from '../costBands';
 
-// TODO(images): replace with a timber pool-deck edge / coping transition photo.
 const heroImage = DECK_PLACEHOLDER_POOL;
 
 export const poolDeckingCostPage: DeckGuidePageContent = {
@@ -17,7 +16,7 @@ export const poolDeckingCostPage: DeckGuidePageContent = {
 		`A deck around a pool is not just an alfresco deck near water. As a broad Melbourne guide, pool decking often sits around ${deckCostBands.poolDeckingPerM2} including GST, and is ${deckCostBands.poolDeckingPremium}. It is a wet area with safety rules, constant splash, services running underneath and a hard edge it has to meet cleanly.`,
 	...deckBackLink,
 	heroImage,
-	heroAlt: 'Placeholder: timber deck meeting a pool edge (photo to follow)',
+	heroAlt: DECK_PLACEHOLDER_POOL_ALT,
 	heroImageWidth: 800,
 	heroImageHeight: 600,
 	sections: [

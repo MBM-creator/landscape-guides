@@ -1,10 +1,9 @@
 import type { DeckGuidePageContent } from '../deckGuidePage.types';
 import { deckBackLink, deckFinalCta, deckMobbsSection } from '../shared';
-import { DECK_PLACEHOLDER_TIMBER } from '../placeholders';
+import { DECK_PLACEHOLDER_MATERIALS, DECK_PLACEHOLDER_MATERIALS_ALT } from '../placeholders';
 import { deckCostBands } from '../costBands';
 
-// TODO(images): replace with decking timber samples / side-by-side board photo.
-const heroImage = DECK_PLACEHOLDER_TIMBER;
+const heroImage = DECK_PLACEHOLDER_MATERIALS;
 
 export const deckingMaterialsPage: DeckGuidePageContent = {
 	metaTitle: 'Decking Materials Compared | Deck Cost Guide',
@@ -17,7 +16,7 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 		'“What material?” is usually the first question and rarely the most important one. The framing under the boards and the fixings holding them down are part of the material decision too. Here is how the common choices behave in Melbourne — and where we lean, and why.',
 	...deckBackLink,
 	heroImage,
-	heroAlt: 'Placeholder: decking timber boards side by side (photo to follow)',
+	heroAlt: DECK_PLACEHOLDER_MATERIALS_ALT,
 	heroImageWidth: 800,
 	heroImageHeight: 600,
 	sections: [

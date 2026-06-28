@@ -1,8 +1,7 @@
 import type { DeckGuidePageContent } from '../deckGuidePage.types';
 import { deckBackLink, deckFinalCta, deckMobbsSection } from '../shared';
-import { DECK_PLACEHOLDER_MISTAKES } from '../placeholders';
+import { DECK_PLACEHOLDER_MISTAKES, DECK_PLACEHOLDER_MISTAKES_ALT } from '../placeholders';
 
-// TODO(images): replace with a weathered / failed deck detail (rot, cupping, rust streaks).
 const heroImage = DECK_PLACEHOLDER_MISTAKES;
 
 export const deckingMistakesPage: DeckGuidePageContent = {
@@ -16,7 +15,7 @@ export const deckingMistakesPage: DeckGuidePageContent = {
 		'Most decks do not fail because the timber was bad. They fail because of decisions made before the first board went down — and almost always around water, air and structure. These are the mistakes we see most often, why they cost you, and what good practice looks like instead.',
 	...deckBackLink,
 	heroImage,
-	heroAlt: 'Placeholder: weathered deck showing cupping and grey timber (photo to follow)',
+	heroAlt: DECK_PLACEHOLDER_MISTAKES_ALT,
 	heroImageWidth: 800,
 	heroImageHeight: 600,
 	sections: [

@@ -1,9 +1,8 @@
 import type { DeckGuidePageContent } from '../deckGuidePage.types';
 import { deckBackLink, deckFinalCta, deckMobbsSection } from '../shared';
-import { DECK_PLACEHOLDER_TIMBER } from '../placeholders';
+import { DECK_PLACEHOLDER_TIMBER, DECK_PLACEHOLDER_TIMBER_ALT } from '../placeholders';
 import { deckCostBands } from '../costBands';
 
-// TODO(images): replace with a timber decking board close-up (grain / oiled finish).
 const heroImage = DECK_PLACEHOLDER_TIMBER;
 
 export const timberDeckingCostPage: DeckGuidePageContent = {
@@ -17,7 +16,7 @@ export const timberDeckingCostPage: DeckGuidePageContent = {
 		'The board you choose is only one line in the bill, and rarely the line that decides whether the deck is still solid in ten years. Below is what actually moves the cost of a timber deck — and why the cheapest timber option is not usually the cheapest deck once you count the whole life of it.',
 	...deckBackLink,
 	heroImage,
-	heroAlt: 'Placeholder: close-up of timber decking boards (photo to follow)',
+	heroAlt: DECK_PLACEHOLDER_TIMBER_ALT,
 	heroImageWidth: 800,
 	heroImageHeight: 600,
 	sections: [

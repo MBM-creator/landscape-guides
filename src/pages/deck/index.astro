@@ -6,7 +6,7 @@ import DeckGuideCard from '../../components/DeckGuideCard.astro';
 import CTASection from '../../components/CTASection.astro';
 import { sites, DECK_CTA_URL } from '../../config/sites';
 import { deckHomepageGuides } from '../../content/decking/guides';
-import { DECK_PLACEHOLDER_HERO } from '../../content/decking/placeholders';
+import { DECK_PLACEHOLDER_HERO, DECK_PLACEHOLDER_HERO_ALT } from '../../content/decking/placeholders';
 import { deckCostBands } from '../../content/decking/costBands';
 
 const site = sites.decking;
@@ -18,9 +18,8 @@ const title = 'Deck Cost Guide | Made By Mobbs Landscapes';
 const description =
 	'A plain-English guide to what a deck really costs in Melbourne — what affects the price, why quotes vary, the mistakes worth avoiding, and how to choose a deck that lasts.';
 
-// TODO(images): replace with a dedicated finished natural-timber deck hero photo.
 const heroImage = DECK_PLACEHOLDER_HERO;
-const heroAlt = 'Placeholder: finished timber alfresco deck (photo to follow)';
+const heroAlt = DECK_PLACEHOLDER_HERO_ALT;
 ---
 
 <BaseLayout title={title} description={description} site={site} canonical={canonical}>
