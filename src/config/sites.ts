@@ -47,7 +47,7 @@ export const sites = {
 		name: 'Deck Cost Guide',
 		domain: 'deckcostguide.com.au',
 		alternateDomains: [],
-		primaryCta: 'Speak with Made By Mobbs Landscapes',
+		primaryCta: 'Estimate Your Decking Construction Cost',
 		primaryCtaHref: DECK_CTA_URL,
 		mainWebsiteUrl: 'https://madebymobbs.com.au',
 	},

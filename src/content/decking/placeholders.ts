@@ -20,9 +20,9 @@ export const DECK_PLACEHOLDER_FRAMING = deck('subframe-det.jpg');
 export const DECK_PLACEHOLDER_FRAMING_ALT =
 	'Deck subframe with joists, bearers and concrete footings under construction in a Melbourne backyard';
 
-export const DECK_PLACEHOLDER_POOL = deck('picture_rail_detail.jpg');
+export const DECK_PLACEHOLDER_POOL = deck('Pool_deck.jpg');
 export const DECK_PLACEHOLDER_POOL_ALT =
-	'Finished timber deck with picture-frame border edging and steps down to paving';
+	'Timber deck boards surrounding a rectangular swimming pool with horizontal slat privacy fencing';
 
 export const DECK_PLACEHOLDER_STAIRS = deck('stairs-balustrade.jpg');
 export const DECK_PLACEHOLDER_STAIRS_ALT =

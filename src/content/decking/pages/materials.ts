@@ -79,16 +79,16 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 		},
 		{
 			id: 'composite',
-			title: 'Composite decking — the honest version',
+			title: 'Composite decking — our honest take',
 			variant: 'alt',
 			leads: [
-				'Composite has a real place, and it is worth understanding properly rather than dismissing or overselling. It is a board choice, not a structural one — it still sits on a timber subframe that has to be built right.',
+				"We don't use or recommend composite decking for a number of reasons. They include:",
 			],
 			bullets: [
-				'<strong>Strengths:</strong> low maintenance, no oiling, stable colour, no splinters — genuinely good if you will not maintain timber.',
-				'<strong>Trade-offs:</strong> different look, can get hot underfoot in full sun, and quality varies a lot between products.',
-				'<strong>Around pools:</strong> Made By Mobbs does not recommend plasticised decking around pools.',
-				'<strong>Reality check:</strong> composite boards do not rescue a bad frame. A composite deck on a poorly ventilated, under-built subframe still moves and still has problems below.',
+				'<strong>Plasticised:</strong> We love the look, feel and texture of real timber. The subtle colour changes and variations are what make timber our preferred decking board material.',
+				'<strong>Wastage:</strong> When laying timber decks we can often specify set lengths or random lengths of timber. We do this to both minimise the wastage and also to ensure we achieve a beautiful finish, including random placement of joints. Composite boards only come in 5.4m lengths. This means all the joints/ends have to be in the one place.',
+				'<strong>Swelling:</strong> Timber decking boards swell across the grain; that\'s why you need to leave at least a 5mm gap between the boards. Composite decking swells across the grain, along the grain and through the grain. Unlike timber boards that can be butted up to each other, composite boards must have gaps at the end of each length. To compensate for this, composite decks have breaker-boards installed — a board that is laid at 90 degrees to the other boards. This allows a gap to be added.',
+				'<strong>Joists:</strong> Timber decks use joists with their centres spaced 450mm apart. Composite decks require 400mm spacing. While this doesn\'t sound like much, on a large deck it can add thousands in additional materials and labour to the sub-frame and for the additional fixing of the decking boards.',
 			],
 		},
 		{
@@ -113,7 +113,6 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 			bullets: [
 				'<strong>Hardwoods (merbau, spotted gum, blackbutt):</strong> cope well with Melbourne swings when detailed and maintained — our usual recommendation.',
 				'<strong>Treated pine:</strong> a fair budget board and the right framing timber, as long as the treatment level matches the situation.',
-				'<strong>Composite:</strong> a valid option for some low-maintenance briefs — but still hold it to the same standard of frame, ventilation and drainage.',
 				'<strong>In every case:</strong> the deck lasts on the strength of the subframe, the airflow and the drainage, not the badge on the board.',
 			],
 		},
@@ -129,22 +128,22 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 		{
 			question: 'What is the best decking material for a Melbourne home?',
 			answer:
-				'For most homes, a durable Australian hardwood like spotted gum or blackbutt, or merbau on a tighter budget, detailed on a properly ventilated treated-pine frame. Composite is a sensible choice if you genuinely will not maintain timber. There is no single best — it depends on budget, maintenance and the look you want.',
+				'For most homes, a durable Australian hardwood like spotted gum or blackbutt, or merbau, detailed on a properly ventilated treated-pine frame. Composite is a sensible choice if you genuinely will not maintain timber. There is no single best — it depends on budget, maintenance and the look you want.',
 		},
 		{
-			question: 'Is composite decking better than timber?',
+			question: 'How much maintenance does a timber deck need?',
 			answer:
-				'Not better, different. Composite is low-maintenance and stable but costs more upfront, looks more uniform and can get hot in full sun. Timber is warmer and ages naturally but needs re-coating. Both rely on a well-built, ventilated subframe — the board does not fix a bad frame.',
+				"A timber deck doesn't need a lot of work to keep it looking good. Oil it once every 6-12 months when it is exposed. If it is undercover, it will likely only need oiling every 2 years. That said, if you neglect the deck oil won't resurrect it. You'll need it sanded and then reoiled.",
 		},
 		{
 			question: 'Does merbau really stain paving?',
 			answer:
-				'Yes — new merbau bleeds tannin heavily in the first rains and will stain light-coloured paving, render and grout if it is not managed. It is worth planning for, especially where the deck meets stone or concrete.',
+				'Yes — new merbau bleeds tannin heavily in the first rains and will stain light-coloured paving, render and grout if it is not managed. It is worth planning for, especially where the deck meets stone or concrete. Oxalic acid is highly effective at drawing out the excess tannin from merbau. A professional will know how to minimise any impact to your property.',
 		},
 		{
 			question: 'Can I use the same treated pine for framing and boards?',
 			answer:
-				'The framing and the surface have different jobs and often different treatment levels. In-ground and ground-contact framing needs a higher hazard-level treatment than above-ground timber. Matching the treatment to the situation is a structural decision, not a place to save money.',
+				'The framing and the surface have different jobs and often different treatment levels. In-ground and ground-contact framing needs a higher hazard-level treatment than above-ground timber. Matching the treatment to the situation is a structural decision. Treated pine decking boards can be used instead of much thicker, treated pine framing timber.',
 		},
 	],
 	finalCta: deckFinalCta,

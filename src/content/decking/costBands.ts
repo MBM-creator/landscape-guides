@@ -1,7 +1,7 @@
 export const deckCostBands = {
 	allPricesNote: 'All guide prices below are including GST.',
 	minimumJob: {
-		label: 'Very small deck / minimum viable job',
+		label: 'Very small deck',
 		price: 'from around $4,000',
 		size: 'approximately 6m²',
 	},
