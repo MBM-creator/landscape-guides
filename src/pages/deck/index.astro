@@ -291,12 +291,15 @@ const heroAlt = DECK_PLACEHOLDER_HERO_ALT;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.875rem 1.5rem;
-		font-size: 1rem;
+		min-height: 2.75rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.875rem;
 		font-weight: 600;
 		text-decoration: none;
 		border-radius: 6px;
 		border: 1px solid transparent;
+		text-align: center;
+		white-space: nowrap;
 		transition:
 			background-color 0.15s ease,
 			color 0.15s ease,
@@ -317,6 +320,12 @@ const heroAlt = DECK_PLACEHOLDER_HERO_ALT;
 	.btn--primary:focus-visible {
 		outline: 2px solid var(--color-primary-dark);
 		outline-offset: 3px;
+	}
+
+	@media (max-width: 640px) {
+		.btn {
+			width: 100%;
+		}
 	}
 
 	.section {

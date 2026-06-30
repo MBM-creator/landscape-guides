@@ -29,8 +29,7 @@ export type SiteConfig = { key: SiteKey } & (LiveSite | FutureSite);
 
 export const OUTDOOR_KITCHEN_CTA_URL = 'https://madebymobbs.com.au/outdoor-kitchen-design-melbourne/';
 
-// TODO: point at the dedicated Made By Mobbs decking service page once it exists.
-export const DECK_CTA_URL = 'https://madebymobbs.com.au';
+export const DECK_CTA_URL = 'https://madebymobbs.com.au/contact-made-by-mobbs/';
 
 export const sites = {
 	paving: {

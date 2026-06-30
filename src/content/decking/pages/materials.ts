@@ -4,6 +4,7 @@ import { DECK_PLACEHOLDER_MATERIALS, DECK_PLACEHOLDER_MATERIALS_ALT } from '../p
 import { deckCostBands } from '../costBands';
 
 const heroImage = DECK_PLACEHOLDER_MATERIALS;
+const materialImage = (filename: string) => `/images/${encodeURIComponent(filename)}`;
 
 export const deckingMaterialsPage: DeckGuidePageContent = {
 	metaTitle: 'Decking Materials Compared | Deck Cost Guide',
@@ -31,6 +32,12 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 			id: 'merbau',
 			title: 'Merbau',
 			variant: 'alt',
+			image: {
+				src: materialImage('Merbau.png'),
+				alt: 'Merbau decking boards showing warm red-brown timber grain',
+				width: 1066,
+				height: 710,
+			},
 			leads: [
 				`The default hardwood for a lot of Melbourne decks — dense, durable and usually around ${deckCostBands.timberSpeciesPerM2.merbau} as a broad installed guide.`,
 			],
@@ -43,6 +50,12 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 		{
 			id: 'spotted-gum',
 			title: 'Spotted gum',
+			image: {
+				src: materialImage('Spotted Gum.png'),
+				alt: 'Spotted gum decking boards showing varied Australian hardwood grain',
+				width: 1088,
+				height: 722,
+			},
 			leads: [
 				`An Australian hardwood that is tough and hard-wearing, with strong grain and colour variation. Broad guide pricing often lands around ${deckCostBands.timberSpeciesPerM2.spottedGum}.`,
 			],
@@ -56,6 +69,12 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 			id: 'blackbutt',
 			title: 'Blackbutt',
 			variant: 'alt',
+			image: {
+				src: materialImage('Blackbutt.png'),
+				alt: 'Blackbutt decking boards showing pale even hardwood grain',
+				width: 1134,
+				height: 752,
+			},
 			leads: [
 				`A clean, straight-grained Australian hardwood with a paler, more even tone than spotted gum. Broad guide pricing often lands around ${deckCostBands.timberSpeciesPerM2.blackbutt}.`,
 			],
@@ -68,6 +87,12 @@ export const deckingMaterialsPage: DeckGuidePageContent = {
 		{
 			id: 'treated-pine',
 			title: 'Treated pine — mostly a framing material',
+			image: {
+				src: materialImage('Treated Pine.png'),
+				alt: 'Treated pine decking timber showing lighter softwood boards',
+				width: 784,
+				height: 716,
+			},
 			leads: [
 				'Treated pine earns its place as the subframe under almost every deck, and as a budget board where the brief calls for it.',
 			],

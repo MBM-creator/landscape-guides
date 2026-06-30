@@ -14,6 +14,12 @@ export type DeckGuideSection = {
 	id: string;
 	title: string;
 	variant?: 'default' | 'alt';
+	image?: {
+		src: string;
+		alt: string;
+		width?: number;
+		height?: number;
+	};
 	leads?: string[];
 	bullets?: string[];
 	factors?: { label: string; detailHtml: string }[];

@@ -2,7 +2,7 @@
  * Deck Cost Guide imagery — Made By Mobbs project photos in /public/images/deck/.
  */
 
-const deck = (filename: string) => `/images/deck/${encodeURIComponent(filename)}`;
+const deck = (filename: string) => `/images/deck/${filename}`;
 
 export const DECK_PLACEHOLDER_HERO = deck('hero-alfresco.jpg');
 export const DECK_PLACEHOLDER_HERO_ALT =
