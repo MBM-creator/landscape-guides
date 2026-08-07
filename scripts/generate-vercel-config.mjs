@@ -62,12 +62,40 @@ const PAVING_GUIDE_PATHS = [
 	'/wet-bed-vs-concrete-base-paving/',
 ];
 
+/** Static assets and SEO files that must remain reachable on the deck domain. */
+const DECK_ALLOWED_STATIC_PREFIXES = ['_astro/', 'images/'];
+
+const DECK_ALLOWED_STATIC_FILES = ['favicon.svg', 'favicon.ico', 'sitemap-deck.xml', 'robots-deck.txt'];
+
 function stripTrailingSlash(path) {
 	return path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
 }
 
+function escapeRegex(value) {
+	return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Build a catch-all 404 route for the deck domain.
+ * Allows only legitimate deck page slugs, required static assets, and SEO files.
+ * Root `/` is handled separately and is excluded because the pattern requires `/...`.
+ */
+function buildDeckCatchAll404Src() {
+	const allowedPageSlugs = DECK_GUIDE_PATHS.map((path) => {
+		const slug = stripTrailingSlash(path).slice(1);
+		return `${escapeRegex(slug)}(?:/|$)`;
+	}).join('|');
+
+	const allowedStaticPrefixes = DECK_ALLOWED_STATIC_PREFIXES.map((prefix) => escapeRegex(prefix)).join('|');
+	const allowedStaticFiles = DECK_ALLOWED_STATIC_FILES.map((file) => escapeRegex(file)).join('|');
+
+	return `^/(?!(${allowedStaticPrefixes}|${allowedStaticFiles}|${allowedPageSlugs}))(.+)$`;
+}
+
+const deckCatchAll404Src = buildDeckCatchAll404Src();
+
 /** Routes run before filesystem — OK/deck apex serve their internal home build path as 200. */
-const rootRoutes = [
+const routes = [
 	{
 		src: '^/$',
 		has: [{ type: 'host', value: OUTDOOR_KITCHEN_DOMAIN }],
@@ -81,10 +109,31 @@ const rootRoutes = [
 ];
 
 for (const host of DECK_HOSTS) {
-	rootRoutes.push({
+	routes.push({
 		src: '^/$',
 		has: [{ type: 'host', value: host }],
 		dest: DECK_HOME_PATH,
+	});
+}
+
+for (const host of DECK_HOSTS) {
+	routes.push({
+		src: '^/sitemap\\.xml$',
+		has: [{ type: 'host', value: host }],
+		dest: '/sitemap-deck.xml',
+	});
+	routes.push({
+		src: '^/robots\\.txt$',
+		has: [{ type: 'host', value: host }],
+		dest: '/robots-deck.txt',
+	});
+}
+
+for (const host of DECK_HOSTS) {
+	routes.push({
+		src: deckCatchAll404Src,
+		has: [{ type: 'host', value: host }],
+		status: 404,
 	});
 }
 
@@ -197,29 +246,13 @@ for (const host of [...PAVING_HOSTS, ...OUTDOOR_KITCHEN_HOSTS]) {
 	}
 }
 
-// On the deck domain, send foreign paving / outdoor kitchen routes back to their own sites.
-for (const host of DECK_HOSTS) {
-	for (const source of ['/outdoor-kitchen', '/outdoor-kitchen/']) {
-		redirects.push({
-			source,
-			has: [{ type: 'host', value: host }],
-			destination: `https://${OUTDOOR_KITCHEN_DOMAIN}/`,
-			permanent: true,
-		});
-	}
-	for (const path of OUTDOOR_KITCHEN_GUIDE_PATHS) {
-		pushGuidePathRedirect(host, path, `https://${OUTDOOR_KITCHEN_DOMAIN}`);
-	}
-	for (const path of PAVING_GUIDE_PATHS) {
-		pushGuidePathRedirect(host, path, `https://${PAVING_DOMAIN}`);
-	}
-}
-
 const vercelConfig = {
 	$schema: 'https://openapi.vercel.sh/vercel.json',
-	routes: rootRoutes,
+	routes,
 	redirects,
 };
 
 writeFileSync(join(root, 'vercel.json'), `${JSON.stringify(vercelConfig, null, '\t')}\n`);
-console.log(`Wrote vercel.json (${rootRoutes.length} root routes, ${redirects.length} redirects total)`);
+console.log(
+	`Wrote vercel.json (${routes.length} routes including ${DECK_HOSTS.length * 3} deck-host rules, ${redirects.length} redirects total)`,
+);
