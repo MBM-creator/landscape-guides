@@ -131,6 +131,15 @@ for (const host of DECK_HOSTS) {
 
 for (const host of DECK_HOSTS) {
 	routes.push({
+		src: '^/deck/?$',
+		has: [{ type: 'host', value: host }],
+		status: 308,
+		headers: { Location: '/' },
+	});
+}
+
+for (const host of DECK_HOSTS) {
+	routes.push({
 		src: deckCatchAll404Src,
 		has: [{ type: 'host', value: host }],
 		status: 404,

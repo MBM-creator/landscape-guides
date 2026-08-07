@@ -82,6 +82,32 @@
 			"dest": "/robots-deck.txt"
 		},
 		{
+			"src": "^/deck/?$",
+			"has": [
+				{
+					"type": "host",
+					"value": "deckcostguide.com.au"
+				}
+			],
+			"status": 308,
+			"headers": {
+				"Location": "/"
+			}
+		},
+		{
+			"src": "^/deck/?$",
+			"has": [
+				{
+					"type": "host",
+					"value": "www.deckcostguide.com.au"
+				}
+			],
+			"status": 308,
+			"headers": {
+				"Location": "/"
+			}
+		},
+		{
 			"src": "^/(?!(_astro/|images/|favicon\\.svg|favicon\\.ico|sitemap-deck\\.xml|robots-deck\\.txt|decking-cost-melbourne(?:/|$)|timber-decking-cost(?:/|$)|decking-materials(?:/|$)|pool-decking-cost(?:/|$)|decking-mistakes(?:/|$)))(.+)$",
 			"has": [
 				{
