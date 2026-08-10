@@ -1,5 +1,5 @@
 import type { SiteKey } from './sites';
-import { DECK_HOME_PATH, OUTDOOR_KITCHEN_HOME_PATH } from './micrositeRoutes';
+import { OUTDOOR_KITCHEN_HOME_PATH } from './micrositeRoutes';
 
 export type SiteNavLink = {
 	href: string;
@@ -26,7 +26,7 @@ export const OUTDOOR_KITCHEN_NAV_LINKS: SiteNavLink[] = [
 export function getSiteHomePath(siteKey: SiteKey): string {
 	switch (siteKey) {
 		case 'decking':
-			return DECK_HOME_PATH;
+			return '/';
 		case 'outdoorKitchen':
 			return OUTDOOR_KITCHEN_HOME_PATH;
 		default:
