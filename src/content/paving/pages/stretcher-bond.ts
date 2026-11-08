@@ -1,7 +1,8 @@
+import { PAVING_ENQUIRY_URL } from '../../../config/sites';
 import type { PavingStylePageContent } from '../pavingStylePage.types';
 
 const calculatorStretcherUrl = '/paving-cost-calculator?style=stretcher';
-const bookUrl = '#';
+const bookUrl = PAVING_ENQUIRY_URL;
 
 const relatedGuidesOverride = [
 	{
@@ -26,13 +27,13 @@ const relatedGuidesOverride = [
 
 export const stretcherBondPavingMelbournePage: PavingStylePageContent = {
 	slug: 'stretcher-bond-paving-melbourne',
-	title: 'Stretcher Bond Paving Melbourne | Costs, Layouts & Design Guide',
-	metaTitle: 'Stretcher Bond Paving Melbourne | Costs, Layouts & Design Guide',
+	title: 'Stretcher Bond Paving Costs Melbourne | Materials & Planning Guide',
+	metaTitle: 'Stretcher Bond Paving Costs Melbourne | Materials & Planning Guide',
 	metaDescription:
 		'Where stretcher bond paving works, what affects cost, common mistakes and how it compares to busier patterns.',
 	canonical: '/stretcher-bond-paving-melbourne/',
 	eyebrow: 'Melbourne paving · layout basics',
-	h1: 'Stretcher Bond Paving Melbourne',
+	h1: 'Stretcher Bond Paving Costs & Planning in Melbourne',
 	intro:
 		'Stretcher bond is offset rectangular rows—quiet to look at, unforgiving if the bond wanders. It suits paths and patios where you want a simple grid. Base compaction, drainage and edge restraint still do the heavy lifting, same as fancier patterns.',
 	primaryCtaText: 'Estimate stretcher bond paving cost',

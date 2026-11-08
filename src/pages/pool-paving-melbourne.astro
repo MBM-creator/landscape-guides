@@ -1,4 +1,5 @@
 ---
+import { PAVING_ENQUIRY_URL } from '../config/sites';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -9,12 +10,12 @@ import { getSiteByHost } from '../config/sites';
 const site = getSiteByHost(Astro.url.hostname);
 const canonical = 'https://pavingguide.com.au/pool-paving-melbourne';
 
-const title = 'Pool Paving Melbourne | Pool Surrounds, Costs & Material Guide';
+const title = 'Pool Paving Costs Melbourne | Materials & Planning Guide';
 const description =
 	'Pool paving in Melbourne: grip, coping, falls and base work—what matters beside water and on quotes.';
 
 const calculatorUrl = '/paving-cost-calculator';
-const bookUrl = '#';
+const bookUrl = PAVING_ENQUIRY_URL;
 
 const relatedGuides = [
 	{
@@ -81,7 +82,7 @@ const faqJsonLd = {
 		<header class="hero" id="top">
 			<div class="hero__inner">
 				<p class="hero__eyebrow">Melbourne · pool surrounds</p>
-				<h1 class="hero__title">Pool Paving Melbourne</h1>
+				<h1 class="hero__title">Pool Paving Costs &amp; Planning in Melbourne</h1>
 				<p class="hero__sub">
 					Wet feet, pool chemicals and summer sun change what you can use—finish, joints and falls come before stone colour. The surround should drain
 					well, feel okay underfoot and match what your certifier needs on paper.

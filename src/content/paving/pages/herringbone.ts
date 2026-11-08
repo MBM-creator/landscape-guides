@@ -1,17 +1,18 @@
+import { PAVING_ENQUIRY_URL } from '../../../config/sites';
 import type { PavingStylePageContent } from '../pavingStylePage.types';
 
 const calculatorHerringboneUrl = '/paving-cost-calculator?style=herringbone';
-const bookUrl = '#';
+const bookUrl = PAVING_ENQUIRY_URL;
 
 export const herringbonePavingMelbournePage: PavingStylePageContent = {
 	slug: 'herringbone-paving-melbourne',
-	title: 'Herringbone Paving Melbourne | Costs, Layouts & Design Guide',
-	metaTitle: 'Herringbone Paving Melbourne | Costs, Layouts & Design Guide',
+	title: 'Herringbone Paving Costs Melbourne | Materials & Planning Guide',
+	metaTitle: 'Herringbone Paving Costs Melbourne | Materials & Planning Guide',
 	metaDescription:
 		'Where herringbone paving works, what affects cost in Melbourne, common mistakes and how to estimate your job.',
 	canonical: '/herringbone-paving-melbourne/',
 	eyebrow: 'Melbourne paving · pattern notes',
-	h1: 'Herringbone Paving Melbourne',
+	h1: 'Herringbone Paving Costs & Planning in Melbourne',
 	intro:
 		'Herringbone lays rectangles so joints zig-zag instead of running in long straight lines. That helps spread wheel loads when bedding and edges match the job. Expect more border cuts than stretcher bond; you get structure and movement where cars turn or paths pinch.',
 	primaryCtaText: 'Estimate Herringbone Paving Cost',

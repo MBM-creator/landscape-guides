@@ -1,17 +1,18 @@
+import { PAVING_ENQUIRY_URL } from '../../../config/sites';
 import type { PavingStylePageContent } from '../pavingStylePage.types';
 
 const calculatorFrenchUrl = '/paving-cost-calculator?style=french-pattern';
-const bookUrl = '#';
+const bookUrl = PAVING_ENQUIRY_URL;
 
 export const frenchPatternPavingMelbournePage: PavingStylePageContent = {
 	slug: 'french-pattern-paving-melbourne',
-	title: 'French Pattern Paving Melbourne | Costs, Patterns & Design Guide',
-	metaTitle: 'French Pattern Paving Melbourne | Costs, Patterns & Design Guide',
+	title: 'French Pattern Paving Costs Melbourne | Materials & Planning Guide',
+	metaTitle: 'French Pattern Paving Costs Melbourne | Materials & Planning Guide',
 	metaDescription:
 		'French pattern paving in Melbourne: what it is, typical costs, mistakes to avoid, and how to estimate your job.',
 	canonical: '/french-pattern-paving-melbourne/',
 	eyebrow: 'Melbourne paving · modular stone',
-	h1: 'French Pattern Paving Melbourne',
+	h1: 'French Pattern Paving Costs & Planning in Melbourne',
 	intro:
 		'French pattern is a fixed repeat of mixed tile sizes. Set-out and cutting matter as much as stone colour. It needs enough area for the repeat to read; beside pools, falls, coping and certifier rules still drive the spec.',
 	primaryCtaText: 'Estimate French Pattern Paving Cost',

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
+import PavingProjectLinks from '../components/PavingProjectLinks.astro';
 import { getSiteByHost } from '../config/sites';
 import { pavingCalculatorStyleOrder, pavingStyles } from '../content/paving/styles';
 
@@ -10,8 +11,6 @@ const canonical = new URL(Astro.url.pathname, `https://${site.domain}`).href;
 const title = 'Paving Cost Calculator | Melbourne | Made By Mobbs Landscapes';
 const description =
 	'Rough paving cost estimate by area, base type and paving style. Guide only—book a site visit with Made By Mobbs Landscapes for a firm quote.';
-
-const bookUrl = '#';
 
 const orderedCalculatorStyles = pavingCalculatorStyleOrder
 	.map((param) => pavingStyles.find((s) => s.calculatorStyleParam === param))
@@ -116,7 +115,7 @@ const allowedStyleParams = pavingStyles.map((s) => s.calculatorStyleParam);
 		</section>
 
 		<div class="cta-wrap">
-			<a class="btn btn--primary" href={bookUrl}>Book a site visit with Made By Mobbs</a>
+			<PavingProjectLinks />
 		</div>
 	</div>
 </BaseLayout>

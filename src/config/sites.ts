@@ -31,6 +31,9 @@ export const OUTDOOR_KITCHEN_CTA_URL = 'https://madebymobbs.com.au/outdoor-kitch
 
 export const DECK_CTA_URL = 'https://madebymobbs.com.au/contact-made-by-mobbs/';
 
+export const PAVING_SERVICE_URL = 'https://madebymobbs.com.au/paving-services-melbourne/';
+export const PAVING_ENQUIRY_URL = 'https://madebymobbs.com.au/contact-made-by-mobbs/';
+
 export const sites = {
 	paving: {
 		key: 'paving',
