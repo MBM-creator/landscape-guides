@@ -1,0 +1,28 @@
+---
+import { PAVING_SERVICE_URL, PAVING_ENQUIRY_URL } from '../config/sites';
+---
+
+<section class="paving-project-links" aria-label="Paving installation and project enquiries">
+	<h2>From planning to paving installation</h2>
+	<p>
+		Use Paving Guide to compare costs, materials and base preparation. When you are ready to plan the build,
+		Made By Mobbs can assess your Melbourne site and scope the paving as part of your landscape project.
+	</p>
+	<div class="paving-project-links__actions">
+		<a class="paving-project-links__service" href={PAVING_SERVICE_URL}>Explore MBM paving installation</a>
+		<a class="paving-project-links__enquiry" href={PAVING_ENQUIRY_URL}>Discuss your paving project</a>
+	</div>
+</section>
+
+<style>
+	.paving-project-links { max-width: 48rem; margin: 0 auto 2rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-white); text-align: center; }
+	h2 { margin: 0 0 .75rem; font-size: clamp(1.25rem, 3vw, 1.5rem); line-height: 1.3; }
+	p { margin: 0 auto 1.25rem; max-width: 40rem; }
+	.paving-project-links__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; }
+	a { display: inline-flex; align-items: center; justify-content: center; min-height: 2.75rem; padding: .75rem 1rem; border: 1px solid var(--color-primary-dark); border-radius: 6px; font-weight: 600; line-height: 1.4; text-decoration: none; }
+	.paving-project-links__service { color: var(--color-primary-dark); }
+	.paving-project-links__enquiry { background: var(--color-primary-dark); color: var(--color-white); }
+	a:hover { text-decoration: underline; }
+	a:focus-visible { outline: 2px solid var(--color-primary-dark); outline-offset: 3px; }
+	@media (max-width: 40rem) { a { width: 100%; } }
+</style>

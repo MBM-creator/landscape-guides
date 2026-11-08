@@ -1,5 +1,6 @@
 ---
 import type { SiteConfig } from '../config/sites';
+import PavingProjectLinks from './PavingProjectLinks.astro';
 import { DECK_NAV_LINKS, OUTDOOR_KITCHEN_NAV_LINKS } from '../config/siteNav';
 
 interface Props {
@@ -24,6 +25,7 @@ const deckingLinks = DECK_NAV_LINKS;
 ---
 
 <footer class="site-footer">
+	{site.key === 'paving' ? <PavingProjectLinks /> : null}
 	<p class="site-footer__brand">
 		A resource from{' '}
 		{

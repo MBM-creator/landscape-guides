@@ -1,17 +1,18 @@
+import { PAVING_ENQUIRY_URL } from '../../../config/sites';
 import type { PavingStylePageContent } from '../pavingStylePage.types';
 
 const calculatorCrazyUrl = '/paving-cost-calculator?style=crazy';
-const bookUrl = '#';
+const bookUrl = PAVING_ENQUIRY_URL;
 
 export const crazyPavingMelbournePage: PavingStylePageContent = {
 	slug: 'crazy-paving-melbourne',
-	title: 'Crazy Paving Melbourne | Costs, Styles & Advice',
-	metaTitle: 'Crazy Paving Melbourne | Costs, Styles & Advice',
+	title: 'Crazy Paving Costs Melbourne | Materials & Planning Guide',
+	metaTitle: 'Crazy Paving Costs Melbourne | Materials & Planning Guide',
 	metaDescription:
 		'What crazy paving costs in Melbourne, where it works, and what shifts price: base prep, drainage and stone choice.',
 	canonical: '/crazy-paving-melbourne/',
 	eyebrow: 'Melbourne paving · natural stone',
-	h1: 'Crazy Paving Melbourne',
+	h1: 'Crazy Paving Costs & Planning in Melbourne',
 	intro:
 		'Crazy paving is irregular stone fitted piece by piece. It takes longer on site than grid paving. Paths and entertaining areas suit it when joints, falls and bedding match the stone thickness and how much traffic the area gets.',
 	primaryCtaText: 'Estimate your crazy paving cost in minutes',
